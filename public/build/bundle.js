@@ -365,8 +365,8 @@ var app = (function () {
     			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 162, 0, 4917);
-    			add_location(button, file, 164, 0, 4986);
+    			add_location(p, file, 167, 0, 5105);
+    			add_location(button, file, 169, 0, 5174);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -541,7 +541,12 @@ var app = (function () {
     									offsetBottom: "0px",
     									offsetStart: "0px",
     									offsetEnd: "0px",
-    									paddingAll: "20px"
+    									paddingAll: "20px",
+    									action: {
+    										type: "uri",
+    										label: "action",
+    										uri: "https://mark-house.vercel.app/"
+    									}
     								}
     							],
     							paddingAll: "0px"

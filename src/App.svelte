@@ -145,6 +145,11 @@
                     offsetStart: "0px",
                     offsetEnd: "0px",
                     paddingAll: "20px",
+                    action: {
+                      type: "uri",
+                      label: "action",
+                      uri: "https://mark-house.vercel.app/",
+                    },
                   },
                 ],
                 paddingAll: "0px",
