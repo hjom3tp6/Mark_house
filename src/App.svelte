@@ -52,7 +52,7 @@
     isInClient = liff.isInClient();
   }
 
-  function shereMsg(picurl) {
+  function shareMsg(picurl) {
     if (liff.isApiAvailable("shareTargetPicker")) {
       liff
         .shareTargetPicker([
@@ -100,7 +100,7 @@
                             contents: [
                               {
                                 type: "text",
-                                text: "Hellow~",
+                                text: "Hello~",
                                 size: "xl",
                                 color: "#ffffff",
                               },
@@ -162,4 +162,4 @@
 
 <p>isInClient: {isInClient}</p>
 <!-- <img src={picUrl} alt="" /> -->
-<button on:click={shereMsg}>shere</button>
+<button on:click={shareMsg}>share</button>

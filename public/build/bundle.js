@@ -364,9 +364,9 @@ var app = (function () {
     			t1 = text(/*isInClient*/ ctx[0]);
     			t2 = space();
     			button = element("button");
-    			button.textContent = "shere";
-    			add_location(p, file, 162, 0, 4918);
-    			add_location(button, file, 164, 0, 4987);
+    			button.textContent = "share";
+    			add_location(p, file, 162, 0, 4917);
+    			add_location(button, file, 164, 0, 4986);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -379,7 +379,7 @@ var app = (function () {
     			insert_dev(target, button, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*shereMsg*/ ctx[1], false, false, false);
+    				dispose = listen_dev(button, "click", /*shareMsg*/ ctx[1], false, false, false);
     				mounted = true;
     			}
     		},
@@ -451,7 +451,7 @@ var app = (function () {
     		$$invalidate(0, isInClient = liff.isInClient());
     	}
 
-    	function shereMsg(picurl) {
+    	function shareMsg(picurl) {
     		if (liff.isApiAvailable("shareTargetPicker")) {
     			liff.shareTargetPicker([
     				{
@@ -497,7 +497,7 @@ var app = (function () {
     													contents: [
     														{
     															type: "text",
-    															text: "Hellow~",
+    															text: "Hello~",
     															size: "xl",
     															color: "#ffffff"
     														}
@@ -570,7 +570,7 @@ var app = (function () {
     		picUrl,
     		isInClient,
     		displayLiffData,
-    		shereMsg
+    		shareMsg
     	});
 
     	$$self.$inject_state = $$props => {
@@ -583,7 +583,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [isInClient, shereMsg];
+    	return [isInClient, shareMsg];
     }
 
     class App extends SvelteComponentDev {
