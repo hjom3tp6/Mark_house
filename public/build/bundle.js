@@ -47,12 +47,6 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
-    function attr(node, attribute, value) {
-        if (value == null)
-            node.removeAttribute(attribute);
-        else if (node.getAttribute(attribute) !== value)
-            node.setAttribute(attribute, value);
-    }
     function children(element) {
         return Array.from(element.childNodes);
     }
@@ -292,13 +286,6 @@ var app = (function () {
             dispose();
         };
     }
-    function attr_dev(node, attribute, value) {
-        attr(node, attribute, value);
-        if (value == null)
-            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
-        else
-            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
-    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.wholeText === data)
@@ -366,9 +353,6 @@ var app = (function () {
     	let t0;
     	let t1;
     	let t2;
-    	let img;
-    	let img_src_value;
-    	let t3;
     	let button;
     	let mounted;
     	let dispose;
@@ -377,17 +361,12 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t0 = text("isInClient: ");
-    			t1 = text(/*isInClient*/ ctx[1]);
+    			t1 = text(/*isInClient*/ ctx[0]);
     			t2 = space();
-    			img = element("img");
-    			t3 = space();
     			button = element("button");
     			button.textContent = "shere";
     			add_location(p, file, 162, 0, 4918);
-    			if (img.src !== (img_src_value = /*picUrl*/ ctx[0])) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "");
-    			add_location(img, file, 163, 0, 4950);
-    			add_location(button, file, 164, 0, 4978);
+    			add_location(button, file, 164, 0, 4987);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -397,29 +376,21 @@ var app = (function () {
     			append_dev(p, t0);
     			append_dev(p, t1);
     			insert_dev(target, t2, anchor);
-    			insert_dev(target, img, anchor);
-    			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*shereMsg*/ ctx[2], false, false, false);
+    				dispose = listen_dev(button, "click", /*shereMsg*/ ctx[1], false, false, false);
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isInClient*/ 2) set_data_dev(t1, /*isInClient*/ ctx[1]);
-
-    			if (dirty & /*picUrl*/ 1 && img.src !== (img_src_value = /*picUrl*/ ctx[0])) {
-    				attr_dev(img, "src", img_src_value);
-    			}
+    			if (dirty & /*isInClient*/ 1) set_data_dev(t1, /*isInClient*/ ctx[0]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(img);
-    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			mounted = false;
     			dispose();
@@ -456,7 +427,7 @@ var app = (function () {
 
     		await liff.getProfile().then(profile => {
     			const name = profile.displayName;
-    			$$invalidate(0, picUrl = profile.pictureUrl);
+    			picUrl = profile.pictureUrl;
     		}).catch(err => {
     			console.log("error", err);
     		});
@@ -477,7 +448,7 @@ var app = (function () {
     	let isInClient = "123";
 
     	function displayLiffData() {
-    		$$invalidate(1, isInClient = liff.isInClient());
+    		$$invalidate(0, isInClient = liff.isInClient());
     	}
 
     	function shereMsg(picurl) {
@@ -577,8 +548,8 @@ var app = (function () {
     						}
     					}
     				}
-    			]).then($$invalidate(1, isInClient = "success")).catch(function (res) {
-    				$$invalidate(1, isInClient = "err");
+    			]).then($$invalidate(0, isInClient = "success")).catch(function (res) {
+    				$$invalidate(0, isInClient = "err");
     			});
     		}
     	}
@@ -604,15 +575,15 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("s" in $$props) s = $$props.s;
-    		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
-    		if ("isInClient" in $$props) $$invalidate(1, isInClient = $$props.isInClient);
+    		if ("picUrl" in $$props) picUrl = $$props.picUrl;
+    		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [picUrl, isInClient, shereMsg];
+    	return [isInClient, shereMsg];
     }
 
     class App extends SvelteComponentDev {

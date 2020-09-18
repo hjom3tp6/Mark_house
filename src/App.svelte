@@ -161,5 +161,5 @@
 </script>
 
 <p>isInClient: {isInClient}</p>
-<img src={picUrl} alt="" />
+<!-- <img src={picUrl} alt="" /> -->
 <button on:click={shereMsg}>shere</button>
