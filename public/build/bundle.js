@@ -383,11 +383,11 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "shere";
-    			add_location(p, file, 71, 0, 1468);
+    			add_location(p, file, 162, 0, 4918);
     			if (img.src !== (img_src_value = /*picUrl*/ ctx[0])) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			add_location(img, file, 72, 0, 1500);
-    			add_location(button, file, 73, 0, 1526);
+    			add_location(img, file, 163, 0, 4950);
+    			add_location(button, file, 164, 0, 4978);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -480,9 +480,104 @@ var app = (function () {
     		$$invalidate(1, isInClient = liff.isInClient());
     	}
 
-    	function shereMsg() {
+    	function shereMsg(picurl) {
     		if (liff.isApiAvailable("shareTargetPicker")) {
-    			liff.shareTargetPicker([{ type: "text", text: "Hello" }]).then($$invalidate(1, isInClient = "success")).catch(function (res) {
+    			liff.shareTargetPicker([
+    				{
+    					type: "flex",
+    					altText: "Hello",
+    					contents: {
+    						type: "bubble",
+    						body: {
+    							type: "box",
+    							layout: "vertical",
+    							contents: [
+    								{
+    									type: "image",
+    									url: picUrl,
+    									size: "full",
+    									aspectMode: "cover",
+    									aspectRatio: "1:1",
+    									gravity: "center"
+    								},
+    								{
+    									type: "image",
+    									url: "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip15.png",
+    									position: "absolute",
+    									aspectMode: "fit",
+    									aspectRatio: "1:1",
+    									offsetTop: "0px",
+    									offsetBottom: "0px",
+    									offsetStart: "0px",
+    									offsetEnd: "0px",
+    									size: "full"
+    								},
+    								{
+    									type: "box",
+    									layout: "horizontal",
+    									contents: [
+    										{
+    											type: "box",
+    											layout: "vertical",
+    											contents: [
+    												{
+    													type: "box",
+    													layout: "horizontal",
+    													contents: [
+    														{
+    															type: "text",
+    															text: "Hellow~",
+    															size: "xl",
+    															color: "#ffffff"
+    														}
+    													]
+    												},
+    												{
+    													type: "box",
+    													layout: "horizontal",
+    													contents: [
+    														{
+    															type: "box",
+    															layout: "baseline",
+    															contents: [
+    																{
+    																	type: "text",
+    																	text: "¥62,000",
+    																	color: "#ffffff",
+    																	size: "md",
+    																	flex: 0,
+    																	align: "end"
+    																},
+    																{
+    																	type: "text",
+    																	text: "¥82,000",
+    																	color: "#a9a9a9",
+    																	decoration: "line-through",
+    																	size: "sm",
+    																	align: "end"
+    																}
+    															],
+    															flex: 0,
+    															spacing: "lg"
+    														}
+    													]
+    												}
+    											],
+    											spacing: "xs"
+    										}
+    									],
+    									position: "absolute",
+    									offsetBottom: "0px",
+    									offsetStart: "0px",
+    									offsetEnd: "0px",
+    									paddingAll: "20px"
+    								}
+    							],
+    							paddingAll: "0px"
+    						}
+    					}
+    				}
+    			]).then($$invalidate(1, isInClient = "success")).catch(function (res) {
     				$$invalidate(1, isInClient = "err");
     			});
     		}

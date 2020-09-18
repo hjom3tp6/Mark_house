@@ -2,8 +2,8 @@
   import liff from "@line/liff";
   import { onMount } from "svelte";
 
-  let s = ''
-  let picUrl = ''
+  let s = "";
+  let picUrl = "";
 
   onMount(async () => {
     // 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -25,8 +25,8 @@
     await liff
       .getProfile()
       .then((profile) => {
-		const name = profile.displayName;
-		picUrl = profile.pictureUrl
+        const name = profile.displayName;
+        picUrl = profile.pictureUrl;
       })
       .catch((err) => {
         console.log("error", err);
@@ -52,13 +52,104 @@
     isInClient = liff.isInClient();
   }
 
-  function shereMsg() {
+  function shereMsg(picurl) {
     if (liff.isApiAvailable("shareTargetPicker")) {
       liff
         .shareTargetPicker([
           {
-            type: "text",
-            text: "Hello",
+            type: "flex",
+            altText: "Hello",
+            contents: {
+              type: "bubble",
+              body: {
+                type: "box",
+                layout: "vertical",
+                contents: [
+                  {
+                    type: "image",
+                    url: picUrl,
+                    size: "full",
+                    aspectMode: "cover",
+                    aspectRatio: "1:1",
+                    gravity: "center",
+                  },
+                  {
+                    type: "image",
+                    url:
+                      "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip15.png",
+                    position: "absolute",
+                    aspectMode: "fit",
+                    aspectRatio: "1:1",
+                    offsetTop: "0px",
+                    offsetBottom: "0px",
+                    offsetStart: "0px",
+                    offsetEnd: "0px",
+                    size: "full",
+                  },
+                  {
+                    type: "box",
+                    layout: "horizontal",
+                    contents: [
+                      {
+                        type: "box",
+                        layout: "vertical",
+                        contents: [
+                          {
+                            type: "box",
+                            layout: "horizontal",
+                            contents: [
+                              {
+                                type: "text",
+                                text: "Hellow~",
+                                size: "xl",
+                                color: "#ffffff",
+                              },
+                            ],
+                          },
+                          {
+                            type: "box",
+                            layout: "horizontal",
+                            contents: [
+                              {
+                                type: "box",
+                                layout: "baseline",
+                                contents: [
+                                  {
+                                    type: "text",
+                                    text: "¥62,000",
+                                    color: "#ffffff",
+                                    size: "md",
+                                    flex: 0,
+                                    align: "end",
+                                  },
+                                  {
+                                    type: "text",
+                                    text: "¥82,000",
+                                    color: "#a9a9a9",
+                                    decoration: "line-through",
+                                    size: "sm",
+                                    align: "end",
+                                  },
+                                ],
+                                flex: 0,
+                                spacing: "lg",
+                              },
+                            ],
+                          },
+                        ],
+                        spacing: "xs",
+                      },
+                    ],
+                    position: "absolute",
+                    offsetBottom: "0px",
+                    offsetStart: "0px",
+                    offsetEnd: "0px",
+                    paddingAll: "20px",
+                  },
+                ],
+                paddingAll: "0px",
+              },
+            },
           },
         ])
         .then((isInClient = "success"))
@@ -70,5 +161,5 @@
 </script>
 
 <p>isInClient: {isInClient}</p>
-<img src={picUrl} alt="">
+<img src={picUrl} alt="" />
 <button on:click={shereMsg}>shere</button>
