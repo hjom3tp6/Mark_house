@@ -4,6 +4,7 @@
 
   let s = "";
   let picUrl = "";
+  let name = ''
 
   onMount(async () => {
     // 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -25,7 +26,7 @@
     await liff
       .getProfile()
       .then((profile) => {
-        const name = profile.displayName;
+        name = profile.displayName;
         picUrl = profile.pictureUrl;
       })
       .catch((err) => {
@@ -100,7 +101,7 @@
                             contents: [
                               {
                                 type: "text",
-                                text: "Hello~",
+                                text: name + "跟你say Hello~",
                                 size: "xl",
                                 color: "#ffffff",
                               },

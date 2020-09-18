@@ -365,8 +365,8 @@ var app = (function () {
     			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 167, 0, 5105);
-    			add_location(button, file, 169, 0, 5174);
+    			add_location(p, file, 168, 0, 5128);
+    			add_location(button, file, 170, 0, 5197);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -411,6 +411,7 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let s = "";
     	let picUrl = "";
+    	let name = "";
 
     	onMount(async () => {
     		// 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -426,7 +427,7 @@ var app = (function () {
     		});
 
     		await liff.getProfile().then(profile => {
-    			const name = profile.displayName;
+    			name = profile.displayName;
     			picUrl = profile.pictureUrl;
     		}).catch(err => {
     			console.log("error", err);
@@ -497,7 +498,7 @@ var app = (function () {
     													contents: [
     														{
     															type: "text",
-    															text: "Hello~",
+    															text: name + "跟你say Hello~",
     															size: "xl",
     															color: "#ffffff"
     														}
@@ -573,6 +574,7 @@ var app = (function () {
     		onMount,
     		s,
     		picUrl,
+    		name,
     		isInClient,
     		displayLiffData,
     		shareMsg
@@ -581,6 +583,7 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("s" in $$props) s = $$props.s;
     		if ("picUrl" in $$props) picUrl = $$props.picUrl;
+    		if ("name" in $$props) name = $$props.name;
     		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
     	};
 
