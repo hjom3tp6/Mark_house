@@ -70,5 +70,5 @@
 </script>
 
 <p>isInClient: {isInClient}</p>
-<p>{picUrl}</p>
+<img src={picUrl} alt="">
 <button on:click={shereMsg}>shere</button>
