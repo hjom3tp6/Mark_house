@@ -4,7 +4,7 @@
 
   let s = "";
   let picUrl = "";
-  let name = ''
+  let name = "";
 
   onMount(async () => {
     // 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -101,7 +101,7 @@
                             contents: [
                               {
                                 type: "text",
-                                text: name + "跟你say Hello~",
+                                text: "我是:" + name,
                                 size: "xl",
                                 color: "#ffffff",
                               },
@@ -146,14 +146,14 @@
                     offsetStart: "0px",
                     offsetEnd: "0px",
                     paddingAll: "20px",
-                    action: {
-                      type: "uri",
-                      label: "action",
-                      uri: "https://mark-house.vercel.app/",
-                    },
                   },
                 ],
                 paddingAll: "0px",
+                action: {
+                  type: "uri",
+                  label: "action",
+                  uri: "https://liff.line.me/1654061887-ZoYpPWL2",
+                },
               },
             },
           },

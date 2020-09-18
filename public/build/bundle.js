@@ -365,8 +365,8 @@ var app = (function () {
     			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 168, 0, 5128);
-    			add_location(button, file, 170, 0, 5197);
+    			add_location(p, file, 168, 0, 5110);
+    			add_location(button, file, 170, 0, 5179);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -498,7 +498,7 @@ var app = (function () {
     													contents: [
     														{
     															type: "text",
-    															text: name + "跟你say Hello~",
+    															text: "我是:" + name,
     															size: "xl",
     															color: "#ffffff"
     														}
@@ -542,15 +542,15 @@ var app = (function () {
     									offsetBottom: "0px",
     									offsetStart: "0px",
     									offsetEnd: "0px",
-    									paddingAll: "20px",
-    									action: {
-    										type: "uri",
-    										label: "action",
-    										uri: "https://mark-house.vercel.app/"
-    									}
+    									paddingAll: "20px"
     								}
     							],
-    							paddingAll: "0px"
+    							paddingAll: "0px",
+    							action: {
+    								type: "uri",
+    								label: "action",
+    								uri: "https://liff.line.me/1654061887-ZoYpPWL2"
+    							}
     						}
     					}
     				}
