@@ -111,7 +111,7 @@
                           },
                           {
                             type: "box",
-                            layout: "horizontal",
+                            layout: "vertical",
                             contents: [
                               {
                                 type: "box",
@@ -119,19 +119,12 @@
                                 contents: [
                                   {
                                     type: "text",
-                                    text: "¥62,000",
+                                    text: "by " + name,
                                     color: "#ffffff",
                                     size: "md",
                                     flex: 0,
-                                    align: "end",
-                                  },
-                                  {
-                                    type: "text",
-                                    text: "¥82,000",
-                                    color: "#a9a9a9",
-                                    decoration: "line-through",
-                                    size: "sm",
-                                    align: "end",
+									align: "end",
+									style: "italic",
                                   },
                                 ],
                                 flex: 0,

@@ -385,10 +385,10 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 170, 0, 5125);
+    			add_location(p, file, 163, 0, 4733);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 172, 0, 5194);
-    			add_location(button, file, 173, 0, 5243);
+    			add_location(input, file, 165, 0, 4802);
+    			add_location(button, file, 166, 0, 4851);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -543,7 +543,7 @@ var app = (function () {
     												},
     												{
     													type: "box",
-    													layout: "horizontal",
+    													layout: "vertical",
     													contents: [
     														{
     															type: "box",
@@ -551,19 +551,12 @@ var app = (function () {
     															contents: [
     																{
     																	type: "text",
-    																	text: "¥62,000",
+    																	text: "by " + name,
     																	color: "#ffffff",
     																	size: "md",
     																	flex: 0,
-    																	align: "end"
-    																},
-    																{
-    																	type: "text",
-    																	text: "¥82,000",
-    																	color: "#a9a9a9",
-    																	decoration: "line-through",
-    																	size: "sm",
-    																	align: "end"
+    																	align: "end",
+    																	style: "italic"
     																}
     															],
     															flex: 0,
