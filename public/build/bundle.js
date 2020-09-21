@@ -535,7 +535,7 @@ var app = (function () {
     														{
     															type: "text",
     															text: name + ": " + text,
-    															size: "xl",
+    															size: "md",
     															color: "#ffffff"
     														}
     													]
