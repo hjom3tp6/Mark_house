@@ -385,10 +385,10 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 169, 0, 5127);
+    			add_location(p, file, 170, 0, 5125);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 171, 0, 5196);
-    			add_location(button, file, 172, 0, 5245);
+    			add_location(input, file, 172, 0, 5194);
+    			add_location(button, file, 173, 0, 5243);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -536,7 +536,8 @@ var app = (function () {
     															type: "text",
     															text: name + ": " + text,
     															size: "md",
-    															color: "#ffffff"
+    															color: "#ffffff",
+    															"wrap": true
     														}
     													]
     												},
