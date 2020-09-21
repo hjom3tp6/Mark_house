@@ -102,7 +102,7 @@
                             contents: [
                               {
                                 type: "text",
-                                text: name + ": " + text,
+                                text: text,
                                 size: "md",
 								color: "#ffffff",
 								"wrap": true,
