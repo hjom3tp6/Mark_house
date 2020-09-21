@@ -547,7 +547,7 @@ var app = (function () {
     													contents: [
     														{
     															type: "box",
-    															layout: "baseline",
+    															layout: "vertical",
     															contents: [
     																{
     																	type: "text",
