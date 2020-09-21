@@ -5,6 +5,7 @@
   let s = "";
   let picUrl = "";
   let name = "";
+  let text = "";
 
   onMount(async () => {
     // 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -53,7 +54,7 @@
     isInClient = liff.isInClient();
   }
 
-  function shareMsg(picurl) {
+  function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
       liff
         .shareTargetPicker([
@@ -101,7 +102,7 @@
                             contents: [
                               {
                                 type: "text",
-                                text: "我是:" + name,
+                                text: name + ": " + text,
                                 size: "xl",
                                 color: "#ffffff",
                               },
@@ -168,4 +169,5 @@
 
 <p>isInClient: {isInClient}</p>
 <!-- <img src={picUrl} alt="" /> -->
+<input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>

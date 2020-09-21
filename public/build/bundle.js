@@ -47,8 +47,17 @@ var app = (function () {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
     }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
     function children(element) {
         return Array.from(element.childNodes);
+    }
+    function set_input_value(input, value) {
+        input.value = value == null ? '' : value;
     }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
@@ -286,6 +295,13 @@ var app = (function () {
             dispose();
         };
     }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev("SvelteDOMRemoveAttribute", { node, attribute });
+        else
+            dispatch_dev("SvelteDOMSetAttribute", { node, attribute, value });
+    }
     function set_data_dev(text, data) {
         data = '' + data;
         if (text.wholeText === data)
@@ -353,6 +369,8 @@ var app = (function () {
     	let t0;
     	let t1;
     	let t2;
+    	let input;
+    	let t3;
     	let button;
     	let mounted;
     	let dispose;
@@ -361,12 +379,16 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t0 = text("isInClient: ");
-    			t1 = text(/*isInClient*/ ctx[0]);
+    			t1 = text(/*isInClient*/ ctx[1]);
     			t2 = space();
+    			input = element("input");
+    			t3 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 168, 0, 5110);
-    			add_location(button, file, 170, 0, 5179);
+    			add_location(p, file, 169, 0, 5127);
+    			attr_dev(input, "placeholder", "input...");
+    			add_location(input, file, 171, 0, 5196);
+    			add_location(button, file, 172, 0, 5245);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -376,24 +398,37 @@ var app = (function () {
     			append_dev(p, t0);
     			append_dev(p, t1);
     			insert_dev(target, t2, anchor);
+    			insert_dev(target, input, anchor);
+    			set_input_value(input, /*text*/ ctx[0]);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*shareMsg*/ ctx[1], false, false, false);
+    				dispose = [
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[3]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[2], false, false, false)
+    				];
+
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isInClient*/ 1) set_data_dev(t1, /*isInClient*/ ctx[0]);
+    			if (dirty & /*isInClient*/ 2) set_data_dev(t1, /*isInClient*/ ctx[1]);
+
+    			if (dirty & /*text*/ 1 && input.value !== /*text*/ ctx[0]) {
+    				set_input_value(input, /*text*/ ctx[0]);
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(input);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			mounted = false;
-    			dispose();
+    			run_all(dispose);
     		}
     	};
 
@@ -412,6 +447,7 @@ var app = (function () {
     	let s = "";
     	let picUrl = "";
     	let name = "";
+    	let text = "";
 
     	onMount(async () => {
     		// 	let myLiffId = "1654061887-ZoYpPWL2";
@@ -449,10 +485,10 @@ var app = (function () {
     	let isInClient = "123";
 
     	function displayLiffData() {
-    		$$invalidate(0, isInClient = liff.isInClient());
+    		$$invalidate(1, isInClient = liff.isInClient());
     	}
 
-    	function shareMsg(picurl) {
+    	function shareMsg() {
     		if (liff.isApiAvailable("shareTargetPicker")) {
     			liff.shareTargetPicker([
     				{
@@ -498,7 +534,7 @@ var app = (function () {
     													contents: [
     														{
     															type: "text",
-    															text: "我是:" + name,
+    															text: name + ": " + text,
     															size: "xl",
     															color: "#ffffff"
     														}
@@ -554,8 +590,8 @@ var app = (function () {
     						}
     					}
     				}
-    			]).then($$invalidate(0, isInClient = "success")).catch(function (res) {
-    				$$invalidate(0, isInClient = "err");
+    			]).then($$invalidate(1, isInClient = "success")).catch(function (res) {
+    				$$invalidate(1, isInClient = "err");
     			});
     		}
     	}
@@ -569,12 +605,18 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("App", $$slots, []);
 
+    	function input_input_handler() {
+    		text = this.value;
+    		$$invalidate(0, text);
+    	}
+
     	$$self.$capture_state = () => ({
     		liff,
     		onMount,
     		s,
     		picUrl,
     		name,
+    		text,
     		isInClient,
     		displayLiffData,
     		shareMsg
@@ -584,14 +626,15 @@ var app = (function () {
     		if ("s" in $$props) s = $$props.s;
     		if ("picUrl" in $$props) picUrl = $$props.picUrl;
     		if ("name" in $$props) name = $$props.name;
-    		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
+    		if ("text" in $$props) $$invalidate(0, text = $$props.text);
+    		if ("isInClient" in $$props) $$invalidate(1, isInClient = $$props.isInClient);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [isInClient, shareMsg];
+    	return [text, isInClient, shareMsg, input_input_handler];
     }
 
     class App extends SvelteComponentDev {
