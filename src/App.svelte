@@ -161,7 +161,17 @@
   }
 </script>
 
+<style>
+	.flex-container {
+		height: 120px;
+		width: 120px;
+		background: url({picUrl});
+	}
+</style>
+
 <p>isInClient: {isInClient}</p>
 <!-- <img src={picUrl} alt="" /> -->
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
+
+<div class="flex-container"></div>

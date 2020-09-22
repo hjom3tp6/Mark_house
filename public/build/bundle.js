@@ -372,6 +372,8 @@ var app = (function () {
     	let input;
     	let t3;
     	let button;
+    	let t5;
+    	let div;
     	let mounted;
     	let dispose;
 
@@ -385,10 +387,14 @@ var app = (function () {
     			t3 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(p, file, 163, 0, 4719);
+    			t5 = space();
+    			div = element("div");
+    			add_location(p, file, 171, 0, 4821);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 165, 0, 4788);
-    			add_location(button, file, 166, 0, 4837);
+    			add_location(input, file, 173, 0, 4890);
+    			add_location(button, file, 174, 0, 4939);
+    			attr_dev(div, "class", "flex-container svelte-z90sez");
+    			add_location(div, file, 176, 0, 4983);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -402,6 +408,8 @@ var app = (function () {
     			set_input_value(input, /*text*/ ctx[0]);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
+    			insert_dev(target, t5, anchor);
+    			insert_dev(target, div, anchor);
 
     			if (!mounted) {
     				dispose = [
@@ -427,6 +435,8 @@ var app = (function () {
     			if (detaching) detach_dev(input);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(div);
     			mounted = false;
     			run_all(dispose);
     		}
