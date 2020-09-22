@@ -170,6 +170,7 @@
 	img {
 		width: 50%;
 		height: auto;
+		border-radius: 5%;
 	}
 </style>
 
