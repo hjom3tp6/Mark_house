@@ -165,7 +165,7 @@
 	.flex-container {
 		height: 120px;
 		width: 120px;
-		background: url({picUrl});
+		background-image: url({picUrl});
 	}
 	img {
 		width: 50%;
@@ -179,4 +179,4 @@
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
 <img src="{picUrl}" alt="">
-<div class="flex-container"></div>
+<div class="flex-container" ></div>
