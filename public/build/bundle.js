@@ -365,7 +365,7 @@ var app = (function () {
     const file = "src\\App.svelte";
 
     function create_fragment(ctx) {
-    	let p;
+    	let p0;
     	let t0;
     	let t1;
     	let t2;
@@ -373,69 +373,83 @@ var app = (function () {
     	let t3;
     	let button;
     	let t5;
+    	let p1;
+    	let t6;
+    	let t7;
     	let div;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			p = element("p");
+    			p0 = element("p");
     			t0 = text("isInClient: ");
-    			t1 = text(/*isInClient*/ ctx[1]);
+    			t1 = text(/*isInClient*/ ctx[2]);
     			t2 = space();
     			input = element("input");
     			t3 = space();
     			button = element("button");
     			button.textContent = "share";
     			t5 = space();
+    			p1 = element("p");
+    			t6 = text(/*picUrl*/ ctx[0]);
+    			t7 = space();
     			div = element("div");
-    			add_location(p, file, 171, 0, 4821);
+    			add_location(p0, file, 171, 0, 4821);
     			attr_dev(input, "placeholder", "input...");
     			add_location(input, file, 173, 0, 4890);
     			add_location(button, file, 174, 0, 4939);
+    			add_location(p1, file, 175, 0, 4982);
     			attr_dev(div, "class", "flex-container svelte-z90sez");
-    			add_location(div, file, 176, 0, 4983);
+    			add_location(div, file, 176, 0, 4998);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
-    			append_dev(p, t0);
-    			append_dev(p, t1);
+    			insert_dev(target, p0, anchor);
+    			append_dev(p0, t0);
+    			append_dev(p0, t1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, input, anchor);
-    			set_input_value(input, /*text*/ ctx[0]);
+    			set_input_value(input, /*text*/ ctx[1]);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t5, anchor);
+    			insert_dev(target, p1, anchor);
+    			append_dev(p1, t6);
+    			insert_dev(target, t7, anchor);
     			insert_dev(target, div, anchor);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[3]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[2], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[4]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[3], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isInClient*/ 2) set_data_dev(t1, /*isInClient*/ ctx[1]);
+    			if (dirty & /*isInClient*/ 4) set_data_dev(t1, /*isInClient*/ ctx[2]);
 
-    			if (dirty & /*text*/ 1 && input.value !== /*text*/ ctx[0]) {
-    				set_input_value(input, /*text*/ ctx[0]);
+    			if (dirty & /*text*/ 2 && input.value !== /*text*/ ctx[1]) {
+    				set_input_value(input, /*text*/ ctx[1]);
     			}
+
+    			if (dirty & /*picUrl*/ 1) set_data_dev(t6, /*picUrl*/ ctx[0]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(input);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(p1);
+    			if (detaching) detach_dev(t7);
     			if (detaching) detach_dev(div);
     			mounted = false;
     			run_all(dispose);
@@ -474,7 +488,7 @@ var app = (function () {
 
     		await liff.getProfile().then(profile => {
     			name = profile.displayName;
-    			picUrl = profile.pictureUrl;
+    			$$invalidate(0, picUrl = profile.pictureUrl);
     		}).catch(err => {
     			console.log("error", err);
     		});
@@ -495,7 +509,7 @@ var app = (function () {
     	let isInClient = "123";
 
     	function displayLiffData() {
-    		$$invalidate(1, isInClient = liff.isInClient());
+    		$$invalidate(2, isInClient = liff.isInClient());
     	}
 
     	function shareMsg() {
@@ -594,8 +608,8 @@ var app = (function () {
     						}
     					}
     				}
-    			]).then($$invalidate(1, isInClient = "success")).catch(function (res) {
-    				$$invalidate(1, isInClient = "err");
+    			]).then($$invalidate(2, isInClient = "success")).catch(function (res) {
+    				$$invalidate(2, isInClient = "err");
     			});
     		}
     	}
@@ -611,7 +625,7 @@ var app = (function () {
 
     	function input_input_handler() {
     		text = this.value;
-    		$$invalidate(0, text);
+    		$$invalidate(1, text);
     	}
 
     	$$self.$capture_state = () => ({
@@ -628,17 +642,17 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("s" in $$props) s = $$props.s;
-    		if ("picUrl" in $$props) picUrl = $$props.picUrl;
+    		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
     		if ("name" in $$props) name = $$props.name;
-    		if ("text" in $$props) $$invalidate(0, text = $$props.text);
-    		if ("isInClient" in $$props) $$invalidate(1, isInClient = $$props.isInClient);
+    		if ("text" in $$props) $$invalidate(1, text = $$props.text);
+    		if ("isInClient" in $$props) $$invalidate(2, isInClient = $$props.isInClient);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [text, isInClient, shareMsg, input_input_handler];
+    	return [picUrl, text, isInClient, shareMsg, input_input_handler];
     }
 
     class App extends SvelteComponentDev {

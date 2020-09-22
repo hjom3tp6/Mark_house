@@ -173,5 +173,5 @@
 <!-- <img src={picUrl} alt="" /> -->
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
-
+<p>{picUrl}</p>
 <div class="flex-container"></div>
