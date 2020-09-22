@@ -365,7 +365,7 @@ var app = (function () {
     const file = "src\\App.svelte";
 
     function create_fragment(ctx) {
-    	let p0;
+    	let p;
     	let t0;
     	let t1;
     	let t2;
@@ -373,16 +373,16 @@ var app = (function () {
     	let t3;
     	let button;
     	let t5;
-    	let p1;
+    	let img;
+    	let img_src_value;
     	let t6;
-    	let t7;
     	let div;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			p0 = element("p");
+    			p = element("p");
     			t0 = text("isInClient: ");
     			t1 = text(/*isInClient*/ ctx[2]);
     			t2 = space();
@@ -391,34 +391,35 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			t5 = space();
-    			p1 = element("p");
-    			t6 = text(/*picUrl*/ ctx[0]);
-    			t7 = space();
+    			img = element("img");
+    			t6 = space();
     			div = element("div");
-    			add_location(p0, file, 171, 0, 4821);
+    			add_location(p, file, 175, 0, 4861);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 173, 0, 4890);
-    			add_location(button, file, 174, 0, 4939);
-    			add_location(p1, file, 175, 0, 4982);
-    			attr_dev(div, "class", "flex-container svelte-z90sez");
-    			add_location(div, file, 176, 0, 4998);
+    			add_location(input, file, 177, 0, 4930);
+    			add_location(button, file, 178, 0, 4979);
+    			if (img.src !== (img_src_value = /*picUrl*/ ctx[0])) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", "");
+    			attr_dev(img, "class", "svelte-1n92npc");
+    			add_location(img, file, 179, 0, 5022);
+    			attr_dev(div, "class", "flex-container svelte-1n92npc");
+    			add_location(div, file, 180, 0, 5050);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p0, anchor);
-    			append_dev(p0, t0);
-    			append_dev(p0, t1);
+    			insert_dev(target, p, anchor);
+    			append_dev(p, t0);
+    			append_dev(p, t1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*text*/ ctx[1]);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t5, anchor);
-    			insert_dev(target, p1, anchor);
-    			append_dev(p1, t6);
-    			insert_dev(target, t7, anchor);
+    			insert_dev(target, img, anchor);
+    			insert_dev(target, t6, anchor);
     			insert_dev(target, div, anchor);
 
     			if (!mounted) {
@@ -437,19 +438,21 @@ var app = (function () {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
 
-    			if (dirty & /*picUrl*/ 1) set_data_dev(t6, /*picUrl*/ ctx[0]);
+    			if (dirty & /*picUrl*/ 1 && img.src !== (img_src_value = /*picUrl*/ ctx[0])) {
+    				attr_dev(img, "src", img_src_value);
+    			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p0);
+    			if (detaching) detach_dev(p);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(input);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(p1);
-    			if (detaching) detach_dev(t7);
+    			if (detaching) detach_dev(img);
+    			if (detaching) detach_dev(t6);
     			if (detaching) detach_dev(div);
     			mounted = false;
     			run_all(dispose);
