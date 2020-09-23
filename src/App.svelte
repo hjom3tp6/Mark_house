@@ -192,7 +192,7 @@
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
 <!-- <div class="flex-container" style = "background:url({picUrl})"> -->
-<div class="flex-container" style = "background:url(picUrl); background-size: contain;">
+<div class="flex-container" style = "background:url({picUrl}); background-size: contain;">
 	<div class="flex-item item1"><h2>{text}</h2></div>
 	<div class="flex-item item2"><h3>by {name}</h3></div>
 </div>

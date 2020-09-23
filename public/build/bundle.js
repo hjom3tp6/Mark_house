@@ -392,7 +392,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t0 = text("isInClient: ");
-    			t1 = text(/*isInClient*/ ctx[2]);
+    			t1 = text(/*isInClient*/ ctx[3]);
     			t2 = space();
     			input = element("input");
     			t3 = space();
@@ -402,26 +402,26 @@ var app = (function () {
     			div2 = element("div");
     			div0 = element("div");
     			h2 = element("h2");
-    			t6 = text(/*text*/ ctx[1]);
+    			t6 = text(/*text*/ ctx[2]);
     			t7 = space();
     			div1 = element("div");
     			h3 = element("h3");
     			t8 = text("by ");
-    			t9 = text(/*name*/ ctx[0]);
+    			t9 = text(/*name*/ ctx[1]);
     			add_location(p, file, 189, 0, 5045);
     			attr_dev(input, "placeholder", "input...");
     			add_location(input, file, 191, 0, 5114);
     			add_location(button, file, 192, 0, 5163);
     			attr_dev(h2, "class", "svelte-gf840u");
-    			add_location(h2, file, 195, 30, 5398);
+    			add_location(h2, file, 195, 30, 5400);
     			attr_dev(div0, "class", "flex-item item1 svelte-gf840u");
-    			add_location(div0, file, 195, 1, 5369);
+    			add_location(div0, file, 195, 1, 5371);
     			attr_dev(h3, "class", "svelte-gf840u");
-    			add_location(h3, file, 196, 30, 5450);
+    			add_location(h3, file, 196, 30, 5452);
     			attr_dev(div1, "class", "flex-item item2 svelte-gf840u");
-    			add_location(div1, file, 196, 1, 5421);
+    			add_location(div1, file, 196, 1, 5423);
     			attr_dev(div2, "class", "flex-container svelte-gf840u");
-    			set_style(div2, "background", "url(picUrl)");
+    			set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
     			set_style(div2, "background-size", "contain");
     			add_location(div2, file, 194, 0, 5279);
     		},
@@ -434,7 +434,7 @@ var app = (function () {
     			append_dev(p, t1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, input, anchor);
-    			set_input_value(input, /*text*/ ctx[1]);
+    			set_input_value(input, /*text*/ ctx[2]);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t5, anchor);
@@ -450,22 +450,26 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[4]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[3], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[5]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isInClient*/ 4) set_data_dev(t1, /*isInClient*/ ctx[2]);
+    			if (dirty & /*isInClient*/ 8) set_data_dev(t1, /*isInClient*/ ctx[3]);
 
-    			if (dirty & /*text*/ 2 && input.value !== /*text*/ ctx[1]) {
-    				set_input_value(input, /*text*/ ctx[1]);
+    			if (dirty & /*text*/ 4 && input.value !== /*text*/ ctx[2]) {
+    				set_input_value(input, /*text*/ ctx[2]);
     			}
 
-    			if (dirty & /*text*/ 2) set_data_dev(t6, /*text*/ ctx[1]);
-    			if (dirty & /*name*/ 1) set_data_dev(t9, /*name*/ ctx[0]);
+    			if (dirty & /*text*/ 4) set_data_dev(t6, /*text*/ ctx[2]);
+    			if (dirty & /*name*/ 2) set_data_dev(t9, /*name*/ ctx[1]);
+
+    			if (dirty & /*picUrl*/ 1) {
+    				set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
+    			}
     		},
     		i: noop,
     		o: noop,
@@ -513,8 +517,8 @@ var app = (function () {
     		});
 
     		await liff.getProfile().then(profile => {
-    			$$invalidate(0, name = profile.displayName);
-    			picUrl = profile.pictureUrl;
+    			$$invalidate(1, name = profile.displayName);
+    			$$invalidate(0, picUrl = profile.pictureUrl);
     		}).catch(err => {
     			console.log("error", err);
     		});
@@ -535,7 +539,7 @@ var app = (function () {
     	let isInClient = "123";
 
     	function displayLiffData() {
-    		$$invalidate(2, isInClient = liff.isInClient());
+    		$$invalidate(3, isInClient = liff.isInClient());
     	}
 
     	function shareMsg() {
@@ -634,8 +638,8 @@ var app = (function () {
     						}
     					}
     				}
-    			]).then($$invalidate(2, isInClient = "success")).catch(function (res) {
-    				$$invalidate(2, isInClient = "err");
+    			]).then($$invalidate(3, isInClient = "success")).catch(function (res) {
+    				$$invalidate(3, isInClient = "err");
     			});
     		}
     	}
@@ -651,7 +655,7 @@ var app = (function () {
 
     	function input_input_handler() {
     		text = this.value;
-    		$$invalidate(1, text);
+    		$$invalidate(2, text);
     	}
 
     	$$self.$capture_state = () => ({
@@ -668,17 +672,17 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("s" in $$props) s = $$props.s;
-    		if ("picUrl" in $$props) picUrl = $$props.picUrl;
-    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
-    		if ("text" in $$props) $$invalidate(1, text = $$props.text);
-    		if ("isInClient" in $$props) $$invalidate(2, isInClient = $$props.isInClient);
+    		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
+    		if ("name" in $$props) $$invalidate(1, name = $$props.name);
+    		if ("text" in $$props) $$invalidate(2, text = $$props.text);
+    		if ("isInClient" in $$props) $$invalidate(3, isInClient = $$props.isInClient);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, text, isInClient, shareMsg, input_input_handler];
+    	return [picUrl, name, text, isInClient, shareMsg, input_input_handler];
     }
 
     class App extends SvelteComponentDev {
