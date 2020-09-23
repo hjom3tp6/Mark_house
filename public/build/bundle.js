@@ -376,12 +376,13 @@ var app = (function () {
     	let t3;
     	let button;
     	let t5;
-    	let div1;
-    	let img;
-    	let img_src_value;
-    	let t6;
+    	let div2;
     	let div0;
+    	let t6;
     	let t7;
+    	let div1;
+    	let t8;
+    	let t9;
     	let mounted;
     	let dispose;
 
@@ -396,24 +397,25 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			t5 = space();
-    			div1 = element("div");
-    			img = element("img");
-    			t6 = space();
+    			div2 = element("div");
     			div0 = element("div");
-    			t7 = text(/*text*/ ctx[1]);
-    			add_location(p, file, 185, 0, 5003);
+    			t6 = text(/*text*/ ctx[1]);
+    			t7 = space();
+    			div1 = element("div");
+    			t8 = text("by ");
+    			t9 = text(/*name*/ ctx[0]);
+    			add_location(p, file, 185, 0, 5012);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 187, 0, 5072);
-    			add_location(button, file, 188, 0, 5121);
-    			if (img.src !== (img_src_value = "")) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", "");
-    			attr_dev(img, "class", "svelte-17ilgs0");
-    			add_location(img, file, 190, 1, 5229);
-    			attr_dev(div0, "class", "flex-item svelte-17ilgs0");
-    			add_location(div0, file, 191, 1, 5250);
-    			attr_dev(div1, "class", "flex-container svelte-17ilgs0");
-    			set_style(div1, "background", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div1, file, 189, 0, 5164);
+    			add_location(input, file, 187, 0, 5081);
+    			add_location(button, file, 188, 0, 5130);
+    			attr_dev(div0, "class", "flex-item item1 svelte-9uw7gj");
+    			add_location(div0, file, 191, 1, 5366);
+    			attr_dev(div1, "class", "flex-item item2 svelte-9uw7gj");
+    			add_location(div1, file, 192, 1, 5409);
+    			attr_dev(div2, "class", "flex-container svelte-9uw7gj");
+    			set_style(div2, "background", "url(https://picsum.photos/id/237/500/500)");
+    			set_style(div2, "background-size", "contain");
+    			add_location(div2, file, 190, 0, 5246);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -428,11 +430,13 @@ var app = (function () {
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t5, anchor);
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, img);
-    			append_dev(div1, t6);
-    			append_dev(div1, div0);
-    			append_dev(div0, t7);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
+    			append_dev(div0, t6);
+    			append_dev(div2, t7);
+    			append_dev(div2, div1);
+    			append_dev(div1, t8);
+    			append_dev(div1, t9);
 
     			if (!mounted) {
     				dispose = [
@@ -450,11 +454,8 @@ var app = (function () {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
 
-    			if (dirty & /*text*/ 2) set_data_dev(t7, /*text*/ ctx[1]);
-
-    			if (dirty & /*picUrl*/ 1) {
-    				set_style(div1, "background", "url(" + /*picUrl*/ ctx[0] + ")");
-    			}
+    			if (dirty & /*text*/ 2) set_data_dev(t6, /*text*/ ctx[1]);
+    			if (dirty & /*name*/ 1) set_data_dev(t9, /*name*/ ctx[0]);
     		},
     		i: noop,
     		o: noop,
@@ -465,7 +466,7 @@ var app = (function () {
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(div2);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -502,8 +503,8 @@ var app = (function () {
     		});
 
     		await liff.getProfile().then(profile => {
-    			name = profile.displayName;
-    			$$invalidate(0, picUrl = profile.pictureUrl);
+    			$$invalidate(0, name = profile.displayName);
+    			picUrl = profile.pictureUrl;
     		}).catch(err => {
     			console.log("error", err);
     		});
@@ -657,8 +658,8 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("s" in $$props) s = $$props.s;
-    		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
-    		if ("name" in $$props) name = $$props.name;
+    		if ("picUrl" in $$props) picUrl = $$props.picUrl;
+    		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("text" in $$props) $$invalidate(1, text = $$props.text);
     		if ("isInClient" in $$props) $$invalidate(2, isInClient = $$props.isInClient);
     	};
@@ -667,7 +668,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [picUrl, text, isInClient, shareMsg, input_input_handler];
+    	return [name, text, isInClient, shareMsg, input_input_handler];
     }
 
     class App extends SvelteComponentDev {

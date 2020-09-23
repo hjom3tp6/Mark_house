@@ -165,21 +165,21 @@
 	.flex-container {
 		display: -webkit-flex;
 		display: flex;
-		height: 50%;
-		width:50%;
+		height: 300px;
+		width:300px;
+		flex-direction: column;
 		
-	}
-	img {
-		position: absolute;
-		width: 50%;
-		height: auto;
-		border-radius: 5%;
-		z-index: -1;
+		justify-content: flex-end;
 	}
 	.flex-item {
-		width: 50%;
+		display: flex;
+		width: auto;
 		height: auto;
-		background-color:gray ;
+		flex-wrap: wrap;
+	}
+
+	.item2{
+		align-self: flex-end;
 	}
 </style>
 
@@ -187,7 +187,8 @@
 <!-- <img src={picUrl} alt="" /> -->
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
-<div class="flex-container" style = "background:url({picUrl})">
-	<img src="" alt="">
-	<div class="flex-item">{text}</div>
+<!-- <div class="flex-container" style = "background:url({picUrl})"> -->
+<div class="flex-container" style = "background:url(https://picsum.photos/id/237/500/500); background-size: contain;">
+	<div class="flex-item item1">{text}</div>
+	<div class="flex-item item2">by {name}</div>
 </div>
