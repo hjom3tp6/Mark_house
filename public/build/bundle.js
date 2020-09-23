@@ -59,6 +59,9 @@ var app = (function () {
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
     }
+    function set_style(node, key, value, important) {
+        node.style.setProperty(key, value, important ? 'important' : '');
+    }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
@@ -373,10 +376,12 @@ var app = (function () {
     	let t3;
     	let button;
     	let t5;
+    	let div1;
     	let img;
     	let img_src_value;
     	let t6;
-    	let div;
+    	let div0;
+    	let t7;
     	let mounted;
     	let dispose;
 
@@ -391,19 +396,24 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			t5 = space();
+    			div1 = element("div");
     			img = element("img");
     			t6 = space();
-    			div = element("div");
-    			add_location(p, file, 176, 0, 4888);
+    			div0 = element("div");
+    			t7 = text(/*text*/ ctx[1]);
+    			add_location(p, file, 185, 0, 5003);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 178, 0, 4957);
-    			add_location(button, file, 179, 0, 5006);
-    			if (img.src !== (img_src_value = /*picUrl*/ ctx[0])) attr_dev(img, "src", img_src_value);
+    			add_location(input, file, 187, 0, 5072);
+    			add_location(button, file, 188, 0, 5121);
+    			if (img.src !== (img_src_value = "")) attr_dev(img, "src", img_src_value);
     			attr_dev(img, "alt", "");
-    			attr_dev(img, "class", "svelte-1k744di");
-    			add_location(img, file, 180, 0, 5049);
-    			attr_dev(div, "class", "flex-container svelte-1k744di");
-    			add_location(div, file, 181, 0, 5077);
+    			attr_dev(img, "class", "svelte-17ilgs0");
+    			add_location(img, file, 190, 1, 5229);
+    			attr_dev(div0, "class", "flex-item svelte-17ilgs0");
+    			add_location(div0, file, 191, 1, 5250);
+    			attr_dev(div1, "class", "flex-container svelte-17ilgs0");
+    			set_style(div1, "background", "url(" + /*picUrl*/ ctx[0] + ")");
+    			add_location(div1, file, 189, 0, 5164);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -418,9 +428,11 @@ var app = (function () {
     			insert_dev(target, t3, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t5, anchor);
-    			insert_dev(target, img, anchor);
-    			insert_dev(target, t6, anchor);
-    			insert_dev(target, div, anchor);
+    			insert_dev(target, div1, anchor);
+    			append_dev(div1, img);
+    			append_dev(div1, t6);
+    			append_dev(div1, div0);
+    			append_dev(div0, t7);
 
     			if (!mounted) {
     				dispose = [
@@ -438,8 +450,10 @@ var app = (function () {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
 
-    			if (dirty & /*picUrl*/ 1 && img.src !== (img_src_value = /*picUrl*/ ctx[0])) {
-    				attr_dev(img, "src", img_src_value);
+    			if (dirty & /*text*/ 2) set_data_dev(t7, /*text*/ ctx[1]);
+
+    			if (dirty & /*picUrl*/ 1) {
+    				set_style(div1, "background", "url(" + /*picUrl*/ ctx[0] + ")");
     			}
     		},
     		i: noop,
@@ -451,9 +465,7 @@ var app = (function () {
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t5);
-    			if (detaching) detach_dev(img);
-    			if (detaching) detach_dev(t6);
-    			if (detaching) detach_dev(div);
+    			if (detaching) detach_dev(div1);
     			mounted = false;
     			run_all(dispose);
     		}

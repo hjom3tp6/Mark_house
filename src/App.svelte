@@ -163,14 +163,23 @@
 
 <style>
 	.flex-container {
-		height: 120px;
-		width: 120px;
-		background-image: url({picUrl});
+		display: -webkit-flex;
+		display: flex;
+		height: 50%;
+		width:50%;
+		
 	}
 	img {
+		position: absolute;
 		width: 50%;
 		height: auto;
 		border-radius: 5%;
+		z-index: -1;
+	}
+	.flex-item {
+		width: 50%;
+		height: auto;
+		background-color:gray ;
 	}
 </style>
 
@@ -178,5 +187,7 @@
 <!-- <img src={picUrl} alt="" /> -->
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
-<img src="{picUrl}" alt="">
-<div class="flex-container" ></div>
+<div class="flex-container" style = "background:url({picUrl})">
+	<img src="" alt="">
+	<div class="flex-item">{text}</div>
+</div>
