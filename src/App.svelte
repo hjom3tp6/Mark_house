@@ -168,7 +168,7 @@
 		height: 300px;
 		width:300px;
 		flex-direction: column;
-		
+		background-size: contain;
 		justify-content: flex-end;
 	}
 	.flex-item {
