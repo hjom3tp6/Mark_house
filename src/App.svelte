@@ -189,6 +189,6 @@
 <button on:click={shareMsg}>share</button>
 <!-- <div class="flex-container" style = "background:url({picUrl})"> -->
 <div class="flex-container" style = "background:url(https://picsum.photos/id/237/500/500); background-size: contain;">
-	<div class="flex-item item1">{text}</div>
-	<div class="flex-item item2">by {name}</div>
+	<div class="flex-item item1"><h2>{text}</h2></div>
+	<div class="flex-item item2"><h3>by {name}</h3></div>
 </div>

@@ -378,9 +378,11 @@ var app = (function () {
     	let t5;
     	let div2;
     	let div0;
+    	let h2;
     	let t6;
     	let t7;
     	let div1;
+    	let h3;
     	let t8;
     	let t9;
     	let mounted;
@@ -399,19 +401,23 @@ var app = (function () {
     			t5 = space();
     			div2 = element("div");
     			div0 = element("div");
+    			h2 = element("h2");
     			t6 = text(/*text*/ ctx[1]);
     			t7 = space();
     			div1 = element("div");
+    			h3 = element("h3");
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[0]);
     			add_location(p, file, 185, 0, 5012);
     			attr_dev(input, "placeholder", "input...");
     			add_location(input, file, 187, 0, 5081);
     			add_location(button, file, 188, 0, 5130);
+    			add_location(h2, file, 191, 30, 5395);
     			attr_dev(div0, "class", "flex-item item1 svelte-9uw7gj");
     			add_location(div0, file, 191, 1, 5366);
+    			add_location(h3, file, 192, 30, 5447);
     			attr_dev(div1, "class", "flex-item item2 svelte-9uw7gj");
-    			add_location(div1, file, 192, 1, 5409);
+    			add_location(div1, file, 192, 1, 5418);
     			attr_dev(div2, "class", "flex-container svelte-9uw7gj");
     			set_style(div2, "background", "url(https://picsum.photos/id/237/500/500)");
     			set_style(div2, "background-size", "contain");
@@ -432,11 +438,13 @@ var app = (function () {
     			insert_dev(target, t5, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
-    			append_dev(div0, t6);
+    			append_dev(div0, h2);
+    			append_dev(h2, t6);
     			append_dev(div2, t7);
     			append_dev(div2, div1);
-    			append_dev(div1, t8);
-    			append_dev(div1, t9);
+    			append_dev(div1, h3);
+    			append_dev(h3, t8);
+    			append_dev(h3, t9);
 
     			if (!mounted) {
     				dispose = [
