@@ -103,7 +103,7 @@
                               {
                                 type: "text",
                                 text: text,
-                                size: "md",
+                                size: "lg",
 								color: "#ffffff",
 								"wrap": true,
                               },
@@ -181,6 +181,10 @@
 	.item2{
 		align-self: flex-end;
 	}
+
+	h2, h3{
+		color: aliceblue;
+	}
 </style>
 
 <p>isInClient: {isInClient}</p>
@@ -188,7 +192,7 @@
 <input bind:value={text} placeholder="input...">
 <button on:click={shareMsg}>share</button>
 <!-- <div class="flex-container" style = "background:url({picUrl})"> -->
-<div class="flex-container" style = "background:url(https://picsum.photos/id/237/500/500); background-size: contain;">
+<div class="flex-container" style = "background:url(picUrl); background-size: contain;">
 	<div class="flex-item item1"><h2>{text}</h2></div>
 	<div class="flex-item item2"><h3>by {name}</h3></div>
 </div>

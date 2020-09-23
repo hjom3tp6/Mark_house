@@ -408,20 +408,22 @@ var app = (function () {
     			h3 = element("h3");
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[0]);
-    			add_location(p, file, 185, 0, 5012);
+    			add_location(p, file, 189, 0, 5045);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 187, 0, 5081);
-    			add_location(button, file, 188, 0, 5130);
-    			add_location(h2, file, 191, 30, 5395);
-    			attr_dev(div0, "class", "flex-item item1 svelte-9uw7gj");
-    			add_location(div0, file, 191, 1, 5366);
-    			add_location(h3, file, 192, 30, 5447);
-    			attr_dev(div1, "class", "flex-item item2 svelte-9uw7gj");
-    			add_location(div1, file, 192, 1, 5418);
-    			attr_dev(div2, "class", "flex-container svelte-9uw7gj");
-    			set_style(div2, "background", "url(https://picsum.photos/id/237/500/500)");
+    			add_location(input, file, 191, 0, 5114);
+    			add_location(button, file, 192, 0, 5163);
+    			attr_dev(h2, "class", "svelte-gf840u");
+    			add_location(h2, file, 195, 30, 5398);
+    			attr_dev(div0, "class", "flex-item item1 svelte-gf840u");
+    			add_location(div0, file, 195, 1, 5369);
+    			attr_dev(h3, "class", "svelte-gf840u");
+    			add_location(h3, file, 196, 30, 5450);
+    			attr_dev(div1, "class", "flex-item item2 svelte-gf840u");
+    			add_location(div1, file, 196, 1, 5421);
+    			attr_dev(div2, "class", "flex-container svelte-gf840u");
+    			set_style(div2, "background", "url(picUrl)");
     			set_style(div2, "background-size", "contain");
-    			add_location(div2, file, 190, 0, 5246);
+    			add_location(div2, file, 194, 0, 5279);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -583,7 +585,7 @@ var app = (function () {
     														{
     															type: "text",
     															text,
-    															size: "md",
+    															size: "lg",
     															color: "#ffffff",
     															"wrap": true
     														}
