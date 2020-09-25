@@ -184,10 +184,12 @@
     align-self: flex-end;
   }
 
-  h2,
-  h3 {
+  h3, h4 {
     color: aliceblue;
     padding: 0px 20px;
+  }
+  h4 {
+	font-style: italic;
   }
 </style>
 
@@ -198,9 +200,9 @@
   class="flex-container"
   style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">
-    <h2>{text}</h2>
+    <h3>{text}</h3>
   </div>
   <div class="flex-item item2">
-    <h3>by {name}</h3>
+    <h4>by {name}</h4>
   </div>
 </div>
