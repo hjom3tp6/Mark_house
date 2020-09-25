@@ -422,7 +422,7 @@ var app = (function () {
     			add_location(div1, file, 196, 1, 5477);
     			attr_dev(div2, "class", "flex-container svelte-9o53g1");
     			set_style(div2, "background-size", "contain");
-    			set_style(div2, "background", "url(https://picsum.photos/id/237/200/300)");
+    			set_style(div2, "background", "url(https://picsum.photos/id/237/700/700)");
     			add_location(div2, file, 194, 0, 5304);
     		},
     		l: function claim(nodes) {
