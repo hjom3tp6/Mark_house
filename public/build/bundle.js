@@ -59,9 +59,6 @@ var app = (function () {
     function set_input_value(input, value) {
         input.value = value == null ? '' : value;
     }
-    function set_style(node, key, value, important) {
-        node.style.setProperty(key, value, important ? 'important' : '');
-    }
     function custom_event(type, detail) {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
@@ -408,22 +405,20 @@ var app = (function () {
     			h3 = element("h3");
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[0]);
-    			add_location(p, file, 189, 0, 5070);
+    			add_location(p, file, 191, 0, 5154);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 191, 0, 5139);
-    			add_location(button, file, 192, 0, 5188);
-    			attr_dev(h2, "class", "svelte-9o53g1");
-    			add_location(h2, file, 195, 30, 5454);
-    			attr_dev(div0, "class", "flex-item item1 svelte-9o53g1");
-    			add_location(div0, file, 195, 1, 5425);
-    			attr_dev(h3, "class", "svelte-9o53g1");
-    			add_location(h3, file, 196, 30, 5506);
-    			attr_dev(div1, "class", "flex-item item2 svelte-9o53g1");
-    			add_location(div1, file, 196, 1, 5477);
-    			attr_dev(div2, "class", "flex-container svelte-9o53g1");
-    			set_style(div2, "background-size", "contain");
-    			set_style(div2, "background", "url(https://picsum.photos/id/237/700/700)");
-    			add_location(div2, file, 194, 0, 5304);
+    			add_location(input, file, 192, 0, 5186);
+    			add_location(button, file, 193, 0, 5235);
+    			attr_dev(h2, "class", "svelte-483eeb");
+    			add_location(h2, file, 195, 30, 5338);
+    			attr_dev(div0, "class", "flex-item item1 svelte-483eeb");
+    			add_location(div0, file, 195, 1, 5309);
+    			attr_dev(h3, "class", "svelte-483eeb");
+    			add_location(h3, file, 196, 30, 5390);
+    			attr_dev(div1, "class", "flex-item item2 svelte-483eeb");
+    			add_location(div1, file, 196, 1, 5361);
+    			attr_dev(div2, "class", "flex-container svelte-483eeb");
+    			add_location(div2, file, 194, 0, 5278);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
