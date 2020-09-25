@@ -104,8 +104,8 @@
                                 type: "text",
                                 text: text,
                                 size: "lg",
-								color: "#ffffff",
-								"wrap": true,
+                                color: "#ffffff",
+                                wrap: true,
                               },
                             ],
                           },
@@ -123,8 +123,8 @@
                                     color: "#ffffff",
                                     size: "md",
                                     flex: 0,
-									align: "end",
-									style: "italic",
+                                    align: "end",
+                                    style: "italic",
                                   },
                                 ],
                                 flex: 0,
@@ -162,36 +162,44 @@
 </script>
 
 <style>
-	.flex-container {
-		display: -webkit-flex;
-		display: flex;
-		height: 300px;
-		width:300px;
-		flex-direction: column;
-		justify-content: flex-end;
-		background-size: contain;
-		background:url(https://picsum.photos/id/237/700/700);
-	}
-	.flex-item {
-		display: flex;
-		width: auto;
-		height: auto;
-		flex-wrap: wrap;
-	}
+  .flex-container {
+    display: -webkit-flex;
+    display: flex;
+    height: 300px;
+    width: 300px;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .flex-item {
+    display: flex;
+    width: auto;
+    height: auto;
+    flex-wrap: wrap;
+  }
 
-	.item2{
-		align-self: flex-end;
-	}
+  .item2 {
+    align-self: flex-end;
+  }
 
-	h2, h3{
-		color: aliceblue;
-	}
+  h2,
+  h3 {
+    color: aliceblue;
+    padding: 0px 20px;
+  }
 </style>
 
 <p>isInClient: {isInClient}</p>
-<input bind:value={text} placeholder="input...">
+<input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
-<div class="flex-container" >
-	<div class="flex-item item1"><h2>{text}</h2></div>
-	<div class="flex-item item2"><h3>by {name}</h3></div>
+<div
+  class="flex-container"
+  style="background:url({picUrl});
+		background-size: 300px 300px;
+		background-repeat: no-repeat;">
+  <div class="flex-item item1">
+    <h2>{text}</h2>
+  </div>
+  <div class="flex-item item2">
+    <h3>by {name}</h3>
+  </div>
 </div>
