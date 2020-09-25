@@ -196,7 +196,7 @@
 <button on:click={shareMsg}>share</button>
 <div
   class="flex-container"
-  style="--flex-container--bg: {picUrl}">
+  style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">
     <h2>{text}</h2>
   </div>

@@ -413,15 +413,15 @@ var app = (function () {
     			add_location(input, file, 194, 0, 5332);
     			add_location(button, file, 195, 0, 5383);
     			attr_dev(h2, "class", "svelte-tb0wgv");
-    			add_location(h2, file, 200, 4, 5534);
+    			add_location(h2, file, 200, 4, 5539);
     			attr_dev(div0, "class", "flex-item item1 svelte-tb0wgv");
-    			add_location(div0, file, 199, 2, 5500);
+    			add_location(div0, file, 199, 2, 5505);
     			attr_dev(h3, "class", "svelte-tb0wgv");
-    			add_location(h3, file, 203, 4, 5595);
+    			add_location(h3, file, 203, 4, 5600);
     			attr_dev(div1, "class", "flex-item item2 svelte-tb0wgv");
-    			add_location(div1, file, 202, 2, 5561);
+    			add_location(div1, file, 202, 2, 5566);
     			attr_dev(div2, "class", "flex-container svelte-tb0wgv");
-    			set_style(div2, "--flex-container--bg", /*picUrl*/ ctx[0]);
+    			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
     			add_location(div2, file, 196, 0, 5426);
     		},
     		l: function claim(nodes) {
@@ -467,7 +467,7 @@ var app = (function () {
     			if (dirty & /*name*/ 2) set_data_dev(t9, /*name*/ ctx[1]);
 
     			if (dirty & /*picUrl*/ 1) {
-    				set_style(div2, "--flex-container--bg", /*picUrl*/ ctx[0]);
+    				set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
     			}
     		},
     		i: noop,
