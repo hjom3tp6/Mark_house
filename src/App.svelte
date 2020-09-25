@@ -168,7 +168,6 @@
 		height: 300px;
 		width:300px;
 		flex-direction: column;
-		background-size: contain;
 		justify-content: flex-end;
 		background-size: contain;
 		background:url(https://picsum.photos/id/237/700/700);
