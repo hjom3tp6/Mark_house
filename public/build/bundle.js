@@ -413,16 +413,16 @@ var app = (function () {
     			add_location(input, file, 191, 0, 5139);
     			add_location(button, file, 192, 0, 5188);
     			attr_dev(h2, "class", "svelte-9o53g1");
-    			add_location(h2, file, 195, 30, 5425);
+    			add_location(h2, file, 195, 30, 5426);
     			attr_dev(div0, "class", "flex-item item1 svelte-9o53g1");
-    			add_location(div0, file, 195, 1, 5396);
+    			add_location(div0, file, 195, 1, 5397);
     			attr_dev(h3, "class", "svelte-9o53g1");
-    			add_location(h3, file, 196, 30, 5477);
+    			add_location(h3, file, 196, 30, 5478);
     			attr_dev(div1, "class", "flex-item item2 svelte-9o53g1");
-    			add_location(div1, file, 196, 1, 5448);
+    			add_location(div1, file, 196, 1, 5449);
     			attr_dev(div2, "class", "flex-container svelte-9o53g1");
-    			set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
     			set_style(div2, "background-size", "contain");
+    			set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
     			add_location(div2, file, 194, 0, 5304);
     		},
     		l: function claim(nodes) {
