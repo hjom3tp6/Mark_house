@@ -169,6 +169,9 @@
     width: 300px;
     flex-direction: column;
     justify-content: flex-end;
+	background: var(--flex-container--bg);
+	background-size: contain;
+	background-repeat: no-repeat;
   }
   .flex-item {
     display: flex;
@@ -193,9 +196,7 @@
 <button on:click={shareMsg}>share</button>
 <div
   class="flex-container"
-  style="background:url({picUrl});
-		background-size: 300px 300px;
-		background-repeat: no-repeat;">
+  style="--flex-container--bg: {picUrl}">
   <div class="flex-item item1">
     <h2>{text}</h2>
   </div>

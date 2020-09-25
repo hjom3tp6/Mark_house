@@ -408,23 +408,21 @@ var app = (function () {
     			h3 = element("h3");
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[1]);
-    			add_location(p, file, 190, 0, 5202);
+    			add_location(p, file, 193, 0, 5300);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 191, 0, 5234);
-    			add_location(button, file, 192, 0, 5285);
-    			attr_dev(h2, "class", "svelte-u0p5ho");
-    			add_location(h2, file, 199, 4, 5495);
-    			attr_dev(div0, "class", "flex-item item1 svelte-u0p5ho");
-    			add_location(div0, file, 198, 2, 5461);
-    			attr_dev(h3, "class", "svelte-u0p5ho");
-    			add_location(h3, file, 202, 4, 5556);
-    			attr_dev(div1, "class", "flex-item item2 svelte-u0p5ho");
-    			add_location(div1, file, 201, 2, 5522);
-    			attr_dev(div2, "class", "flex-container svelte-u0p5ho");
-    			set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
-    			set_style(div2, "background-size", "300px 300px");
-    			set_style(div2, "background-repeat", "no-repeat");
-    			add_location(div2, file, 193, 0, 5328);
+    			add_location(input, file, 194, 0, 5332);
+    			add_location(button, file, 195, 0, 5383);
+    			attr_dev(h2, "class", "svelte-tb0wgv");
+    			add_location(h2, file, 200, 4, 5534);
+    			attr_dev(div0, "class", "flex-item item1 svelte-tb0wgv");
+    			add_location(div0, file, 199, 2, 5500);
+    			attr_dev(h3, "class", "svelte-tb0wgv");
+    			add_location(h3, file, 203, 4, 5595);
+    			attr_dev(div1, "class", "flex-item item2 svelte-tb0wgv");
+    			add_location(div1, file, 202, 2, 5561);
+    			attr_dev(div2, "class", "flex-container svelte-tb0wgv");
+    			set_style(div2, "--flex-container--bg", /*picUrl*/ ctx[0]);
+    			add_location(div2, file, 196, 0, 5426);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -469,7 +467,7 @@ var app = (function () {
     			if (dirty & /*name*/ 2) set_data_dev(t9, /*name*/ ctx[1]);
 
     			if (dirty & /*picUrl*/ 1) {
-    				set_style(div2, "background", "url(" + /*picUrl*/ ctx[0] + ")");
+    				set_style(div2, "--flex-container--bg", /*picUrl*/ ctx[0]);
     			}
     		},
     		i: noop,
