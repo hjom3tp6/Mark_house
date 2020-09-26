@@ -5,6 +5,10 @@
 //   let picUrl = "";
   let name = "";
   let text = "";
+  let picUrl = "";
+  const onsubscripe =  myPic.subscribe(value =>{
+    picUrl =value;
+  })
 
 //   onMount(async () => {
 //     await liff
@@ -33,7 +37,7 @@
                 contents: [
                   {
                     type: "image",
-                    url: myPic,
+                    url: picUrl,
                     size: "full",
                     aspectMode: "cover",
                     aspectRatio: "1:1",
@@ -165,7 +169,7 @@
 
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
-<div class="flex-container" style="--flex-container--bg: url({myPic})">
+<div class="flex-container" style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">
     <p class="text">{text}</p>
   </div>
