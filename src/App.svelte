@@ -60,7 +60,7 @@
         .shareTargetPicker([
           {
             type: "flex",
-            altText: "Hello",
+            altText: text,
             contents: {
               type: "bubble",
               body: {

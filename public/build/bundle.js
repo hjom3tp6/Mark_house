@@ -409,21 +409,21 @@ var app = (function () {
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[1]);
     			attr_dev(p0, "class", "svelte-gmoea7");
-    			add_location(p0, file, 201, 0, 5414);
+    			add_location(p0, file, 201, 0, 5411);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 202, 0, 5446);
-    			add_location(button, file, 203, 0, 5497);
+    			add_location(input, file, 202, 0, 5443);
+    			add_location(button, file, 203, 0, 5494);
     			attr_dev(p1, "class", "text svelte-gmoea7");
-    			add_location(p1, file, 206, 4, 5649);
+    			add_location(p1, file, 206, 4, 5646);
     			attr_dev(div0, "class", "flex-item item1 svelte-gmoea7");
-    			add_location(div0, file, 205, 2, 5615);
+    			add_location(div0, file, 205, 2, 5612);
     			attr_dev(p2, "class", "name svelte-gmoea7");
-    			add_location(p2, file, 209, 4, 5721);
+    			add_location(p2, file, 209, 4, 5718);
     			attr_dev(div1, "class", "flex-item item2 svelte-gmoea7");
-    			add_location(div1, file, 208, 2, 5687);
+    			add_location(div1, file, 208, 2, 5684);
     			attr_dev(div2, "class", "flex-container svelte-gmoea7");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 204, 0, 5540);
+    			add_location(div2, file, 204, 0, 5537);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -547,7 +547,7 @@ var app = (function () {
     			liff.shareTargetPicker([
     				{
     					type: "flex",
-    					altText: "Hello",
+    					altText: text,
     					contents: {
     						type: "bubble",
     						body: {
