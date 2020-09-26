@@ -2,6 +2,7 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
+  import {myPic} from "./stores"
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -17,6 +18,15 @@
       })
       .catch((err) => {
         window.alert("請檢察網路連線問題");
+	  });
+	  await liff
+      .getProfile()
+      .then((profile) => {
+        name = profile.displayName;
+        myPic = profile.pictureUrl;
+      })
+      .catch((err) => {
+        console.log("error", err);
       });
   }
   //   onMount(initLiff());
@@ -32,7 +42,7 @@
 </style>
 
 {#await liffInit}
-  <h1>...wait</h1>
+  <!-- <h1>...wait</h1> -->
 {:then}
   {#if !isInClient}
     <h1>請移至line中開啟</h1>

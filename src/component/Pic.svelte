@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { myPic } from "../stores.js"
 
   let picUrl = "";
   let name = "";
@@ -32,7 +33,7 @@
                 contents: [
                   {
                     type: "image",
-                    url: picUrl,
+                    url: myPic,
                     size: "full",
                     aspectMode: "cover",
                     aspectRatio: "1:1",
@@ -164,7 +165,7 @@
 
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
-<div class="flex-container" style="--flex-container--bg: url({picUrl})">
+<div class="flex-container" style="--flex-container--bg: url({myPic})">
   <div class="flex-item item1">
     <p class="text">{text}</p>
   </div>
