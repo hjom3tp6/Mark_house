@@ -1,12 +1,11 @@
 <script>
   import { onMount } from "svelte";
-  import { myPic } from "../stores.js"
+  import { myPic } from "../stores.js";
 
-//   let picUrl = "";
+  //   let picUrl = "";
   let name = "";
   let text = "";
   let picUrl = "";
-
   onMount(async () => {
     await liff
       .getProfile()
@@ -19,9 +18,9 @@
       });
   });
 
-  function shareMsg() {
+  async function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
-      liff
+     await liff
         .shareTargetPicker([
           {
             type: "flex",
