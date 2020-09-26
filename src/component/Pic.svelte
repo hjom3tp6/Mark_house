@@ -34,7 +34,7 @@
                 contents: [
                   {
                     type: "image",
-                    url: myPic,
+                    url: $myPic,
                     size: "full",
                     aspectMode: "cover",
                     aspectRatio: "1:1",

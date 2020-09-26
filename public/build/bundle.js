@@ -776,7 +776,7 @@ var app = (function () {
     		c: function create() {
     			h5 = element("h5");
     			h5.textContent = "傳送成功";
-    			add_location(h5, file, 175, 2, 5116);
+    			add_location(h5, file, 175, 2, 5117);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h5, anchor);
@@ -835,19 +835,19 @@ var app = (function () {
     			t6 = text("by ");
     			t7 = text(/*name*/ ctx[0]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 172, 0, 4995);
-    			add_location(button, file, 173, 0, 5047);
+    			add_location(input, file, 172, 0, 4996);
+    			add_location(button, file, 173, 0, 5048);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 179, 4, 5249);
+    			add_location(p0, file, 179, 4, 5250);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 178, 2, 5214);
+    			add_location(div0, file, 178, 2, 5215);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 182, 4, 5324);
+    			add_location(p1, file, 182, 4, 5325);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 181, 2, 5289);
+    			add_location(div1, file, 181, 2, 5290);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[3] + ")");
-    			add_location(div2, file, 177, 0, 5138);
+    			add_location(div2, file, 177, 0, 5139);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -960,7 +960,7 @@ var app = (function () {
     							contents: [
     								{
     									type: "image",
-    									url: myPic,
+    									url: $myPic,
     									size: "full",
     									aspectMode: "cover",
     									aspectRatio: "1:1",
