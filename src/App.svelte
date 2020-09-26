@@ -1,12 +1,13 @@
 <script>
   import liff from "@line/liff";
   import { onMount } from "svelte";
-  
+  import { fade } from 'svelte/transition';
+
   let picUrl = "";
   let name = "";
   let text = "";
   let isInClient = false;
-  
+
   onMount(async () => {
     await liff
       .init({
@@ -181,29 +182,32 @@
 
   .name {
     font-style: italic;
-	font-size: medium;
+    font-size: medium;
   }
   .text {
     margin-bottom: 0px;
-	font-size:x-large;
+    font-size: x-large;
   }
 
   p {
-	color: aliceblue;
+    color: aliceblue;
     padding: 0px 20px;
   }
 </style>
+
 {#if !isInClient}
-	<p>請移至line中開啟</p>
+  <p>請移至line中開啟</p>
 {:else}
-<input bind:value={text} placeholder="input..." />
-<button on:click={shareMsg}>share</button>
-<div class="flex-container" style="--flex-container--bg: url({picUrl})">
-  <div class="flex-item item1">
-    <p class="text">{text}</p>
+  <div transition:fade>
+    <input bind:value={text} placeholder="input..." />
+    <button on:click={shareMsg}>share</button>
+    <div class="flex-container" style="--flex-container--bg: url({picUrl})">
+      <div class="flex-item item1">
+        <p class="text">{text}</p>
+      </div>
+      <div class="flex-item item2">
+        <p class="name">by {name}</p>
+      </div>
+    </div>
   </div>
-  <div class="flex-item item2">
-    <p class="name">by {name}</p>
-  </div>
-</div>
 {/if}
