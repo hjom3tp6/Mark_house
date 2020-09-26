@@ -42,6 +42,7 @@
 </style>
 
 {#await liffInit}
+<div></div>
 {:then}
   {#if !isInClient}
     <h1>請移至line中開啟</h1>
