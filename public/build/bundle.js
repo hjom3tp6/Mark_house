@@ -405,19 +405,19 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 198, 0, 5308);
-    			add_location(button, file, 199, 0, 5359);
+    			add_location(input, file, 198, 0, 5302);
+    			add_location(button, file, 199, 0, 5353);
     			attr_dev(p0, "class", "text svelte-gmoea7");
-    			add_location(p0, file, 202, 4, 5511);
+    			add_location(p0, file, 202, 4, 5505);
     			attr_dev(div0, "class", "flex-item item1 svelte-gmoea7");
-    			add_location(div0, file, 201, 2, 5477);
+    			add_location(div0, file, 201, 2, 5471);
     			attr_dev(p1, "class", "name svelte-gmoea7");
-    			add_location(p1, file, 205, 4, 5583);
+    			add_location(p1, file, 205, 4, 5577);
     			attr_dev(div1, "class", "flex-item item2 svelte-gmoea7");
-    			add_location(div1, file, 204, 2, 5549);
+    			add_location(div1, file, 204, 2, 5543);
     			attr_dev(div2, "class", "flex-container svelte-gmoea7");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 200, 0, 5402);
+    			add_location(div2, file, 200, 0, 5396);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -487,7 +487,7 @@ var app = (function () {
     			p = element("p");
     			p.textContent = "請移至line中開啟";
     			attr_dev(p, "class", "svelte-gmoea7");
-    			add_location(p, file, 196, 1, 5282);
+    			add_location(p, file, 196, 1, 5276);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -698,7 +698,7 @@ var app = (function () {
     						}
     					}
     				}
-    			]).then($$invalidate(3, isInClient = "success")).catch(function (res) {
+    			]).then(liff.closeWindow()).catch(function (res) {
     				$$invalidate(3, isInClient = "err");
     			});
     		}
