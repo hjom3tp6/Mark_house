@@ -733,19 +733,19 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 162, 2, 4726);
-    			add_location(button, file, 163, 2, 4780);
+    			add_location(input, file, 164, 0, 4736);
+    			add_location(button, file, 165, 0, 4788);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 166, 6, 4941);
+    			add_location(p0, file, 168, 4, 4943);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 165, 4, 4904);
+    			add_location(div0, file, 167, 2, 4908);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 169, 6, 5022);
+    			add_location(p1, file, 171, 4, 5018);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 168, 4, 4985);
+    			add_location(div1, file, 170, 2, 4983);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 164, 2, 4826);
+    			add_location(div2, file, 166, 0, 4832);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -815,16 +815,15 @@ var app = (function () {
     	let picUrl = "";
     	let name = "";
     	let text = "";
-    	let isInClient = false;
 
-    	async function getPic() {
+    	onMount(async () => {
     		await liff.getProfile().then(profile => {
     			$$invalidate(1, name = profile.displayName);
     			$$invalidate(0, picUrl = profile.pictureUrl);
     		}).catch(err => {
     			console.log("error", err);
     		});
-    	}
+    	});
 
     	function shareMsg() {
     		if (liff.isApiAvailable("shareTargetPicker")) {
@@ -942,20 +941,12 @@ var app = (function () {
     		$$invalidate(2, text);
     	}
 
-    	$$self.$capture_state = () => ({
-    		picUrl,
-    		name,
-    		text,
-    		isInClient,
-    		getPic,
-    		shareMsg
-    	});
+    	$$self.$capture_state = () => ({ onMount, picUrl, name, text, shareMsg });
 
     	$$self.$inject_state = $$props => {
     		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
     		if ("name" in $$props) $$invalidate(1, name = $$props.name);
     		if ("text" in $$props) $$invalidate(2, text = $$props.text);
-    		if ("isInClient" in $$props) isInClient = $$props.isInClient;
     	};
 
     	if ($$props && "$$inject" in $$props) {

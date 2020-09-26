@@ -1,9 +1,11 @@
 <script>
+  import { onMount } from "svelte";
+
   let picUrl = "";
   let name = "";
   let text = "";
-  let isInClient = false;
-  async function getPic() {
+
+  onMount(async () => {
     await liff
       .getProfile()
       .then((profile) => {
@@ -13,7 +15,7 @@
       .catch((err) => {
         console.log("error", err);
       });
-  }
+  });
 
   function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
@@ -160,13 +162,13 @@
   }
 </style>
 
-  <input bind:value={text} placeholder="input..." />
-  <button on:click={shareMsg}>share</button>
-  <div class="flex-container" style="--flex-container--bg: url({picUrl})">
-    <div class="flex-item item1">
-      <p class="text">{text}</p>
-    </div>
-    <div class="flex-item item2">
-      <p class="name">by {name}</p>
-    </div>
+<input bind:value={text} placeholder="input..." />
+<button on:click={shareMsg}>share</button>
+<div class="flex-container" style="--flex-container--bg: url({picUrl})">
+  <div class="flex-item item1">
+    <p class="text">{text}</p>
   </div>
+  <div class="flex-item item2">
+    <p class="name">by {name}</p>
+  </div>
+</div>
