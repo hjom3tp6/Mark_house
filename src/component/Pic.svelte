@@ -170,7 +170,7 @@
     padding: 0px 20px;
   }
 </style>
-
+<h1>{ $myPic }</h1>
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
 {#if shareMsgSuccess}

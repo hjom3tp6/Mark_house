@@ -776,7 +776,7 @@ var app = (function () {
     		c: function create() {
     			h5 = element("h5");
     			h5.textContent = "傳送成功";
-    			add_location(h5, file, 176, 4, 5125);
+    			add_location(h5, file, 176, 4, 5144);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h5, anchor);
@@ -798,88 +798,100 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let input;
+    	let h1;
     	let t0;
-    	let button;
+    	let t1;
+    	let input;
     	let t2;
-    	let t3;
+    	let button;
+    	let t4;
+    	let t5;
     	let div2;
     	let div0;
     	let p0;
-    	let t4;
-    	let t5;
-    	let div1;
-    	let p1;
     	let t6;
     	let t7;
+    	let div1;
+    	let p1;
+    	let t8;
+    	let t9;
     	let mounted;
     	let dispose;
     	let if_block = /*shareMsgSuccess*/ ctx[3] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
+    			h1 = element("h1");
+    			t0 = text(/*$myPic*/ ctx[4]);
+    			t1 = space();
     			input = element("input");
-    			t0 = space();
+    			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			t2 = space();
+    			t4 = space();
     			if (if_block) if_block.c();
-    			t3 = space();
+    			t5 = space();
     			div2 = element("div");
     			div0 = element("div");
     			p0 = element("p");
-    			t4 = text(/*text*/ ctx[1]);
-    			t5 = space();
+    			t6 = text(/*text*/ ctx[1]);
+    			t7 = space();
     			div1 = element("div");
     			p1 = element("p");
-    			t6 = text("by ");
-    			t7 = text(/*name*/ ctx[0]);
+    			t8 = text("by ");
+    			t9 = text(/*name*/ ctx[0]);
+    			add_location(h1, file, 172, 0, 5000);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 173, 0, 5002);
-    			add_location(button, file, 174, 0, 5054);
+    			add_location(input, file, 173, 0, 5021);
+    			add_location(button, file, 174, 0, 5073);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 180, 4, 5258);
+    			add_location(p0, file, 180, 4, 5277);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 179, 2, 5223);
+    			add_location(div0, file, 179, 2, 5242);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 183, 4, 5333);
+    			add_location(p1, file, 183, 4, 5352);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 182, 2, 5298);
+    			add_location(div1, file, 182, 2, 5317);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[2] + ")");
-    			add_location(div2, file, 178, 0, 5147);
+    			add_location(div2, file, 178, 0, 5166);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    			append_dev(h1, t0);
+    			insert_dev(target, t1, anchor);
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*text*/ ctx[1]);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, button, anchor);
     			insert_dev(target, t2, anchor);
+    			insert_dev(target, button, anchor);
+    			insert_dev(target, t4, anchor);
     			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, t3, anchor);
+    			insert_dev(target, t5, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
     			append_dev(div0, p0);
-    			append_dev(p0, t4);
-    			append_dev(div2, t5);
+    			append_dev(p0, t6);
+    			append_dev(div2, t7);
     			append_dev(div2, div1);
     			append_dev(div1, p1);
-    			append_dev(p1, t6);
-    			append_dev(p1, t7);
+    			append_dev(p1, t8);
+    			append_dev(p1, t9);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[5]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[4], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[6]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
+    			if (dirty & /*$myPic*/ 16) set_data_dev(t0, /*$myPic*/ ctx[4]);
+
     			if (dirty & /*text*/ 2 && input.value !== /*text*/ ctx[1]) {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
@@ -888,15 +900,15 @@ var app = (function () {
     				if (if_block) ; else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(t3.parentNode, t3);
+    					if_block.m(t5.parentNode, t5);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty & /*text*/ 2) set_data_dev(t4, /*text*/ ctx[1]);
-    			if (dirty & /*name*/ 1) set_data_dev(t7, /*name*/ ctx[0]);
+    			if (dirty & /*text*/ 2) set_data_dev(t6, /*text*/ ctx[1]);
+    			if (dirty & /*name*/ 1) set_data_dev(t9, /*name*/ ctx[0]);
 
     			if (dirty & /*picUrl*/ 4) {
     				set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[2] + ")");
@@ -905,12 +917,14 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(input);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(t4);
     			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t5);
     			if (detaching) detach_dev(div2);
     			mounted = false;
     			run_all(dispose);
@@ -929,6 +943,9 @@ var app = (function () {
     }
 
     function instance($$self, $$props, $$invalidate) {
+    	let $myPic;
+    	validate_store(myPic, "myPic");
+    	component_subscribe($$self, myPic, $$value => $$invalidate(4, $myPic = $$value));
     	let name = "";
     	let text = "";
     	let picUrl = "";
@@ -1072,7 +1089,8 @@ var app = (function () {
     		text,
     		picUrl,
     		shareMsgSuccess,
-    		shareMsg
+    		shareMsg,
+    		$myPic
     	});
 
     	$$self.$inject_state = $$props => {
@@ -1086,7 +1104,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, text, picUrl, shareMsgSuccess, shareMsg, input_input_handler];
+    	return [name, text, picUrl, shareMsgSuccess, $myPic, shareMsg, input_input_handler];
     }
 
     class Pic extends SvelteComponentDev {
