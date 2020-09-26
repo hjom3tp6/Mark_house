@@ -1,9 +1,8 @@
 <script>
   import { onMount } from "svelte";
-  import { myPic } from "../stores.js";
+  import { myPic, myName } from "../stores.js";
 
   //   let picUrl = "";
-  let name = "";
   let text = "";
   let shareMsgSuccess = false;
 
@@ -72,7 +71,7 @@
                                 contents: [
                                   {
                                     type: "text",
-                                    text: "by " + name,
+                                    text: "by " + $myName,
                                     color: "#ffffff",
                                     size: "md",
                                     flex: 0,
@@ -160,14 +159,11 @@
 
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
-{#if shareMsgSuccess}
-  <h5>傳送成功</h5>
-{/if}
 <div class="flex-container" style="--flex-container--bg: url({$myPic})">
   <div class="flex-item item1">
     <p class="text">{text}</p>
   </div>
   <div class="flex-item item2">
-    <p class="name">by {name}</p>
+    <p class="name">by {$myName}</p>
   </div>
 </div>
