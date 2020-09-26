@@ -29,6 +29,41 @@ var app = (function () {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
 
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+
     function append(target, node) {
         target.appendChild(node);
     }
@@ -73,6 +108,67 @@ var app = (function () {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
         return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = node.ownerDocument;
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = doc.head.appendChild(element('style')).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ``}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
     }
 
     let current_component;
@@ -150,6 +246,20 @@ var app = (function () {
             $$.after_update.forEach(add_render_callback);
         }
     }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
     const outroing = new Set();
     let outros;
     function group_outros() {
@@ -186,6 +296,112 @@ var app = (function () {
             });
             block.o(local);
         }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = program.b - t;
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
     }
 
     function handle_promise(promise, info) {
@@ -491,13 +707,15 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "svelte-ou1e89");
-    			add_location(p, file, 205, 2, 5593);
+    			add_location(p, file, 205, 2, 5610);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
     			append_dev(p, t);
     		},
     		p: noop,
+    		i: noop,
+    		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(p);
     		}
@@ -516,15 +734,20 @@ var app = (function () {
 
     // (190:0) {:then}
     function create_then_block(ctx) {
+    	let current_block_type_index;
+    	let if_block;
     	let if_block_anchor;
+    	let current;
+    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (!/*isInClient*/ ctx[3]) return create_if_block;
-    		return create_else_block;
+    		if (!/*isInClient*/ ctx[3]) return 0;
+    		return 1;
     	}
 
-    	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	const block = {
     		c: function create() {
@@ -532,24 +755,46 @@ var app = (function () {
     			if_block_anchor = empty();
     		},
     		m: function mount(target, anchor) {
-    			if_block.m(target, anchor);
+    			if_blocks[current_block_type_index].m(target, anchor);
     			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
-    				if_block.p(ctx, dirty);
-    			} else {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
 
-    				if (if_block) {
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
     					if_block.c();
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
     			}
     		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
     		d: function destroy(detaching) {
-    			if_block.d(detaching);
+    			if_blocks[current_block_type_index].d(detaching);
     			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
@@ -580,6 +825,8 @@ var app = (function () {
     	let p1;
     	let t5;
     	let t6;
+    	let div2_transition;
+    	let current;
     	let mounted;
     	let dispose;
 
@@ -600,19 +847,19 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 193, 4, 5211);
-    			add_location(button, file, 194, 4, 5266);
+    			add_location(input, file, 193, 4, 5212);
+    			add_location(button, file, 194, 4, 5267);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 197, 8, 5430);
+    			add_location(p0, file, 197, 8, 5447);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 196, 6, 5392);
+    			add_location(div0, file, 196, 6, 5409);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 200, 8, 5514);
+    			add_location(p1, file, 200, 8, 5531);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 199, 6, 5476);
+    			add_location(div1, file, 199, 6, 5493);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 195, 4, 5313);
+    			add_location(div2, file, 195, 4, 5314);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -629,6 +876,7 @@ var app = (function () {
     			append_dev(div1, p1);
     			append_dev(p1, t5);
     			append_dev(p1, t6);
+    			current = true;
 
     			if (!mounted) {
     				dispose = [
@@ -644,12 +892,27 @@ var app = (function () {
     				set_input_value(input, /*text*/ ctx[2]);
     			}
 
-    			if (dirty & /*text*/ 4) set_data_dev(t3, /*text*/ ctx[2]);
-    			if (dirty & /*name*/ 2) set_data_dev(t6, /*name*/ ctx[1]);
+    			if (!current || dirty & /*text*/ 4) set_data_dev(t3, /*text*/ ctx[2]);
+    			if (!current || dirty & /*name*/ 2) set_data_dev(t6, /*name*/ ctx[1]);
 
-    			if (dirty & /*picUrl*/ 1) {
+    			if (!current || dirty & /*picUrl*/ 1) {
     				set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
     			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!div2_transition) div2_transition = create_bidirectional_transition(div2, fade, {}, true);
+    				div2_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!div2_transition) div2_transition = create_bidirectional_transition(div2, fade, {}, false);
+    			div2_transition.run(0);
+    			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(input);
@@ -657,6 +920,7 @@ var app = (function () {
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(div2);
+    			if (detaching && div2_transition) div2_transition.end();
     			mounted = false;
     			run_all(dispose);
     		}
@@ -681,12 +945,14 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file, 191, 4, 5177);
+    			add_location(h1, file, 191, 4, 5178);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
     		},
     		p: noop,
+    		i: noop,
+    		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
     		}
@@ -703,20 +969,22 @@ var app = (function () {
     	return block;
     }
 
-    // (188:17)    <h1>wait...</h1> {:then}
+    // (188:17)    <h1 >...wait</h1> {:then}
     function create_pending_block(ctx) {
     	let h1;
 
     	const block = {
     		c: function create() {
     			h1 = element("h1");
-    			h1.textContent = "wait...";
+    			h1.textContent = "...wait";
     			add_location(h1, file, 188, 2, 5128);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
     		},
     		p: noop,
+    		i: noop,
+    		o: noop,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(h1);
     		}
@@ -726,7 +994,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(188:17)    <h1>wait...</h1> {:then}",
+    		source: "(188:17)    <h1 >...wait</h1> {:then}",
     		ctx
     	});
 
@@ -736,6 +1004,7 @@ var app = (function () {
     function create_fragment(ctx) {
     	let await_block_anchor;
     	let promise;
+    	let current;
 
     	let info = {
     		ctx,
@@ -744,7 +1013,8 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		error: 9
+    		error: 9,
+    		blocks: [,,,]
     	};
 
     	handle_promise(promise = /*liffInit*/ ctx[4], info);
@@ -762,6 +1032,7 @@ var app = (function () {
     			info.block.m(target, info.anchor = anchor);
     			info.mount = () => await_block_anchor.parentNode;
     			info.anchor = await_block_anchor;
+    			current = true;
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
@@ -771,8 +1042,19 @@ var app = (function () {
     				info.block.p(child_ctx, dirty);
     			}
     		},
-    		i: noop,
-    		o: noop,
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(info.block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			for (let i = 0; i < 3; i += 1) {
+    				const block = info.blocks[i];
+    				transition_out(block);
+    			}
+
+    			current = false;
+    		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(await_block_anchor);
     			info.block.d(detaching);

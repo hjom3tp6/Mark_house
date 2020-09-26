@@ -186,14 +186,14 @@
 </style>
 
 {#await liffInit}
-  <h1>wait...</h1>
+  <h1 >...wait</h1>
 {:then}
   {#if !isInClient}
     <h1>請移至line中開啟</h1>
   {:else}
     <input bind:value={text} placeholder="input..." />
     <button on:click={shareMsg}>share</button>
-    <div class="flex-container" style="--flex-container--bg: url({picUrl})">
+    <div transition:fade class="flex-container" style="--flex-container--bg: url({picUrl})">
       <div class="flex-item item1">
         <p class="text">{text}</p>
       </div>
