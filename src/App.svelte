@@ -41,7 +41,6 @@
 
 <style>
 </style>
-<h1>The count is {$myPic}</h1>
 {#await liffInit}
   <div />
 {:then}

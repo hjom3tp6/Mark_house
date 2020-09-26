@@ -768,7 +768,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\component\\Pic.svelte";
 
-    // (176:0) {#if shareMsgSuccess}
+    // (175:0) {#if shareMsgSuccess}
     function create_if_block(ctx) {
     	let h5;
 
@@ -776,7 +776,7 @@ var app = (function () {
     		c: function create() {
     			h5 = element("h5");
     			h5.textContent = "傳送成功";
-    			add_location(h5, file, 176, 4, 5144);
+    			add_location(h5, file, 175, 2, 5116);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h5, anchor);
@@ -790,7 +790,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(176:0) {#if shareMsgSuccess}",
+    		source: "(175:0) {#if shareMsgSuccess}",
     		ctx
     	});
 
@@ -798,133 +798,119 @@ var app = (function () {
     }
 
     function create_fragment(ctx) {
-    	let h1;
-    	let t0;
-    	let t1;
     	let input;
-    	let t2;
+    	let t0;
     	let button;
-    	let t4;
-    	let t5;
+    	let t2;
+    	let t3;
     	let div2;
     	let div0;
     	let p0;
-    	let t6;
-    	let t7;
+    	let t4;
+    	let t5;
     	let div1;
     	let p1;
-    	let t8;
-    	let t9;
+    	let t6;
+    	let t7;
     	let mounted;
     	let dispose;
-    	let if_block = /*shareMsgSuccess*/ ctx[3] && create_if_block(ctx);
+    	let if_block = /*shareMsgSuccess*/ ctx[2] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
-    			h1 = element("h1");
-    			t0 = text(/*$myPic*/ ctx[4]);
-    			t1 = space();
     			input = element("input");
-    			t2 = space();
+    			t0 = space();
     			button = element("button");
     			button.textContent = "share";
-    			t4 = space();
+    			t2 = space();
     			if (if_block) if_block.c();
-    			t5 = space();
+    			t3 = space();
     			div2 = element("div");
     			div0 = element("div");
     			p0 = element("p");
-    			t6 = text(/*text*/ ctx[1]);
-    			t7 = space();
+    			t4 = text(/*text*/ ctx[1]);
+    			t5 = space();
     			div1 = element("div");
     			p1 = element("p");
-    			t8 = text("by ");
-    			t9 = text(/*name*/ ctx[0]);
-    			add_location(h1, file, 172, 0, 5000);
+    			t6 = text("by ");
+    			t7 = text(/*name*/ ctx[0]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 173, 0, 5021);
-    			add_location(button, file, 174, 0, 5073);
+    			add_location(input, file, 172, 0, 4995);
+    			add_location(button, file, 173, 0, 5047);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 180, 4, 5277);
+    			add_location(p0, file, 179, 4, 5249);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 179, 2, 5242);
+    			add_location(div0, file, 178, 2, 5214);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 183, 4, 5352);
+    			add_location(p1, file, 182, 4, 5324);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 182, 2, 5317);
+    			add_location(div1, file, 181, 2, 5289);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
-    			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[2] + ")");
-    			add_location(div2, file, 178, 0, 5166);
+    			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[3] + ")");
+    			add_location(div2, file, 177, 0, 5138);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    			append_dev(h1, t0);
-    			insert_dev(target, t1, anchor);
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*text*/ ctx[1]);
-    			insert_dev(target, t2, anchor);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
-    			insert_dev(target, t4, anchor);
+    			insert_dev(target, t2, anchor);
     			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t3, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
     			append_dev(div0, p0);
-    			append_dev(p0, t6);
-    			append_dev(div2, t7);
+    			append_dev(p0, t4);
+    			append_dev(div2, t5);
     			append_dev(div2, div1);
     			append_dev(div1, p1);
-    			append_dev(p1, t8);
-    			append_dev(p1, t9);
+    			append_dev(p1, t6);
+    			append_dev(p1, t7);
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[6]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[5], false, false, false)
+    					listen_dev(input, "input", /*input_input_handler*/ ctx[5]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*$myPic*/ 16) set_data_dev(t0, /*$myPic*/ ctx[4]);
-
     			if (dirty & /*text*/ 2 && input.value !== /*text*/ ctx[1]) {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
 
-    			if (/*shareMsgSuccess*/ ctx[3]) {
+    			if (/*shareMsgSuccess*/ ctx[2]) {
     				if (if_block) ; else {
     					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(t5.parentNode, t5);
+    					if_block.m(t3.parentNode, t3);
     				}
     			} else if (if_block) {
     				if_block.d(1);
     				if_block = null;
     			}
 
-    			if (dirty & /*text*/ 2) set_data_dev(t6, /*text*/ ctx[1]);
-    			if (dirty & /*name*/ 1) set_data_dev(t9, /*name*/ ctx[0]);
+    			if (dirty & /*text*/ 2) set_data_dev(t4, /*text*/ ctx[1]);
+    			if (dirty & /*name*/ 1) set_data_dev(t7, /*name*/ ctx[0]);
 
-    			if (dirty & /*picUrl*/ 4) {
-    				set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[2] + ")");
+    			if (dirty & /*$myPic*/ 8) {
+    				set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[3] + ")");
     			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h1);
-    			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(input);
-    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
-    			if (detaching) detach_dev(t4);
+    			if (detaching) detach_dev(t2);
     			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div2);
     			mounted = false;
     			run_all(dispose);
@@ -945,7 +931,7 @@ var app = (function () {
     function instance($$self, $$props, $$invalidate) {
     	let $myPic;
     	validate_store(myPic, "myPic");
-    	component_subscribe($$self, myPic, $$value => $$invalidate(4, $myPic = $$value));
+    	component_subscribe($$self, myPic, $$value => $$invalidate(3, $myPic = $$value));
     	let name = "";
     	let text = "";
     	let picUrl = "";
@@ -954,7 +940,7 @@ var app = (function () {
     	onMount(async () => {
     		await liff.getProfile().then(profile => {
     			$$invalidate(0, name = profile.displayName);
-    			$$invalidate(2, picUrl = profile.pictureUrl);
+    			picUrl = profile.pictureUrl;
     		}).catch(err => {
     			console.log("error", err);
     		});
@@ -974,7 +960,7 @@ var app = (function () {
     							contents: [
     								{
     									type: "image",
-    									url: picUrl,
+    									url: myPic,
     									size: "full",
     									aspectMode: "cover",
     									aspectRatio: "1:1",
@@ -1058,12 +1044,12 @@ var app = (function () {
     				}
     			]).then(function (res) {
     				if (res) {
-    					$$invalidate(3, shareMsgSuccess = true);
+    					$$invalidate(2, shareMsgSuccess = true);
     				} else {
-    					$$invalidate(3, shareMsgSuccess = false);
+    					$$invalidate(2, shareMsgSuccess = false);
     				}
     			}).catch(function (error) {
-    				$$invalidate(3, shareMsgSuccess = false);
+    				$$invalidate(2, shareMsgSuccess = false);
     			});
     		}
     	}
@@ -1096,15 +1082,15 @@ var app = (function () {
     	$$self.$inject_state = $$props => {
     		if ("name" in $$props) $$invalidate(0, name = $$props.name);
     		if ("text" in $$props) $$invalidate(1, text = $$props.text);
-    		if ("picUrl" in $$props) $$invalidate(2, picUrl = $$props.picUrl);
-    		if ("shareMsgSuccess" in $$props) $$invalidate(3, shareMsgSuccess = $$props.shareMsgSuccess);
+    		if ("picUrl" in $$props) picUrl = $$props.picUrl;
+    		if ("shareMsgSuccess" in $$props) $$invalidate(2, shareMsgSuccess = $$props.shareMsgSuccess);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [name, text, picUrl, shareMsgSuccess, $myPic, shareMsg, input_input_handler];
+    	return [name, text, shareMsgSuccess, $myPic, shareMsg, input_input_handler];
     }
 
     class Pic extends SvelteComponentDev {
@@ -1126,17 +1112,17 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$1 = "src\\App.svelte";
 
-    // (55:0) {:catch error}
+    // (54:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
-    	let t_value = /*error*/ ctx[5].message + "";
+    	let t_value = /*error*/ ctx[4].message + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 55, 2, 1097);
+    			add_location(p, file$1, 54, 2, 1066);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1154,14 +1140,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(55:0) {:catch error}",
+    		source: "(54:0) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:0) {:then}
+    // (46:0) {:then}
     function create_then_block(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1230,14 +1216,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(47:0) {:then}",
+    		source: "(46:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (50:2) {:else}
+    // (49:2) {:else}
     function create_else_block(ctx) {
     	let div;
     	let pic;
@@ -1249,7 +1235,7 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(pic.$$.fragment);
-    			add_location(div, file$1, 50, 4, 1025);
+    			add_location(div, file$1, 49, 4, 994);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1284,14 +1270,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(50:2) {:else}",
+    		source: "(49:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (48:2) {#if !isInClient}
+    // (47:2) {#if !isInClient}
     function create_if_block$1(ctx) {
     	let h1;
 
@@ -1299,7 +1285,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$1, 48, 4, 991);
+    			add_location(h1, file$1, 47, 4, 960);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1315,21 +1301,21 @@ var app = (function () {
     		block,
     		id: create_if_block$1.name,
     		type: "if",
-    		source: "(48:2) {#if !isInClient}",
+    		source: "(47:2) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (45:17)    <div /> {:then}
+    // (44:17)    <div /> {:then}
     function create_pending_block(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$1, 45, 2, 951);
+    			add_location(div, file$1, 44, 2, 920);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1346,7 +1332,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(45:17)    <div /> {:then}",
+    		source: "(44:17)    <div /> {:then}",
     		ctx
     	});
 
@@ -1354,10 +1340,6 @@ var app = (function () {
     }
 
     function create_fragment$1(ctx) {
-    	let h1;
-    	let t0;
-    	let t1;
-    	let t2;
     	let await_block_anchor;
     	let promise;
     	let current;
@@ -1369,30 +1351,21 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		error: 5,
+    		error: 4,
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*liffInit*/ ctx[2], info);
+    	handle_promise(promise = /*liffInit*/ ctx[1], info);
 
     	const block = {
     		c: function create() {
-    			h1 = element("h1");
-    			t0 = text("The count is ");
-    			t1 = text(/*$myPic*/ ctx[1]);
-    			t2 = space();
     			await_block_anchor = empty();
     			info.block.c();
-    			add_location(h1, file$1, 43, 0, 900);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    			append_dev(h1, t0);
-    			append_dev(h1, t1);
-    			insert_dev(target, t2, anchor);
     			insert_dev(target, await_block_anchor, anchor);
     			info.block.m(target, info.anchor = anchor);
     			info.mount = () => await_block_anchor.parentNode;
@@ -1401,7 +1374,6 @@ var app = (function () {
     		},
     		p: function update(new_ctx, [dirty]) {
     			ctx = new_ctx;
-    			if (!current || dirty & /*$myPic*/ 2) set_data_dev(t1, /*$myPic*/ ctx[1]);
 
     			{
     				const child_ctx = ctx.slice();
@@ -1422,8 +1394,6 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h1);
-    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(await_block_anchor);
     			info.block.d(detaching);
     			info.token = null;
@@ -1443,9 +1413,6 @@ var app = (function () {
     }
 
     function instance$1($$self, $$props, $$invalidate) {
-    	let $myPic;
-    	validate_store(myPic, "myPic");
-    	component_subscribe($$self, myPic, $$value => $$invalidate(1, $myPic = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
 
@@ -1490,20 +1457,19 @@ var app = (function () {
     		isInClient,
     		liffInit,
     		initLiff,
-    		displayLiffData,
-    		$myPic
+    		displayLiffData
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
-    		if ("liffInit" in $$props) $$invalidate(2, liffInit = $$props.liffInit);
+    		if ("liffInit" in $$props) $$invalidate(1, liffInit = $$props.liffInit);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [isInClient, $myPic, liffInit];
+    	return [isInClient, liffInit];
     }
 
     class App extends SvelteComponentDev {

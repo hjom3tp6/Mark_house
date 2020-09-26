@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { myPic } from '../stores.js';
+  import { myPic } from "../stores.js";
 
   //   let picUrl = "";
   let name = "";
@@ -8,7 +8,6 @@
   let picUrl = "";
   let shareMsgSuccess = false;
   onMount(async () => {
-    
     await liff
       .getProfile()
       .then((profile) => {
@@ -35,7 +34,7 @@
                 contents: [
                   {
                     type: "image",
-                    url: picUrl,
+                    url: myPic,
                     size: "full",
                     aspectMode: "cover",
                     aspectRatio: "1:1",
@@ -170,13 +169,13 @@
     padding: 0px 20px;
   }
 </style>
-<h1>{ $myPic }</h1>
+
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
 {#if shareMsgSuccess}
-    <h5>傳送成功</h5>
+  <h5>傳送成功</h5>
 {/if}
-<div class="flex-container" style="--flex-container--bg: url({picUrl})">
+<div class="flex-container" style="--flex-container--bg: url({$myPic})">
   <div class="flex-item item1">
     <p class="text">{text}</p>
   </div>
