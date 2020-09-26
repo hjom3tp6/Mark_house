@@ -6,6 +6,7 @@
   let name = "";
   let text = "";
   let picUrl = "";
+  let shareMsgSuccess = false;
   onMount(async () => {
     await liff
       .getProfile()
@@ -18,9 +19,9 @@
       });
   });
 
-  async function shareMsg() {
+  function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
-     await liff
+      liff
         .shareTargetPicker([
           {
             type: "flex",
@@ -117,9 +118,15 @@
             },
           },
         ])
-        .then()
-        .catch(function (res) {
-          isInClient = "err";
+        .then(function (res) {
+          if (res) {
+            shareMsgSuccess = true;
+          } else {
+            shareMsgSuccess = false;
+          }
+        })
+        .catch(function (error) {
+          shareMsgSuccess = false;
         });
     }
   }
@@ -165,6 +172,11 @@
 
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
+{#if shareMsgSuccess}
+    <h5>傳送成功</h5>
+{:else}
+    <h5>傳送失敗</h5>
+{/if}
 <div class="flex-container" style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">
     <p class="text">{text}</p>
