@@ -42,7 +42,6 @@
 </style>
 
 {#await liffInit}
-  <!-- <h1>...wait</h1> -->
 {:then}
   {#if !isInClient}
     <h1>請移至line中開啟</h1>

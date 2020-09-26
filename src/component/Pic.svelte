@@ -2,21 +2,21 @@
   import { onMount } from "svelte";
   import { myPic } from "../stores.js"
 
-  let picUrl = "";
+//   let picUrl = "";
   let name = "";
   let text = "";
 
-  onMount(async () => {
-    await liff
-      .getProfile()
-      .then((profile) => {
-        name = profile.displayName;
-        picUrl = profile.pictureUrl;
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  });
+//   onMount(async () => {
+//     await liff
+//       .getProfile()
+//       .then((profile) => {
+//         name = profile.displayName;
+//         picUrl = profile.pictureUrl;
+//       })
+//       .catch((err) => {
+//         console.log("error", err);
+//       });
+//   });
 
   function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
