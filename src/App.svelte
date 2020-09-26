@@ -187,6 +187,7 @@
   h3, h4 {
     color: aliceblue;
     padding: 0px 20px;
+	margin-bottom: 0px;
   }
   h4 {
 	font-style: italic;
