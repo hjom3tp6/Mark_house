@@ -2,6 +2,7 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
+  import myPic from "./stores.js"
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -22,7 +23,7 @@
       .getProfile()
       .then((profile) => {
         name = profile.displayName;
-        myPic = profile.pictureUrl;
+        myPic.set(profile.pictureUrl) ;
       })
       .catch((err) => {
         console.log("error", err);
