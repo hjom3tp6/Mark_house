@@ -6,6 +6,7 @@
 
   let isInClient = false;
   let liffInit = initLiff();
+  let 
 
   async function initLiff() {
     await liff
@@ -22,8 +23,11 @@
 	  await liff
       .getProfile()
       .then((profile) => {
-        name = profile.displayName;
-        myPic.set(profile.pictureUrl) ;
+		name = profile.displayName;
+		function reset(){
+			myPic.set(profile.pictureUrl) ;
+		}
+		reset()
       })
       .catch((err) => {
         console.log("error", err);
