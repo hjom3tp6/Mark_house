@@ -368,7 +368,7 @@ var app = (function () {
     const file = "src\\App.svelte";
 
     function create_fragment(ctx) {
-    	let p;
+    	let p0;
     	let t0;
     	let t1;
     	let t2;
@@ -378,11 +378,11 @@ var app = (function () {
     	let t5;
     	let div2;
     	let div0;
-    	let h3;
+    	let p1;
     	let t6;
     	let t7;
     	let div1;
-    	let h4;
+    	let p2;
     	let t8;
     	let t9;
     	let mounted;
@@ -390,7 +390,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			p = element("p");
+    			p0 = element("p");
     			t0 = text("isInClient: ");
     			t1 = text(/*isInClient*/ ctx[3]);
     			t2 = space();
@@ -401,36 +401,37 @@ var app = (function () {
     			t5 = space();
     			div2 = element("div");
     			div0 = element("div");
-    			h3 = element("h3");
+    			p1 = element("p");
     			t6 = text(/*text*/ ctx[2]);
     			t7 = space();
     			div1 = element("div");
-    			h4 = element("h4");
+    			p2 = element("p");
     			t8 = text("by ");
     			t9 = text(/*name*/ ctx[1]);
-    			add_location(p, file, 196, 0, 5351);
+    			attr_dev(p0, "class", "svelte-gmoea7");
+    			add_location(p0, file, 201, 0, 5414);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 197, 0, 5383);
-    			add_location(button, file, 198, 0, 5434);
-    			attr_dev(h3, "class", "svelte-qduyhy");
-    			add_location(h3, file, 203, 4, 5590);
-    			attr_dev(div0, "class", "flex-item item1 svelte-qduyhy");
-    			add_location(div0, file, 202, 2, 5556);
-    			attr_dev(h4, "class", "svelte-qduyhy");
-    			add_location(h4, file, 206, 4, 5651);
-    			attr_dev(div1, "class", "flex-item item2 svelte-qduyhy");
-    			add_location(div1, file, 205, 2, 5617);
-    			attr_dev(div2, "class", "flex-container svelte-qduyhy");
+    			add_location(input, file, 202, 0, 5446);
+    			add_location(button, file, 203, 0, 5497);
+    			attr_dev(p1, "class", "text svelte-gmoea7");
+    			add_location(p1, file, 206, 4, 5649);
+    			attr_dev(div0, "class", "flex-item item1 svelte-gmoea7");
+    			add_location(div0, file, 205, 2, 5615);
+    			attr_dev(p2, "class", "name svelte-gmoea7");
+    			add_location(p2, file, 209, 4, 5721);
+    			attr_dev(div1, "class", "flex-item item2 svelte-gmoea7");
+    			add_location(div1, file, 208, 2, 5687);
+    			attr_dev(div2, "class", "flex-container svelte-gmoea7");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 199, 0, 5477);
+    			add_location(div2, file, 204, 0, 5540);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
-    			append_dev(p, t0);
-    			append_dev(p, t1);
+    			insert_dev(target, p0, anchor);
+    			append_dev(p0, t0);
+    			append_dev(p0, t1);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*text*/ ctx[2]);
@@ -439,13 +440,13 @@ var app = (function () {
     			insert_dev(target, t5, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
-    			append_dev(div0, h3);
-    			append_dev(h3, t6);
+    			append_dev(div0, p1);
+    			append_dev(p1, t6);
     			append_dev(div2, t7);
     			append_dev(div2, div1);
-    			append_dev(div1, h4);
-    			append_dev(h4, t8);
-    			append_dev(h4, t9);
+    			append_dev(div1, p2);
+    			append_dev(p2, t8);
+    			append_dev(p2, t9);
 
     			if (!mounted) {
     				dispose = [
@@ -473,7 +474,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(p0);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(input);
     			if (detaching) detach_dev(t3);

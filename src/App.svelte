@@ -169,9 +169,9 @@
     width: 300px;
     flex-direction: column;
     justify-content: flex-end;
-	background: var(--flex-container--bg);
-	background-size: contain;
-	background-repeat: no-repeat;
+    background: var(--flex-container--bg);
+    background-size: contain;
+    background-repeat: no-repeat;
   }
   .flex-item {
     display: flex;
@@ -184,26 +184,29 @@
     align-self: flex-end;
   }
 
-  h3, h4 {
-    color: aliceblue;
-    padding: 0px 20px;
-	margin-bottom: 0px;
+  .name {
+    font-style: italic;
+	font-size: medium;
   }
-  h4 {
-	font-style: italic;
+  .text {
+    margin-bottom: 0px;
+	font-size:large;
+  }
+
+  p {
+	color: aliceblue;
+    padding: 0px 20px;
   }
 </style>
 
 <p>isInClient: {isInClient}</p>
 <input bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
-<div
-  class="flex-container"
-  style="--flex-container--bg: url({picUrl})">
+<div class="flex-container" style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">
-    <h3>{text}</h3>
+    <p class="text">{text}</p>
   </div>
   <div class="flex-item item2">
-    <h4>by {name}</h4>
+    <p class="name">by {name}</p>
   </div>
 </div>
