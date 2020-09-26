@@ -1,3 +1,3 @@
-import {writable} from 'svelte/store'
+import { writable } from 'svelte/store';
 
-export const myPic = writable('url')
+export const myPic = writable("rr");

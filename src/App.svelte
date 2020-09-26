@@ -2,7 +2,7 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
-  import myPic from "./stores.js"
+  import { myPic } from './stores.js';
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -18,8 +18,17 @@
       })
       .catch((err) => {
         window.alert("請檢察網路連線問題");
-      });
-
+	  });
+	  
+	  await liff
+      .getProfile()
+      .then((profile) => {
+        name = profile.displayName;
+        myPic.set(profile.pictureUrl);
+      })
+      .catch((err) => {
+        console.log("error", err);
+  });
   }
   //   onMount(initLiff());
   /**
@@ -32,7 +41,7 @@
 
 <style>
 </style>
-
+<h1>The count is {$myPic}</h1>
 {#await liffInit}
   <div />
 {:then}

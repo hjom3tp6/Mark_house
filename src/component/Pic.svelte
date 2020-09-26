@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-  import { myPic } from "../stores.js";
+  import { myPic } from '../stores.js';
 
   //   let picUrl = "";
   let name = "";
@@ -8,6 +8,7 @@
   let picUrl = "";
   let shareMsgSuccess = false;
   onMount(async () => {
+    
     await liff
       .getProfile()
       .then((profile) => {
