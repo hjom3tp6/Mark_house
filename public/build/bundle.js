@@ -405,19 +405,19 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 198, 0, 5284);
-    			add_location(button, file, 199, 0, 5335);
-    			attr_dev(p0, "class", "text svelte-gmoea7");
-    			add_location(p0, file, 202, 4, 5487);
-    			attr_dev(div0, "class", "flex-item item1 svelte-gmoea7");
-    			add_location(div0, file, 201, 2, 5453);
-    			attr_dev(p1, "class", "name svelte-gmoea7");
-    			add_location(p1, file, 205, 4, 5559);
-    			attr_dev(div1, "class", "flex-item item2 svelte-gmoea7");
-    			add_location(div1, file, 204, 2, 5525);
-    			attr_dev(div2, "class", "flex-container svelte-gmoea7");
+    			add_location(input, file, 198, 0, 5286);
+    			add_location(button, file, 199, 0, 5337);
+    			attr_dev(p0, "class", "text svelte-1pw0xbg");
+    			add_location(p0, file, 202, 4, 5489);
+    			attr_dev(div0, "class", "flex-item item1 svelte-1pw0xbg");
+    			add_location(div0, file, 201, 2, 5455);
+    			attr_dev(p1, "class", "name svelte-1pw0xbg");
+    			add_location(p1, file, 205, 4, 5561);
+    			attr_dev(div1, "class", "flex-item item2 svelte-1pw0xbg");
+    			add_location(div1, file, 204, 2, 5527);
+    			attr_dev(div2, "class", "flex-container svelte-1pw0xbg");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 200, 0, 5378);
+    			add_location(div2, file, 200, 0, 5380);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -486,8 +486,8 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			p.textContent = "請移至line中開啟";
-    			attr_dev(p, "class", "svelte-gmoea7");
-    			add_location(p, file, 196, 1, 5258);
+    			attr_dev(p, "class", "svelte-1pw0xbg");
+    			add_location(p, file, 196, 1, 5260);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -649,7 +649,7 @@ var app = (function () {
     														{
     															type: "text",
     															text,
-    															size: "lg",
+    															size: "xl",
     															color: "#ffffff",
     															wrap: true
     														}

@@ -98,7 +98,7 @@
                               {
                                 type: "text",
                                 text: text,
-                                size: "lg",
+                                size: "xl",
                                 color: "#ffffff",
                                 wrap: true,
                               },
@@ -185,7 +185,7 @@
   }
   .text {
     margin-bottom: 0px;
-	font-size:large;
+	font-size:x-large;
   }
 
   p {
