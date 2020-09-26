@@ -174,8 +174,6 @@
 <button on:click={shareMsg}>share</button>
 {#if shareMsgSuccess}
     <h5>傳送成功</h5>
-{:else}
-    <h5>傳送失敗</h5>
 {/if}
 <div class="flex-container" style="--flex-container--bg: url({picUrl})">
   <div class="flex-item item1">

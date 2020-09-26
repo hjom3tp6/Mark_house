@@ -753,35 +753,6 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\component\\Pic.svelte";
 
-    // (177:0) {:else}
-    function create_else_block(ctx) {
-    	let h5;
-
-    	const block = {
-    		c: function create() {
-    			h5 = element("h5");
-    			h5.textContent = "傳送失敗";
-    			add_location(h5, file, 177, 4, 5147);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, h5, anchor);
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h5);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_else_block.name,
-    		type: "else",
-    		source: "(177:0) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
     // (175:0) {#if shareMsgSuccess}
     function create_if_block(ctx) {
     	let h5;
@@ -828,14 +799,7 @@ var app = (function () {
     	let t7;
     	let mounted;
     	let dispose;
-
-    	function select_block_type(ctx, dirty) {
-    		if (/*shareMsgSuccess*/ ctx[3]) return create_if_block;
-    		return create_else_block;
-    	}
-
-    	let current_block_type = select_block_type(ctx);
-    	let if_block = current_block_type(ctx);
+    	let if_block = /*shareMsgSuccess*/ ctx[3] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -844,7 +808,7 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			t2 = space();
-    			if_block.c();
+    			if (if_block) if_block.c();
     			t3 = space();
     			div2 = element("div");
     			div0 = element("div");
@@ -859,16 +823,16 @@ var app = (function () {
     			add_location(input, file, 172, 0, 4996);
     			add_location(button, file, 173, 0, 5048);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 181, 4, 5280);
+    			add_location(p0, file, 179, 4, 5252);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 180, 2, 5245);
+    			add_location(div0, file, 178, 2, 5217);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 184, 4, 5355);
+    			add_location(p1, file, 182, 4, 5327);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 183, 2, 5320);
+    			add_location(div1, file, 181, 2, 5292);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[2] + ")");
-    			add_location(div2, file, 179, 0, 5169);
+    			add_location(div2, file, 177, 0, 5141);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -879,7 +843,7 @@ var app = (function () {
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t2, anchor);
-    			if_block.m(target, anchor);
+    			if (if_block) if_block.m(target, anchor);
     			insert_dev(target, t3, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
@@ -905,14 +869,15 @@ var app = (function () {
     				set_input_value(input, /*text*/ ctx[1]);
     			}
 
-    			if (current_block_type !== (current_block_type = select_block_type(ctx))) {
-    				if_block.d(1);
-    				if_block = current_block_type(ctx);
-
-    				if (if_block) {
+    			if (/*shareMsgSuccess*/ ctx[3]) {
+    				if (if_block) ; else {
+    					if_block = create_if_block(ctx);
     					if_block.c();
     					if_block.m(t3.parentNode, t3);
     				}
+    			} else if (if_block) {
+    				if_block.d(1);
+    				if_block = null;
     			}
 
     			if (dirty & /*text*/ 2) set_data_dev(t4, /*text*/ ctx[1]);
@@ -929,7 +894,7 @@ var app = (function () {
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t2);
-    			if_block.d(detaching);
+    			if (if_block) if_block.d(detaching);
     			if (detaching) detach_dev(t3);
     			if (detaching) detach_dev(div2);
     			mounted = false;
@@ -1167,7 +1132,7 @@ var app = (function () {
     	let if_block;
     	let if_block_anchor;
     	let current;
-    	const if_block_creators = [create_if_block$1, create_else_block$1];
+    	const if_block_creators = [create_if_block$1, create_else_block];
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
@@ -1238,7 +1203,7 @@ var app = (function () {
     }
 
     // (40:2) {:else}
-    function create_else_block$1(ctx) {
+    function create_else_block(ctx) {
     	let div;
     	let pic;
     	let div_transition;
@@ -1282,7 +1247,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block$1.name,
+    		id: create_else_block.name,
     		type: "else",
     		source: "(40:2) {:else}",
     		ctx
