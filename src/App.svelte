@@ -19,7 +19,7 @@
         displayLiffData();
       })
       .catch((err) => {
-        window.alert("err:" + err);
+        window.alert("請檢察網路連線問題");
       });
 
     await liff
@@ -186,10 +186,10 @@
 </style>
 
 {#await liffInit}
-  <p>wait...</p>
+  <h1>wait...</h1>
 {:then}
   {#if !isInClient}
-    <p>請移至line中開啟</p>
+    <h1>請移至line中開啟</h1>
   {:else}
     <input bind:value={text} placeholder="input..." />
     <button on:click={shareMsg}>share</button>

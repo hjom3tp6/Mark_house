@@ -491,7 +491,7 @@ var app = (function () {
     			p = element("p");
     			t = text(t_value);
     			attr_dev(p, "class", "svelte-ou1e89");
-    			add_location(p, file, 205, 2, 5590);
+    			add_location(p, file, 205, 2, 5593);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -600,19 +600,19 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 193, 4, 5208);
-    			add_location(button, file, 194, 4, 5263);
+    			add_location(input, file, 193, 4, 5211);
+    			add_location(button, file, 194, 4, 5266);
     			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 197, 8, 5427);
+    			add_location(p0, file, 197, 8, 5430);
     			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 196, 6, 5389);
+    			add_location(div0, file, 196, 6, 5392);
     			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 200, 8, 5511);
+    			add_location(p1, file, 200, 8, 5514);
     			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 199, 6, 5473);
+    			add_location(div1, file, 199, 6, 5476);
     			attr_dev(div2, "class", "flex-container svelte-ou1e89");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 195, 4, 5310);
+    			add_location(div2, file, 195, 4, 5313);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, input, anchor);
@@ -675,21 +675,20 @@ var app = (function () {
 
     // (191:2) {#if !isInClient}
     function create_if_block(ctx) {
-    	let p;
+    	let h1;
 
     	const block = {
     		c: function create() {
-    			p = element("p");
-    			p.textContent = "請移至line中開啟";
-    			attr_dev(p, "class", "svelte-ou1e89");
-    			add_location(p, file, 191, 4, 5176);
+    			h1 = element("h1");
+    			h1.textContent = "請移至line中開啟";
+    			add_location(h1, file, 191, 4, 5177);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
+    			insert_dev(target, h1, anchor);
     		},
     		p: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(h1);
     		}
     	};
 
@@ -704,23 +703,22 @@ var app = (function () {
     	return block;
     }
 
-    // (188:17)    <p>wait...</p> {:then}
+    // (188:17)    <h1>wait...</h1> {:then}
     function create_pending_block(ctx) {
-    	let p;
+    	let h1;
 
     	const block = {
     		c: function create() {
-    			p = element("p");
-    			p.textContent = "wait...";
-    			attr_dev(p, "class", "svelte-ou1e89");
-    			add_location(p, file, 188, 2, 5129);
+    			h1 = element("h1");
+    			h1.textContent = "wait...";
+    			add_location(h1, file, 188, 2, 5128);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p, anchor);
+    			insert_dev(target, h1, anchor);
     		},
     		p: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p);
+    			if (detaching) detach_dev(h1);
     		}
     	};
 
@@ -728,7 +726,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(188:17)    <p>wait...</p> {:then}",
+    		source: "(188:17)    <h1>wait...</h1> {:then}",
     		ctx
     	});
 
@@ -806,7 +804,7 @@ var app = (function () {
     			// start to use LIFF's api
     			displayLiffData();
     		}).catch(err => {
-    			window.alert("err:" + err);
+    			window.alert("請檢察網路連線問題");
     		});
 
     		await liff.getProfile().then(profile => {
