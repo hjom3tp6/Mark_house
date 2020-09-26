@@ -148,7 +148,7 @@
             },
           },
         ])
-        .then(liff.closeWindow())
+        .then()
         .catch(function (res) {
           isInClient = "err";
         });
