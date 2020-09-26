@@ -2,7 +2,6 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
-  import {myPic} from "./stores"
 
   let isInClient = false;
   let liffInit = initLiff();
