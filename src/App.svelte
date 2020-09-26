@@ -2,7 +2,6 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
-  import myPic from "./stores.js";
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -20,18 +19,6 @@
         window.alert("請檢察網路連線問題");
       });
 
-    await liff
-      .getProfile()
-      .then((profile) => {
-        name = profile.displayName;
-        function reset() {
-          myPic.set(profile.pictureUrl);
-        }
-        reset();
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
   }
   //   onMount(initLiff());
   /**

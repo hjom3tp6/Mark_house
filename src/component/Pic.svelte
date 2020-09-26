@@ -6,21 +6,18 @@
   let name = "";
   let text = "";
   let picUrl = "";
-  const onsubscripe =  myPic.subscribe(value =>{
-    picUrl =value;
-  })
 
-//   onMount(async () => {
-//     await liff
-//       .getProfile()
-//       .then((profile) => {
-//         name = profile.displayName;
-//         picUrl = profile.pictureUrl;
-//       })
-//       .catch((err) => {
-//         console.log("error", err);
-//       });
-//   });
+  onMount(async () => {
+    await liff
+      .getProfile()
+      .then((profile) => {
+        name = profile.displayName;
+        picUrl = profile.pictureUrl;
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  });
 
   function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
