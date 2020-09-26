@@ -1,7 +1,7 @@
 <script>
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
-  import Pic from "./component/Pic.svelte"
+  import Pic from "./component/Pic.svelte";
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -26,11 +26,9 @@
   function displayLiffData() {
     isInClient = liff.isInClient();
   }
-
 </script>
 
 <style>
- 
 </style>
 
 {#await liffInit}
@@ -39,7 +37,9 @@
   {#if !isInClient}
     <h1>請移至line中開啟</h1>
   {:else}
-	<Pic/>
+    <div transition:fade>
+      <Pic />
+    </div>
   {/if}
 {:catch error}
   <p>{error.message}</p>

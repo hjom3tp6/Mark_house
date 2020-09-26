@@ -29,6 +29,41 @@ var app = (function () {
         return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
     }
 
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+
     function append(target, node) {
         target.appendChild(node);
     }
@@ -73,6 +108,67 @@ var app = (function () {
         const e = document.createEvent('CustomEvent');
         e.initCustomEvent(type, false, false, detail);
         return e;
+    }
+
+    const active_docs = new Set();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = node.ownerDocument;
+        active_docs.add(doc);
+        const stylesheet = doc.__svelte_stylesheet || (doc.__svelte_stylesheet = doc.head.appendChild(element('style')).sheet);
+        const current_rules = doc.__svelte_rules || (doc.__svelte_rules = {});
+        if (!current_rules[name]) {
+            current_rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ``}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            active_docs.forEach(doc => {
+                const stylesheet = doc.__svelte_stylesheet;
+                let i = stylesheet.cssRules.length;
+                while (i--)
+                    stylesheet.deleteRule(i);
+                doc.__svelte_rules = {};
+            });
+            active_docs.clear();
+        });
     }
 
     let current_component;
@@ -150,6 +246,20 @@ var app = (function () {
             $$.after_update.forEach(add_render_callback);
         }
     }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
     const outroing = new Set();
     let outros;
     function group_outros() {
@@ -186,6 +296,112 @@ var app = (function () {
             });
             block.o(local);
         }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        let config = fn(node, params);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = program.b - t;
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config();
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
     }
 
     function handle_promise(promise, info) {
@@ -767,7 +983,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 44, 2, 785);
+    			add_location(p, file$1, 44, 2, 826);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -792,7 +1008,7 @@ var app = (function () {
     	return block;
     }
 
-    // (38:0) {:then}
+    // (36:0) {:then}
     function create_then_block(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -861,38 +1077,53 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(38:0) {:then}",
+    		source: "(36:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (41:2) {:else}
+    // (39:2) {:else}
     function create_else_block(ctx) {
+    	let div;
     	let pic;
+    	let div_transition;
     	let current;
     	pic = new Pic({ $$inline: true });
 
     	const block = {
     		c: function create() {
+    			div = element("div");
     			create_component(pic.$$.fragment);
+    			add_location(div, file$1, 39, 4, 754);
     		},
     		m: function mount(target, anchor) {
-    			mount_component(pic, target, anchor);
+    			insert_dev(target, div, anchor);
+    			mount_component(pic, div, null);
     			current = true;
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(pic.$$.fragment, local);
+
+    			add_render_callback(() => {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
+    				div_transition.run(1);
+    			});
+
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(pic.$$.fragment, local);
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
+    			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			destroy_component(pic, detaching);
+    			if (detaching) detach_dev(div);
+    			destroy_component(pic);
+    			if (detaching && div_transition) div_transition.end();
     		}
     	};
 
@@ -900,14 +1131,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(41:2) {:else}",
+    		source: "(39:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (39:2) {#if !isInClient}
+    // (37:2) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -915,7 +1146,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$1, 39, 4, 722);
+    			add_location(h1, file$1, 37, 4, 720);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -931,14 +1162,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(39:2) {#if !isInClient}",
+    		source: "(37:2) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (36:17)    <h1>...wait</h1> {:then}
+    // (34:17)    <h1>...wait</h1> {:then}
     function create_pending_block(ctx) {
     	let h1;
 
@@ -946,7 +1177,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "...wait";
-    			add_location(h1, file$1, 36, 2, 673);
+    			add_location(h1, file$1, 34, 2, 671);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -963,7 +1194,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(36:17)    <h1>...wait</h1> {:then}",
+    		source: "(34:17)    <h1>...wait</h1> {:then}",
     		ctx
     	});
 
