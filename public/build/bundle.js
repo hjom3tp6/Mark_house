@@ -43,6 +43,9 @@ var app = (function () {
     function space() {
         return text(' ');
     }
+    function empty() {
+        return text('');
+    }
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
@@ -367,86 +370,70 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file = "src\\App.svelte";
 
-    function create_fragment(ctx) {
-    	let p0;
-    	let t0;
-    	let t1;
-    	let t2;
+    // (198:0) {:else}
+    function create_else_block(ctx) {
     	let input;
-    	let t3;
+    	let t0;
     	let button;
-    	let t5;
+    	let t2;
     	let div2;
     	let div0;
-    	let p1;
-    	let t6;
-    	let t7;
+    	let p0;
+    	let t3;
+    	let t4;
     	let div1;
-    	let p2;
-    	let t8;
-    	let t9;
+    	let p1;
+    	let t5;
+    	let t6;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			p0 = element("p");
-    			t0 = text("isInClient: ");
-    			t1 = text(/*isInClient*/ ctx[3]);
-    			t2 = space();
     			input = element("input");
-    			t3 = space();
+    			t0 = space();
     			button = element("button");
     			button.textContent = "share";
-    			t5 = space();
+    			t2 = space();
     			div2 = element("div");
     			div0 = element("div");
-    			p1 = element("p");
-    			t6 = text(/*text*/ ctx[2]);
-    			t7 = space();
+    			p0 = element("p");
+    			t3 = text(/*text*/ ctx[2]);
+    			t4 = space();
     			div1 = element("div");
-    			p2 = element("p");
-    			t8 = text("by ");
-    			t9 = text(/*name*/ ctx[1]);
-    			attr_dev(p0, "class", "svelte-gmoea7");
-    			add_location(p0, file, 201, 0, 5411);
+    			p1 = element("p");
+    			t5 = text("by ");
+    			t6 = text(/*name*/ ctx[1]);
     			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 202, 0, 5443);
-    			add_location(button, file, 203, 0, 5494);
-    			attr_dev(p1, "class", "text svelte-gmoea7");
-    			add_location(p1, file, 206, 4, 5646);
+    			add_location(input, file, 198, 0, 5308);
+    			add_location(button, file, 199, 0, 5359);
+    			attr_dev(p0, "class", "text svelte-gmoea7");
+    			add_location(p0, file, 202, 4, 5511);
     			attr_dev(div0, "class", "flex-item item1 svelte-gmoea7");
-    			add_location(div0, file, 205, 2, 5612);
-    			attr_dev(p2, "class", "name svelte-gmoea7");
-    			add_location(p2, file, 209, 4, 5718);
+    			add_location(div0, file, 201, 2, 5477);
+    			attr_dev(p1, "class", "name svelte-gmoea7");
+    			add_location(p1, file, 205, 4, 5583);
     			attr_dev(div1, "class", "flex-item item2 svelte-gmoea7");
-    			add_location(div1, file, 208, 2, 5684);
+    			add_location(div1, file, 204, 2, 5549);
     			attr_dev(div2, "class", "flex-container svelte-gmoea7");
     			set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
-    			add_location(div2, file, 204, 0, 5537);
-    		},
-    		l: function claim(nodes) {
-    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    			add_location(div2, file, 200, 0, 5402);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, p0, anchor);
-    			append_dev(p0, t0);
-    			append_dev(p0, t1);
-    			insert_dev(target, t2, anchor);
     			insert_dev(target, input, anchor);
     			set_input_value(input, /*text*/ ctx[2]);
-    			insert_dev(target, t3, anchor);
+    			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
-    			insert_dev(target, t5, anchor);
+    			insert_dev(target, t2, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
-    			append_dev(div0, p1);
-    			append_dev(p1, t6);
-    			append_dev(div2, t7);
+    			append_dev(div0, p0);
+    			append_dev(p0, t3);
+    			append_dev(div2, t4);
     			append_dev(div2, div1);
-    			append_dev(div1, p2);
-    			append_dev(p2, t8);
-    			append_dev(p2, t9);
+    			append_dev(div1, p1);
+    			append_dev(p1, t5);
+    			append_dev(p1, t6);
 
     			if (!mounted) {
     				dispose = [
@@ -457,32 +444,112 @@ var app = (function () {
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, [dirty]) {
-    			if (dirty & /*isInClient*/ 8) set_data_dev(t1, /*isInClient*/ ctx[3]);
-
+    		p: function update(ctx, dirty) {
     			if (dirty & /*text*/ 4 && input.value !== /*text*/ ctx[2]) {
     				set_input_value(input, /*text*/ ctx[2]);
     			}
 
-    			if (dirty & /*text*/ 4) set_data_dev(t6, /*text*/ ctx[2]);
-    			if (dirty & /*name*/ 2) set_data_dev(t9, /*name*/ ctx[1]);
+    			if (dirty & /*text*/ 4) set_data_dev(t3, /*text*/ ctx[2]);
+    			if (dirty & /*name*/ 2) set_data_dev(t6, /*name*/ ctx[1]);
 
     			if (dirty & /*picUrl*/ 1) {
     				set_style(div2, "--flex-container--bg", "url(" + /*picUrl*/ ctx[0] + ")");
     			}
     		},
-    		i: noop,
-    		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(p0);
-    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(input);
-    			if (detaching) detach_dev(t3);
+    			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
-    			if (detaching) detach_dev(t5);
+    			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(div2);
     			mounted = false;
     			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(198:0) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (196:0) {#if !isInClient}
+    function create_if_block(ctx) {
+    	let p;
+
+    	const block = {
+    		c: function create() {
+    			p = element("p");
+    			p.textContent = "請移至line中開啟";
+    			attr_dev(p, "class", "svelte-gmoea7");
+    			add_location(p, file, 196, 1, 5282);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, p, anchor);
+    		},
+    		p: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(p);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(196:0) {#if !isInClient}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let if_block_anchor;
+
+    	function select_block_type(ctx, dirty) {
+    		if (!/*isInClient*/ ctx[3]) return create_if_block;
+    		return create_else_block;
+    	}
+
+    	let current_block_type = select_block_type(ctx);
+    	let if_block = current_block_type(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+    				if_block.p(ctx, dirty);
+    			} else {
+    				if_block.d(1);
+    				if_block = current_block_type(ctx);
+
+    				if (if_block) {
+    					if_block.c();
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			}
+    		},
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     		}
     	};
 
@@ -498,20 +565,15 @@ var app = (function () {
     }
 
     function instance($$self, $$props, $$invalidate) {
-    	let s = "";
     	let picUrl = "";
     	let name = "";
     	let text = "";
+    	let isInClient = false;
 
     	onMount(async () => {
-    		// 	let myLiffId = "1654061887-ZoYpPWL2";
-    		// const res =  await fetch(`https://www.google.com`)
-    		// s = res
     		await liff.init({ liffId: "1654061887-ZoYpPWL2" }).then(() => {
     			// start to use LIFF's api
     			displayLiffData();
-
-    			s = "YY";
     		}).catch(err => {
     			window.alert("err:" + err);
     		});
@@ -536,8 +598,6 @@ var app = (function () {
     	/**
      * Display data generated by invoking LIFF methods
      */
-    	let isInClient = "123";
-
     	function displayLiffData() {
     		$$invalidate(3, isInClient = liff.isInClient());
     	}
@@ -661,7 +721,6 @@ var app = (function () {
     	$$self.$capture_state = () => ({
     		liff,
     		onMount,
-    		s,
     		picUrl,
     		name,
     		text,
@@ -671,7 +730,6 @@ var app = (function () {
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("s" in $$props) s = $$props.s;
     		if ("picUrl" in $$props) $$invalidate(0, picUrl = $$props.picUrl);
     		if ("name" in $$props) $$invalidate(1, name = $$props.name);
     		if ("text" in $$props) $$invalidate(2, text = $$props.text);
