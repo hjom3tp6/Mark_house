@@ -965,7 +965,7 @@ var app = (function () {
     	return [picUrl, name, text, shareMsg, input_input_handler];
     }
 
-    class Pic$1 extends SvelteComponentDev {
+    class Pic extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
     		init(this, options, instance, create_fragment, safe_not_equal, {});
@@ -1120,11 +1120,11 @@ var app = (function () {
     	let t8;
     	let br1;
     	let t9;
-    	let pic_1;
+    	let pic;
     	let current;
     	let mounted;
     	let dispose;
-    	pic_1 = new Pic({ $$inline: true });
+    	pic = new Pic({ $$inline: true });
 
     	const block = {
     		c: function create() {
@@ -1148,7 +1148,7 @@ var app = (function () {
     			t8 = space();
     			br1 = element("br");
     			t9 = space();
-    			create_component(pic_1.$$.fragment);
+    			create_component(pic.$$.fragment);
     			attr_dev(input, "placeholder", "input...");
     			add_location(input, file$1, 195, 6, 5284);
     			add_location(button, file$1, 196, 6, 5341);
@@ -1188,7 +1188,7 @@ var app = (function () {
     			insert_dev(target, t8, anchor);
     			insert_dev(target, br1, anchor);
     			insert_dev(target, t9, anchor);
-    			mount_component(pic_1, target, anchor);
+    			mount_component(pic, target, anchor);
     			current = true;
 
     			if (!mounted) {
@@ -1220,13 +1220,13 @@ var app = (function () {
     				div3_transition.run(1);
     			});
 
-    			transition_in(pic_1.$$.fragment, local);
+    			transition_in(pic.$$.fragment, local);
     			current = true;
     		},
     		o: function outro(local) {
     			if (!div3_transition) div3_transition = create_bidirectional_transition(div3, fade, {}, false);
     			div3_transition.run(0);
-    			transition_out(pic_1.$$.fragment, local);
+    			transition_out(pic.$$.fragment, local);
     			current = false;
     		},
     		d: function destroy(detaching) {
@@ -1237,7 +1237,7 @@ var app = (function () {
     			if (detaching) detach_dev(t8);
     			if (detaching) detach_dev(br1);
     			if (detaching) detach_dev(t9);
-    			destroy_component(pic_1, detaching);
+    			destroy_component(pic, detaching);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -1542,7 +1542,7 @@ var app = (function () {
     		liff: liff$1,
     		onMount,
     		fade,
-    		pic: Pic$1,
+    		Pic,
     		picUrl,
     		name,
     		text,

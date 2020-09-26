@@ -2,7 +2,7 @@
   import liff from "@line/liff";
   import { onMount } from "svelte";
   import { fade } from "svelte/transition";
-  import pic from "./component/Pic.svelte"
+  import Pic from "./component/Pic.svelte"
 
   let picUrl = "";
   let name = "";
