@@ -9,8 +9,8 @@
   let liffInit = initLiff();
 
   const options =[
-	  { title = '照片', component: Pic},
-	  { title = '社交', component: Social },
+	  { title : '照片', component: Pic},
+	  { title : '社交', component: Social },
   ];
 
   let selected = options[0];
@@ -73,11 +73,11 @@
   {#if !isInClient}
     <h1>請移至line中開啟</h1>
   {:else}
-  <section bind:value={selected}>
+  <select bind:value={selected}>
 	  {#each options as option}
 		  <option value={option}>{option.title}</option>
 	  {/each}
-  </section>
+  </select>
     <div class="box-component" transition:fade>
 	  <Pic />
 	  <svelte:component this={selected.component}></svelte:component>
