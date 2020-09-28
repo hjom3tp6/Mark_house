@@ -1055,7 +1055,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\App.svelte";
 
-    // (61:0) {:catch error}
+    // (62:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
     	let t_value = /*error*/ ctx[4].message + "";
@@ -1065,7 +1065,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 61, 2, 1198);
+    			add_location(p, file$1, 62, 2, 1213);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1083,14 +1083,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(61:0) {:catch error}",
+    		source: "(62:0) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (53:0) {:then}
+    // (54:0) {:then}
     function create_then_block(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1159,14 +1159,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(53:0) {:then}",
+    		source: "(54:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (56:2) {:else}
+    // (57:2) {:else}
     function create_else_block(ctx) {
     	let div;
     	let pic;
@@ -1178,8 +1178,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(pic.$$.fragment);
-    			attr_dev(div, "class", "box-component svelte-15t5k1m");
-    			add_location(div, file$1, 56, 4, 1104);
+    			attr_dev(div, "class", "box-component svelte-gs6ugt");
+    			add_location(div, file$1, 57, 4, 1119);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1214,14 +1214,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(56:2) {:else}",
+    		source: "(57:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (54:2) {#if !isInClient}
+    // (55:2) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -1229,7 +1229,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$1, 54, 4, 1070);
+    			add_location(h1, file$1, 55, 4, 1085);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1245,21 +1245,21 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(54:2) {#if !isInClient}",
+    		source: "(55:2) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (51:17)    <div /> {:then}
+    // (52:17)    <div /> {:then}
     function create_pending_block(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$1, 51, 2, 1030);
+    			add_location(div, file$1, 52, 2, 1045);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1276,7 +1276,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(51:17)    <div /> {:then}",
+    		source: "(52:17)    <div /> {:then}",
     		ctx
     	});
 

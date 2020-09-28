@@ -42,6 +42,7 @@
 <style>
 .box-component {
 	width: 80%;
+	margin: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
