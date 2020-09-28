@@ -155,9 +155,13 @@
     color: aliceblue;
     padding: 0px 20px;
   }
+
+  textarea {
+      widows: 100%; height: 100px;
+  }
 </style>
 
-<input bind:value={text} placeholder="input..." />
+<textarea bind:value={text} placeholder="input..." />
 <button on:click={shareMsg}>share</button>
 <div class="flex-container" style="--flex-container--bg: url({$myPic})">
   <div class="flex-item item1">

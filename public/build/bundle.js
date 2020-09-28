@@ -768,7 +768,7 @@ var app = (function () {
     const file = "src\\component\\Pic.svelte";
 
     function create_fragment(ctx) {
-    	let input;
+    	let textarea;
     	let t0;
     	let button;
     	let t2;
@@ -786,7 +786,7 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
-    			input = element("input");
+    			textarea = element("textarea");
     			t0 = space();
     			button = element("button");
     			button.textContent = "share";
@@ -800,27 +800,28 @@ var app = (function () {
     			p1 = element("p");
     			t5 = text("by ");
     			t6 = text(/*$myName*/ ctx[2]);
-    			attr_dev(input, "placeholder", "input...");
-    			add_location(input, file, 159, 0, 4715);
-    			add_location(button, file, 160, 0, 4767);
-    			attr_dev(p0, "class", "text svelte-ou1e89");
-    			add_location(p0, file, 163, 4, 4922);
-    			attr_dev(div0, "class", "flex-item item1 svelte-ou1e89");
-    			add_location(div0, file, 162, 2, 4887);
-    			attr_dev(p1, "class", "name svelte-ou1e89");
-    			add_location(p1, file, 166, 4, 4997);
-    			attr_dev(div1, "class", "flex-item item2 svelte-ou1e89");
-    			add_location(div1, file, 165, 2, 4962);
-    			attr_dev(div2, "class", "flex-container svelte-ou1e89");
+    			attr_dev(textarea, "placeholder", "input...");
+    			attr_dev(textarea, "class", "svelte-vu6oxw");
+    			add_location(textarea, file, 163, 0, 4772);
+    			add_location(button, file, 164, 0, 4827);
+    			attr_dev(p0, "class", "text svelte-vu6oxw");
+    			add_location(p0, file, 167, 4, 4982);
+    			attr_dev(div0, "class", "flex-item item1 svelte-vu6oxw");
+    			add_location(div0, file, 166, 2, 4947);
+    			attr_dev(p1, "class", "name svelte-vu6oxw");
+    			add_location(p1, file, 170, 4, 5057);
+    			attr_dev(div1, "class", "flex-item item2 svelte-vu6oxw");
+    			add_location(div1, file, 169, 2, 5022);
+    			attr_dev(div2, "class", "flex-container svelte-vu6oxw");
     			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div2, file, 161, 0, 4811);
+    			add_location(div2, file, 165, 0, 4871);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, input, anchor);
-    			set_input_value(input, /*text*/ ctx[0]);
+    			insert_dev(target, textarea, anchor);
+    			set_input_value(textarea, /*text*/ ctx[0]);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
     			insert_dev(target, t2, anchor);
@@ -836,7 +837,7 @@ var app = (function () {
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(input, "input", /*input_input_handler*/ ctx[4]),
+    					listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[4]),
     					listen_dev(button, "click", /*shareMsg*/ ctx[3], false, false, false)
     				];
 
@@ -844,8 +845,8 @@ var app = (function () {
     			}
     		},
     		p: function update(ctx, [dirty]) {
-    			if (dirty & /*text*/ 1 && input.value !== /*text*/ ctx[0]) {
-    				set_input_value(input, /*text*/ ctx[0]);
+    			if (dirty & /*text*/ 1) {
+    				set_input_value(textarea, /*text*/ ctx[0]);
     			}
 
     			if (dirty & /*text*/ 1) set_data_dev(t3, /*text*/ ctx[0]);
@@ -858,7 +859,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(input);
+    			if (detaching) detach_dev(textarea);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
     			if (detaching) detach_dev(t2);
@@ -1006,7 +1007,7 @@ var app = (function () {
     	let { $$slots = {}, $$scope } = $$props;
     	validate_slots("Pic", $$slots, []);
 
-    	function input_input_handler() {
+    	function textarea_input_handler() {
     		text = this.value;
     		$$invalidate(0, text);
     	}
@@ -1031,7 +1032,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [text, $myPic, $myName, shareMsg, input_input_handler];
+    	return [text, $myPic, $myName, shareMsg, textarea_input_handler];
     }
 
     class Pic extends SvelteComponentDev {
