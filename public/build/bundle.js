@@ -768,17 +768,18 @@ var app = (function () {
     const file = "src\\component\\Pic.svelte";
 
     function create_fragment(ctx) {
+    	let div4;
+    	let div0;
     	let textarea;
     	let t0;
     	let button;
-    	let br;
     	let t2;
-    	let div2;
-    	let div0;
+    	let div3;
+    	let div1;
     	let pre;
     	let t3;
     	let t4;
-    	let div1;
+    	let div2;
     	let p;
     	let t5;
     	let t6;
@@ -787,56 +788,61 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div4 = element("div");
+    			div0 = element("div");
     			textarea = element("textarea");
     			t0 = space();
     			button = element("button");
     			button.textContent = "share";
-    			br = element("br");
     			t2 = space();
-    			div2 = element("div");
-    			div0 = element("div");
+    			div3 = element("div");
+    			div1 = element("div");
     			pre = element("pre");
     			t3 = text(/*text*/ ctx[0]);
     			t4 = space();
-    			div1 = element("div");
+    			div2 = element("div");
     			p = element("p");
     			t5 = text("by ");
     			t6 = text(/*$myName*/ ctx[2]);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "3");
-    			attr_dev(textarea, "class", "svelte-1swvgdj");
-    			add_location(textarea, file, 163, 0, 4761);
-    			add_location(button, file, 164, 0, 4824);
-    			add_location(br, file, 164, 42, 4866);
-    			attr_dev(pre, "class", "text svelte-1swvgdj");
-    			add_location(pre, file, 167, 4, 4984);
-    			attr_dev(div0, "class", "flex-item item1 svelte-1swvgdj");
-    			add_location(div0, file, 166, 2, 4949);
-    			attr_dev(p, "class", "name svelte-1swvgdj");
-    			add_location(p, file, 170, 4, 5063);
-    			attr_dev(div1, "class", "flex-item item2 svelte-1swvgdj");
-    			add_location(div1, file, 169, 2, 5028);
-    			attr_dev(div2, "class", "flex-container svelte-1swvgdj");
-    			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div2, file, 165, 0, 4873);
+    			attr_dev(textarea, "class", "svelte-tq2s3l");
+    			add_location(textarea, file, 169, 4, 4853);
+    			add_location(button, file, 170, 4, 4921);
+    			attr_dev(div0, "class", "item-input");
+    			add_location(div0, file, 168, 2, 4823);
+    			attr_dev(pre, "class", "text svelte-tq2s3l");
+    			add_location(pre, file, 174, 6, 5096);
+    			attr_dev(div1, "class", "flex-item item1 svelte-tq2s3l");
+    			add_location(div1, file, 173, 4, 5059);
+    			attr_dev(p, "class", "name svelte-tq2s3l");
+    			add_location(p, file, 177, 6, 5181);
+    			attr_dev(div2, "class", "flex-item item2 svelte-tq2s3l");
+    			add_location(div2, file, 176, 4, 5144);
+    			attr_dev(div3, "class", "flex-pic-container svelte-tq2s3l");
+    			set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
+    			add_location(div3, file, 172, 2, 4977);
+    			attr_dev(div4, "class", "box svelte-tq2s3l");
+    			add_location(div4, file, 167, 0, 4802);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, textarea, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div0);
+    			append_dev(div0, textarea);
     			set_input_value(textarea, /*text*/ ctx[0]);
-    			insert_dev(target, t0, anchor);
-    			insert_dev(target, button, anchor);
-    			insert_dev(target, br, anchor);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, div2, anchor);
-    			append_dev(div2, div0);
-    			append_dev(div0, pre);
+    			append_dev(div0, t0);
+    			append_dev(div0, button);
+    			append_dev(div4, t2);
+    			append_dev(div4, div3);
+    			append_dev(div3, div1);
+    			append_dev(div1, pre);
     			append_dev(pre, t3);
-    			append_dev(div2, t4);
-    			append_dev(div2, div1);
-    			append_dev(div1, p);
+    			append_dev(div3, t4);
+    			append_dev(div3, div2);
+    			append_dev(div2, p);
     			append_dev(p, t5);
     			append_dev(p, t6);
 
@@ -858,18 +864,13 @@ var app = (function () {
     			if (dirty & /*$myName*/ 4) set_data_dev(t6, /*$myName*/ ctx[2]);
 
     			if (dirty & /*$myPic*/ 2) {
-    				set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
+    				set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
     			}
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(textarea);
-    			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(button);
-    			if (detaching) detach_dev(br);
-    			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div4);
     			mounted = false;
     			run_all(dispose);
     		}

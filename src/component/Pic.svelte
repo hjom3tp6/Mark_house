@@ -120,8 +120,11 @@
 </script>
 
 <style>
-  .flex-container {
-    display: -webkit-flex;
+  .box {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-pic-container {
     display: flex;
     height: 300px;
     width: 300px;
@@ -151,23 +154,28 @@
     font-size: x-large;
   }
 
-  p, pre {
+  p,
+  pre {
     color: aliceblue;
     padding: 0px 20px;
   }
 
   textarea {
-      width: 100%;
+    width: 100%;
   }
 </style>
 
-<textarea bind:value={text} placeholder="input..." rows="3"/>
-<button on:click={shareMsg}>share</button><br/>
-<div class="flex-container" style="--flex-container--bg: url({$myPic})">
-  <div class="flex-item item1">
-    <pre class="text">{text}</pre>
+<div class="box">
+  <div class="item-input">
+    <textarea bind:value={text} placeholder="input..." rows="3" />
+    <button on:click={shareMsg}>share</button>
   </div>
-  <div class="flex-item item2">
-    <p class="name">by {$myName}</p>
+  <div class="flex-pic-container" style="--flex-container--bg: url({$myPic})">
+    <div class="flex-item item1">
+      <pre class="text">{text}</pre>
+    </div>
+    <div class="flex-item item2">
+      <p class="name">by {$myName}</p>
+    </div>
   </div>
 </div>
