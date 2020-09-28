@@ -771,6 +771,7 @@ var app = (function () {
     	let textarea;
     	let t0;
     	let button;
+    	let br;
     	let t2;
     	let div2;
     	let div0;
@@ -790,6 +791,7 @@ var app = (function () {
     			t0 = space();
     			button = element("button");
     			button.textContent = "share";
+    			br = element("br");
     			t2 = space();
     			div2 = element("div");
     			div0 = element("div");
@@ -805,17 +807,18 @@ var app = (function () {
     			attr_dev(textarea, "class", "svelte-1swvgdj");
     			add_location(textarea, file, 163, 0, 4761);
     			add_location(button, file, 164, 0, 4824);
+    			add_location(br, file, 164, 42, 4866);
     			attr_dev(pre, "class", "text svelte-1swvgdj");
-    			add_location(pre, file, 167, 4, 4979);
+    			add_location(pre, file, 167, 4, 4984);
     			attr_dev(div0, "class", "flex-item item1 svelte-1swvgdj");
-    			add_location(div0, file, 166, 2, 4944);
+    			add_location(div0, file, 166, 2, 4949);
     			attr_dev(p, "class", "name svelte-1swvgdj");
-    			add_location(p, file, 170, 4, 5058);
+    			add_location(p, file, 170, 4, 5063);
     			attr_dev(div1, "class", "flex-item item2 svelte-1swvgdj");
-    			add_location(div1, file, 169, 2, 5023);
+    			add_location(div1, file, 169, 2, 5028);
     			attr_dev(div2, "class", "flex-container svelte-1swvgdj");
     			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div2, file, 165, 0, 4868);
+    			add_location(div2, file, 165, 0, 4873);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -825,6 +828,7 @@ var app = (function () {
     			set_input_value(textarea, /*text*/ ctx[0]);
     			insert_dev(target, t0, anchor);
     			insert_dev(target, button, anchor);
+    			insert_dev(target, br, anchor);
     			insert_dev(target, t2, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
@@ -863,6 +867,7 @@ var app = (function () {
     			if (detaching) detach_dev(textarea);
     			if (detaching) detach_dev(t0);
     			if (detaching) detach_dev(button);
+    			if (detaching) detach_dev(br);
     			if (detaching) detach_dev(t2);
     			if (detaching) detach_dev(div2);
     			mounted = false;
@@ -1065,7 +1070,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 62, 2, 1213);
+    			add_location(p, file$1, 62, 2, 1214);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1178,8 +1183,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(pic.$$.fragment);
-    			attr_dev(div, "class", "box-component svelte-gs6ugt");
-    			add_location(div, file$1, 57, 4, 1119);
+    			attr_dev(div, "class", "box-component svelte-7vl5ck");
+    			add_location(div, file$1, 57, 4, 1120);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1229,7 +1234,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$1, 55, 4, 1085);
+    			add_location(h1, file$1, 55, 4, 1086);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1259,7 +1264,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$1, 52, 2, 1045);
+    			add_location(div, file$1, 52, 2, 1046);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
