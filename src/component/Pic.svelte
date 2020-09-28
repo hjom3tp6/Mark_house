@@ -151,7 +151,7 @@
     font-size: x-large;
   }
 
-  p {
+  p, pre {
     color: aliceblue;
     padding: 0px 20px;
   }
@@ -165,7 +165,7 @@
 <button on:click={shareMsg}>share</button>
 <div class="flex-container" style="--flex-container--bg: url({$myPic})">
   <div class="flex-item item1">
-    <p class="text">{text}</p>
+    <pre class="text">{text}</pre>
   </div>
   <div class="flex-item item2">
     <p class="name">by {$myName}</p>

@@ -774,11 +774,11 @@ var app = (function () {
     	let t2;
     	let div2;
     	let div0;
-    	let p0;
+    	let pre;
     	let t3;
     	let t4;
     	let div1;
-    	let p1;
+    	let p;
     	let t5;
     	let t6;
     	let mounted;
@@ -793,28 +793,28 @@ var app = (function () {
     			t2 = space();
     			div2 = element("div");
     			div0 = element("div");
-    			p0 = element("p");
+    			pre = element("pre");
     			t3 = text(/*text*/ ctx[0]);
     			t4 = space();
     			div1 = element("div");
-    			p1 = element("p");
+    			p = element("p");
     			t5 = text("by ");
     			t6 = text(/*$myName*/ ctx[2]);
     			attr_dev(textarea, "placeholder", "input...");
-    			attr_dev(textarea, "class", "svelte-vu6oxw");
-    			add_location(textarea, file, 163, 0, 4772);
-    			add_location(button, file, 164, 0, 4827);
-    			attr_dev(p0, "class", "text svelte-vu6oxw");
-    			add_location(p0, file, 167, 4, 4982);
-    			attr_dev(div0, "class", "flex-item item1 svelte-vu6oxw");
-    			add_location(div0, file, 166, 2, 4947);
-    			attr_dev(p1, "class", "name svelte-vu6oxw");
-    			add_location(p1, file, 170, 4, 5057);
-    			attr_dev(div1, "class", "flex-item item2 svelte-vu6oxw");
-    			add_location(div1, file, 169, 2, 5022);
-    			attr_dev(div2, "class", "flex-container svelte-vu6oxw");
+    			attr_dev(textarea, "class", "svelte-uv1bzr");
+    			add_location(textarea, file, 163, 0, 4777);
+    			add_location(button, file, 164, 0, 4832);
+    			attr_dev(pre, "class", "text svelte-uv1bzr");
+    			add_location(pre, file, 167, 4, 4987);
+    			attr_dev(div0, "class", "flex-item item1 svelte-uv1bzr");
+    			add_location(div0, file, 166, 2, 4952);
+    			attr_dev(p, "class", "name svelte-uv1bzr");
+    			add_location(p, file, 170, 4, 5066);
+    			attr_dev(div1, "class", "flex-item item2 svelte-uv1bzr");
+    			add_location(div1, file, 169, 2, 5031);
+    			attr_dev(div2, "class", "flex-container svelte-uv1bzr");
     			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div2, file, 165, 0, 4871);
+    			add_location(div2, file, 165, 0, 4876);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -827,13 +827,13 @@ var app = (function () {
     			insert_dev(target, t2, anchor);
     			insert_dev(target, div2, anchor);
     			append_dev(div2, div0);
-    			append_dev(div0, p0);
-    			append_dev(p0, t3);
+    			append_dev(div0, pre);
+    			append_dev(pre, t3);
     			append_dev(div2, t4);
     			append_dev(div2, div1);
-    			append_dev(div1, p1);
-    			append_dev(p1, t5);
-    			append_dev(p1, t6);
+    			append_dev(div1, p);
+    			append_dev(p, t5);
+    			append_dev(p, t6);
 
     			if (!mounted) {
     				dispose = [
