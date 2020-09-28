@@ -1160,7 +1160,7 @@ var app = (function () {
     const { console: console_1$1 } = globals;
     const file$1 = "src\\App.svelte";
 
-    // (78:0) {:catch error}
+    // (77:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
     	let t_value = /*error*/ ctx[6].message + "";
@@ -1170,7 +1170,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 78, 2, 1607);
+    			add_location(p, file$1, 77, 2, 1597);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1188,7 +1188,7 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(78:0) {:catch error}",
+    		source: "(77:0) {:catch error}",
     		ctx
     	});
 
@@ -1266,8 +1266,6 @@ var app = (function () {
     	let div;
     	let pic;
     	let t0;
-    	let t1;
-    	let t2;
     	let button;
     	let div_transition;
     	let current;
@@ -1280,11 +1278,9 @@ var app = (function () {
     			div = element("div");
     			create_component(pic.$$.fragment);
     			t0 = space();
-    			t1 = text(/*$msg*/ ctx[1]);
-    			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			add_location(button, file$1, 74, 3, 1528);
+    			add_location(button, file$1, 73, 3, 1518);
     			attr_dev(div, "class", "box-component svelte-ljquuk");
     			add_location(div, file$1, 71, 4, 1460);
     		},
@@ -1292,19 +1288,15 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			mount_component(pic, div, null);
     			append_dev(div, t0);
-    			append_dev(div, t1);
-    			append_dev(div, t2);
     			append_dev(div, button);
     			current = true;
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*shareMsg*/ ctx[3], false, false, false);
+    				dispose = listen_dev(button, "click", /*shareMsg*/ ctx[2], false, false, false);
     				mounted = true;
     			}
     		},
-    		p: function update(ctx, dirty) {
-    			if (!current || dirty & /*$msg*/ 2) set_data_dev(t1, /*$msg*/ ctx[1]);
-    		},
+    		p: noop,
     		i: function intro(local) {
     			if (current) return;
     			transition_in(pic.$$.fragment, local);
@@ -1389,7 +1381,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*liffInit*/ ctx[2], info);
+    	handle_promise(promise = /*liffInit*/ ctx[1], info);
 
     	const block = {
     		c: function create() {
@@ -1449,7 +1441,7 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let $msg;
     	validate_store(msg, "msg");
-    	component_subscribe($$self, msg, $$value => $$invalidate(1, $msg = $$value));
+    	component_subscribe($$self, msg, $$value => $$invalidate(3, $msg = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
 
@@ -1513,14 +1505,14 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
-    		if ("liffInit" in $$props) $$invalidate(2, liffInit = $$props.liffInit);
+    		if ("liffInit" in $$props) $$invalidate(1, liffInit = $$props.liffInit);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [isInClient, $msg, liffInit, shareMsg];
+    	return [isInClient, liffInit, shareMsg];
     }
 
     class App extends SvelteComponentDev {

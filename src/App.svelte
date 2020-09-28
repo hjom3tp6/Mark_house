@@ -71,7 +71,6 @@
   {:else} -->
     <div class="box-component" transition:fade>
 	  <Pic />
-	  {$msg}
 	  <button on:click={shareMsg}>share</button>
     </div>
   {/if}
