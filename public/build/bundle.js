@@ -810,23 +810,23 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "3");
     			attr_dev(textarea, "class", "svelte-tq2s3l");
-    			add_location(textarea, file, 263, 4, 7723);
-    			add_location(button, file, 264, 4, 7791);
+    			add_location(textarea, file, 263, 4, 7718);
+    			add_location(button, file, 264, 4, 7786);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file, 262, 2, 7693);
+    			add_location(div0, file, 262, 2, 7688);
     			attr_dev(pre, "class", "text svelte-tq2s3l");
-    			add_location(pre, file, 268, 6, 7966);
+    			add_location(pre, file, 268, 6, 7961);
     			attr_dev(div1, "class", "flex-item item1 svelte-tq2s3l");
-    			add_location(div1, file, 267, 4, 7929);
+    			add_location(div1, file, 267, 4, 7924);
     			attr_dev(p, "class", "name svelte-tq2s3l");
-    			add_location(p, file, 271, 6, 8051);
+    			add_location(p, file, 271, 6, 8046);
     			attr_dev(div2, "class", "flex-item item2 svelte-tq2s3l");
-    			add_location(div2, file, 270, 4, 8014);
+    			add_location(div2, file, 270, 4, 8009);
     			attr_dev(div3, "class", "flex-pic-container svelte-tq2s3l");
     			set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div3, file, 266, 2, 7847);
+    			add_location(div3, file, 266, 2, 7842);
     			attr_dev(div4, "class", "box svelte-tq2s3l");
-    			add_location(div4, file, 261, 0, 7672);
+    			add_location(div4, file, 261, 0, 7667);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -996,7 +996,7 @@ var app = (function () {
     	];
 
     	onMount(async () => {
-    		await msg.set(msgArray);
+    		msg.set(msgArray);
     	});
 
     	function shareMsg() {

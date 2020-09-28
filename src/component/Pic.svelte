@@ -101,7 +101,7 @@
     },
   ];
   onMount(async() => {
-    await msg.set(msgArray);
+     msg.set(msgArray);
   })
  
   function shareMsg() {
