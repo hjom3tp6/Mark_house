@@ -810,23 +810,23 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "3");
     			attr_dev(textarea, "class", "svelte-tq2s3l");
-    			add_location(textarea, file, 262, 4, 7715);
-    			add_location(button, file, 263, 4, 7783);
+    			add_location(textarea, file, 263, 4, 7723);
+    			add_location(button, file, 264, 4, 7791);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file, 261, 2, 7685);
+    			add_location(div0, file, 262, 2, 7693);
     			attr_dev(pre, "class", "text svelte-tq2s3l");
-    			add_location(pre, file, 267, 6, 7958);
+    			add_location(pre, file, 268, 6, 7966);
     			attr_dev(div1, "class", "flex-item item1 svelte-tq2s3l");
-    			add_location(div1, file, 266, 4, 7921);
+    			add_location(div1, file, 267, 4, 7929);
     			attr_dev(p, "class", "name svelte-tq2s3l");
-    			add_location(p, file, 270, 6, 8043);
+    			add_location(p, file, 271, 6, 8051);
     			attr_dev(div2, "class", "flex-item item2 svelte-tq2s3l");
-    			add_location(div2, file, 269, 4, 8006);
+    			add_location(div2, file, 270, 4, 8014);
     			attr_dev(div3, "class", "flex-pic-container svelte-tq2s3l");
     			set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div3, file, 265, 2, 7839);
+    			add_location(div3, file, 266, 2, 7847);
     			attr_dev(div4, "class", "box svelte-tq2s3l");
-    			add_location(div4, file, 260, 0, 7664);
+    			add_location(div4, file, 261, 0, 7672);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -995,9 +995,9 @@ var app = (function () {
     		}
     	];
 
-    	function createMsg() {
-    		msg.set(msgArray);
-    	}
+    	onMount(async () => {
+    		await msg.set(msgArray);
+    	});
 
     	function shareMsg() {
     		if (liff.isApiAvailable("shareTargetPicker")) {
@@ -1124,7 +1124,6 @@ var app = (function () {
     		msg,
     		text,
     		msgArray,
-    		createMsg,
     		shareMsg,
     		$myPic,
     		$myName

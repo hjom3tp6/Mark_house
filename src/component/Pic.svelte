@@ -100,9 +100,10 @@
       },
     },
   ];
-  function createMsg() {
-    msg.set(msgArray);
-  }
+  onMount(async() => {
+    await msg.set(msgArray);
+  })
+ 
   function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
       liff
