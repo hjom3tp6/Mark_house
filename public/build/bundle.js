@@ -195,8 +195,8 @@ var app = (function () {
             throw new Error(`Function called outside component initialization`);
         return current_component;
     }
-    function onMount(fn) {
-        get_current_component().$$.on_mount.push(fn);
+    function afterUpdate(fn) {
+        get_current_component().$$.after_update.push(fn);
     }
 
     const dirty_components = [];
@@ -810,23 +810,23 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "3");
     			attr_dev(textarea, "class", "svelte-tq2s3l");
-    			add_location(textarea, file, 263, 4, 7718);
-    			add_location(button, file, 264, 4, 7786);
+    			add_location(textarea, file, 262, 4, 7693);
+    			add_location(button, file, 263, 4, 7761);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file, 262, 2, 7688);
+    			add_location(div0, file, 261, 2, 7663);
     			attr_dev(pre, "class", "text svelte-tq2s3l");
-    			add_location(pre, file, 268, 6, 7961);
+    			add_location(pre, file, 267, 6, 7936);
     			attr_dev(div1, "class", "flex-item item1 svelte-tq2s3l");
-    			add_location(div1, file, 267, 4, 7924);
+    			add_location(div1, file, 266, 4, 7899);
     			attr_dev(p, "class", "name svelte-tq2s3l");
-    			add_location(p, file, 271, 6, 8046);
+    			add_location(p, file, 270, 6, 8021);
     			attr_dev(div2, "class", "flex-item item2 svelte-tq2s3l");
-    			add_location(div2, file, 270, 4, 8009);
+    			add_location(div2, file, 269, 4, 7984);
     			attr_dev(div3, "class", "flex-pic-container svelte-tq2s3l");
     			set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div3, file, 266, 2, 7842);
+    			add_location(div3, file, 265, 2, 7817);
     			attr_dev(div4, "class", "box svelte-tq2s3l");
-    			add_location(div4, file, 261, 0, 7667);
+    			add_location(div4, file, 260, 0, 7642);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -899,104 +899,102 @@ var app = (function () {
     	component_subscribe($$self, myName, $$value => $$invalidate(2, $myName = $$value));
     	let text = "";
 
-    	let msgArray = [
-    		{
-    			type: "flex",
-    			altText: text,
-    			contents: {
-    				type: "bubble",
-    				body: {
-    					type: "box",
-    					layout: "vertical",
-    					contents: [
-    						{
-    							type: "image",
-    							url: $myPic,
-    							size: "full",
-    							aspectMode: "cover",
-    							aspectRatio: "1:1",
-    							gravity: "center"
-    						},
-    						{
-    							type: "image",
-    							url: "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip15.png",
-    							position: "absolute",
-    							aspectMode: "fit",
-    							aspectRatio: "1:1",
-    							offsetTop: "0px",
-    							offsetBottom: "0px",
-    							offsetStart: "0px",
-    							offsetEnd: "0px",
-    							size: "full"
-    						},
-    						{
-    							type: "box",
-    							layout: "horizontal",
-    							contents: [
-    								{
-    									type: "box",
-    									layout: "vertical",
-    									contents: [
-    										{
-    											type: "box",
-    											layout: "horizontal",
-    											contents: [
-    												{
-    													type: "text",
-    													text,
-    													size: "xl",
-    													color: "#ffffff",
-    													wrap: true
-    												}
-    											]
-    										},
-    										{
-    											type: "box",
-    											layout: "vertical",
-    											contents: [
-    												{
-    													type: "box",
-    													layout: "vertical",
-    													contents: [
-    														{
-    															type: "text",
-    															text: "by " + $myName,
-    															color: "#ffffff",
-    															size: "md",
-    															flex: 0,
-    															align: "end",
-    															style: "italic"
-    														}
-    													],
-    													flex: 0,
-    													spacing: "lg"
-    												}
-    											]
-    										}
-    									],
-    									spacing: "xs"
-    								}
-    							],
-    							position: "absolute",
-    							offsetBottom: "0px",
-    							offsetStart: "0px",
-    							offsetEnd: "0px",
-    							paddingAll: "20px"
+    	afterUpdate(() => {
+    		msg.set([
+    			{
+    				type: "flex",
+    				altText: text,
+    				contents: {
+    					type: "bubble",
+    					body: {
+    						type: "box",
+    						layout: "vertical",
+    						contents: [
+    							{
+    								type: "image",
+    								url: $myPic,
+    								size: "full",
+    								aspectMode: "cover",
+    								aspectRatio: "1:1",
+    								gravity: "center"
+    							},
+    							{
+    								type: "image",
+    								url: "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip15.png",
+    								position: "absolute",
+    								aspectMode: "fit",
+    								aspectRatio: "1:1",
+    								offsetTop: "0px",
+    								offsetBottom: "0px",
+    								offsetStart: "0px",
+    								offsetEnd: "0px",
+    								size: "full"
+    							},
+    							{
+    								type: "box",
+    								layout: "horizontal",
+    								contents: [
+    									{
+    										type: "box",
+    										layout: "vertical",
+    										contents: [
+    											{
+    												type: "box",
+    												layout: "horizontal",
+    												contents: [
+    													{
+    														type: "text",
+    														text,
+    														size: "xl",
+    														color: "#ffffff",
+    														wrap: true
+    													}
+    												]
+    											},
+    											{
+    												type: "box",
+    												layout: "vertical",
+    												contents: [
+    													{
+    														type: "box",
+    														layout: "vertical",
+    														contents: [
+    															{
+    																type: "text",
+    																text: "by " + $myName,
+    																color: "#ffffff",
+    																size: "md",
+    																flex: 0,
+    																align: "end",
+    																style: "italic"
+    															}
+    														],
+    														flex: 0,
+    														spacing: "lg"
+    													}
+    												]
+    											}
+    										],
+    										spacing: "xs"
+    									}
+    								],
+    								position: "absolute",
+    								offsetBottom: "0px",
+    								offsetStart: "0px",
+    								offsetEnd: "0px",
+    								paddingAll: "20px"
+    							}
+    						],
+    						paddingAll: "0px",
+    						action: {
+    							type: "uri",
+    							label: "action",
+    							uri: "https://liff.line.me/1654061887-ZoYpPWL2"
     						}
-    					],
-    					paddingAll: "0px",
-    					action: {
-    						type: "uri",
-    						label: "action",
-    						uri: "https://liff.line.me/1654061887-ZoYpPWL2"
     					}
     				}
     			}
-    		}
-    	];
-
-    	onMount(async () => {
-    		msg.set(msgArray);
+    		]);
     	});
 
     	function shareMsg() {
@@ -1118,12 +1116,11 @@ var app = (function () {
     	}
 
     	$$self.$capture_state = () => ({
-    		onMount,
+    		afterUpdate,
     		myPic,
     		myName,
     		msg,
     		text,
-    		msgArray,
     		shareMsg,
     		$myPic,
     		$myName
@@ -1131,7 +1128,6 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("text" in $$props) $$invalidate(0, text = $$props.text);
-    		if ("msgArray" in $$props) msgArray = $$props.msgArray;
     	};
 
     	if ($$props && "$$inject" in $$props) {

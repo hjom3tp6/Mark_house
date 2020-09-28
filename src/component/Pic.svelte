@@ -1,10 +1,11 @@
 <script>
-  import { onMount } from "svelte";
+  import { afterUpdate } from "svelte";
   import { myPic, myName, msg } from "../stores.js";
 
   //   let picUrl = "";
   let text = "";
-  let msgArray = [
+  afterUpdate(() => {
+     msg.set([
     {
       type: "flex",
       altText: text,
@@ -99,9 +100,7 @@
         },
       },
     },
-  ];
-  onMount(async() => {
-     msg.set(msgArray);
+  ]);
   })
  
   function shareMsg() {
