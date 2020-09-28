@@ -40,6 +40,13 @@
 </script>
 
 <style>
+.box-component {
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 </style>
 {#await liffInit}
   <div />
@@ -47,7 +54,7 @@
   {#if !isInClient}
     <h1>請移至line中開啟</h1>
   {:else}
-    <div transition:fade>
+    <div class="box-component" transition:fade>
       <Pic />
     </div>
   {/if}

@@ -1055,7 +1055,7 @@ var app = (function () {
     const { console: console_1 } = globals;
     const file$1 = "src\\App.svelte";
 
-    // (54:0) {:catch error}
+    // (61:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
     	let t_value = /*error*/ ctx[4].message + "";
@@ -1065,7 +1065,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$1, 54, 2, 1079);
+    			add_location(p, file$1, 61, 2, 1198);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1083,14 +1083,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(54:0) {:catch error}",
+    		source: "(61:0) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (46:0) {:then}
+    // (53:0) {:then}
     function create_then_block(ctx) {
     	let current_block_type_index;
     	let if_block;
@@ -1159,14 +1159,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(46:0) {:then}",
+    		source: "(53:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (49:2) {:else}
+    // (56:2) {:else}
     function create_else_block(ctx) {
     	let div;
     	let pic;
@@ -1178,7 +1178,8 @@ var app = (function () {
     		c: function create() {
     			div = element("div");
     			create_component(pic.$$.fragment);
-    			add_location(div, file$1, 49, 4, 1007);
+    			attr_dev(div, "class", "box-component svelte-15t5k1m");
+    			add_location(div, file$1, 56, 4, 1104);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1213,14 +1214,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(49:2) {:else}",
+    		source: "(56:2) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (47:2) {#if !isInClient}
+    // (54:2) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -1228,7 +1229,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$1, 47, 4, 973);
+    			add_location(h1, file$1, 54, 4, 1070);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1244,21 +1245,21 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(47:2) {#if !isInClient}",
+    		source: "(54:2) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (44:17)    <div /> {:then}
+    // (51:17)    <div /> {:then}
     function create_pending_block(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$1, 44, 2, 933);
+    			add_location(div, file$1, 51, 2, 1030);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1275,7 +1276,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(44:17)    <div /> {:then}",
+    		source: "(51:17)    <div /> {:then}",
     		ctx
     	});
 
