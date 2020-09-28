@@ -1,11 +1,108 @@
 <script>
   import { onMount } from "svelte";
-  import { myPic, myName } from "../stores.js";
+  import { myPic, myName, msg } from "../stores.js";
 
   //   let picUrl = "";
   let text = "";
-  let shareMsgSuccess = false;
-
+  let msgArray = [
+    {
+      type: "flex",
+      altText: text,
+      contents: {
+        type: "bubble",
+        body: {
+          type: "box",
+          layout: "vertical",
+          contents: [
+            {
+              type: "image",
+              url: $myPic,
+              size: "full",
+              aspectMode: "cover",
+              aspectRatio: "1:1",
+              gravity: "center",
+            },
+            {
+              type: "image",
+              url:
+                "https://scdn.line-apps.com/n/channel_devcenter/img/flexsnapshot/clip/clip15.png",
+              position: "absolute",
+              aspectMode: "fit",
+              aspectRatio: "1:1",
+              offsetTop: "0px",
+              offsetBottom: "0px",
+              offsetStart: "0px",
+              offsetEnd: "0px",
+              size: "full",
+            },
+            {
+              type: "box",
+              layout: "horizontal",
+              contents: [
+                {
+                  type: "box",
+                  layout: "vertical",
+                  contents: [
+                    {
+                      type: "box",
+                      layout: "horizontal",
+                      contents: [
+                        {
+                          type: "text",
+                          text: text,
+                          size: "xl",
+                          color: "#ffffff",
+                          wrap: true,
+                        },
+                      ],
+                    },
+                    {
+                      type: "box",
+                      layout: "vertical",
+                      contents: [
+                        {
+                          type: "box",
+                          layout: "vertical",
+                          contents: [
+                            {
+                              type: "text",
+                              text: "by " + $myName,
+                              color: "#ffffff",
+                              size: "md",
+                              flex: 0,
+                              align: "end",
+                              style: "italic",
+                            },
+                          ],
+                          flex: 0,
+                          spacing: "lg",
+                        },
+                      ],
+                    },
+                  ],
+                  spacing: "xs",
+                },
+              ],
+              position: "absolute",
+              offsetBottom: "0px",
+              offsetStart: "0px",
+              offsetEnd: "0px",
+              paddingAll: "20px",
+            },
+          ],
+          paddingAll: "0px",
+          action: {
+            type: "uri",
+            label: "action",
+            uri: "https://liff.line.me/1654061887-ZoYpPWL2",
+          },
+        },
+      },
+    },
+  ];
+  function createMsg() {
+    msg.set(msgArray);
+  }
   function shareMsg() {
     if (liff.isApiAvailable("shareTargetPicker")) {
       liff
@@ -106,14 +203,10 @@
           },
         ])
         .then(function (res) {
-          if (res) {
-            shareMsgSuccess = true;
-          } else {
-            shareMsgSuccess = false;
-          }
+          console.log(res);
         })
         .catch(function (error) {
-          shareMsgSuccess = false;
+          console.log(error);
         });
     }
   }

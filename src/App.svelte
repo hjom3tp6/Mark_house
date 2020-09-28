@@ -2,7 +2,7 @@
   import liff from "@line/liff";
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
-  import { myPic, myName } from './stores.js';
+  import { myPic, myName, msg } from "./stores.js";
 
   let isInClient = false;
   let liffInit = initLiff();
@@ -18,9 +18,9 @@
       })
       .catch((err) => {
         window.alert("請檢察網路連線問題");
-	  });
-	  
-	  await liff
+      });
+
+    await liff
       .getProfile()
       .then((profile) => {
         myName.set(profile.displayName);
@@ -28,7 +28,20 @@
       })
       .catch((err) => {
         console.log("error", err);
-  });
+      });
+  }
+
+  function shareMsg() {
+    if (liff.isApiAvailable("shareTargetPicker")) {
+      liff
+        .shareTargetPicker($msg)
+        .then(function (res) {
+          console.log(res);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   }
   //   onMount(initLiff());
   /**
@@ -40,15 +53,16 @@
 </script>
 
 <style>
-.box-component {
-	width: 100%;
-	margin: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
+  .box-component {
+    width: 100%;
+	flex-direction: column;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
+
 {#await liffInit}
   <div />
 {:then}
@@ -56,7 +70,8 @@
     <h1>請移至line中開啟</h1>
   {:else}
     <div class="box-component" transition:fade>
-      <Pic />
+	  <Pic />
+	  <button on:click={shareMsg}>share</button>
     </div>
   {/if}
 {:catch error}
