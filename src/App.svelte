@@ -67,8 +67,8 @@
   <div />
 {:then}
   {#if !isInClient}
-    <!-- <h1>請移至line中開啟</h1>
-  {:else} -->
+    <h1>請移至line中開啟</h1>
+  {:else}
     <div class="box-component" transition:fade>
 	  <Pic />
 	  <button on:click={shareMsg}>share</button>
