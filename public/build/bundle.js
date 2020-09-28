@@ -801,20 +801,21 @@ var app = (function () {
     			t5 = text("by ");
     			t6 = text(/*$myName*/ ctx[2]);
     			attr_dev(textarea, "placeholder", "input...");
-    			attr_dev(textarea, "class", "svelte-uv1bzr");
-    			add_location(textarea, file, 163, 0, 4777);
-    			add_location(button, file, 164, 0, 4832);
-    			attr_dev(pre, "class", "text svelte-uv1bzr");
-    			add_location(pre, file, 167, 4, 4987);
-    			attr_dev(div0, "class", "flex-item item1 svelte-uv1bzr");
-    			add_location(div0, file, 166, 2, 4952);
-    			attr_dev(p, "class", "name svelte-uv1bzr");
-    			add_location(p, file, 170, 4, 5066);
-    			attr_dev(div1, "class", "flex-item item2 svelte-uv1bzr");
-    			add_location(div1, file, 169, 2, 5031);
-    			attr_dev(div2, "class", "flex-container svelte-uv1bzr");
+    			attr_dev(textarea, "rows", "3");
+    			attr_dev(textarea, "class", "svelte-1swvgdj");
+    			add_location(textarea, file, 163, 0, 4761);
+    			add_location(button, file, 164, 0, 4824);
+    			attr_dev(pre, "class", "text svelte-1swvgdj");
+    			add_location(pre, file, 167, 4, 4979);
+    			attr_dev(div0, "class", "flex-item item1 svelte-1swvgdj");
+    			add_location(div0, file, 166, 2, 4944);
+    			attr_dev(p, "class", "name svelte-1swvgdj");
+    			add_location(p, file, 170, 4, 5058);
+    			attr_dev(div1, "class", "flex-item item2 svelte-1swvgdj");
+    			add_location(div1, file, 169, 2, 5023);
+    			attr_dev(div2, "class", "flex-container svelte-1swvgdj");
     			set_style(div2, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div2, file, 165, 0, 4876);
+    			add_location(div2, file, 165, 0, 4868);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");

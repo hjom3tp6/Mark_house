@@ -157,11 +157,11 @@
   }
 
   textarea {
-      widows: 100%; height: 100px;
+      width: 100%;
   }
 </style>
 
-<textarea bind:value={text} placeholder="input..." />
+<textarea bind:value={text} placeholder="input..." rows="3"/>
 <button on:click={shareMsg}>share</button>
 <div class="flex-container" style="--flex-container--bg: url({$myPic})">
   <div class="flex-item item1">
