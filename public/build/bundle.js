@@ -1269,7 +1269,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (87:0) {:catch error}
+    // (89:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
     	let t_value = /*error*/ ctx[12].message + "";
@@ -1279,7 +1279,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 87, 2, 1913);
+    			add_location(p, file$2, 89, 2, 1956);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1297,7 +1297,7 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(87:0) {:catch error}",
+    		source: "(89:0) {:catch error}",
     		ctx
     	});
 
@@ -1406,7 +1406,9 @@ var app = (function () {
     function create_else_block(ctx) {
     	let select;
     	let t0;
+    	let div;
     	let switch_instance;
+    	let div_transition;
     	let t1;
     	let button;
     	let current;
@@ -1439,13 +1441,15 @@ var app = (function () {
     			}
 
     			t0 = space();
+    			div = element("div");
     			if (switch_instance) create_component(switch_instance.$$.fragment);
     			t1 = space();
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
     			add_location(select, file$2, 77, 6, 1621);
-    			add_location(button, file$2, 83, 6, 1834);
+    			add_location(div, file$2, 82, 6, 1781);
+    			add_location(button, file$2, 85, 6, 1877);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1456,9 +1460,10 @@ var app = (function () {
 
     			select_option(select, /*selected*/ ctx[1]);
     			insert_dev(target, t0, anchor);
+    			insert_dev(target, div, anchor);
 
     			if (switch_instance) {
-    				mount_component(switch_instance, target, anchor);
+    				mount_component(switch_instance, div, null);
     			}
 
     			insert_dev(target, t1, anchor);
@@ -1519,7 +1524,7 @@ var app = (function () {
     					switch_instance = new switch_value(switch_props());
     					create_component(switch_instance.$$.fragment);
     					transition_in(switch_instance.$$.fragment, 1);
-    					mount_component(switch_instance, t1.parentNode, t1);
+    					mount_component(switch_instance, div, null);
     				} else {
     					switch_instance = null;
     				}
@@ -1528,17 +1533,27 @@ var app = (function () {
     		i: function intro(local) {
     			if (current) return;
     			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
+
+    			add_render_callback(() => {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
+    				div_transition.run(1);
+    			});
+
     			current = true;
     		},
     		o: function outro(local) {
     			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
+    			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(select);
     			destroy_each(each_blocks, detaching);
     			if (detaching) detach_dev(t0);
-    			if (switch_instance) destroy_component(switch_instance, detaching);
+    			if (detaching) detach_dev(div);
+    			if (switch_instance) destroy_component(switch_instance);
+    			if (detaching && div_transition) div_transition.end();
     			if (detaching) detach_dev(t1);
     			if (detaching) detach_dev(button);
     			mounted = false;

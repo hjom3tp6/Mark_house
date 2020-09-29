@@ -80,7 +80,9 @@
           <option value={option}>{option.title}</option>
         {/each}
       </select>
-      <svelte:component this={selected.component} />
+      <div transition:fade>
+        <svelte:component this={selected.component} />
+      </div>
       <button on:click={shareMsg}>share</button>
     {/if}
   </div>
