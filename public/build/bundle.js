@@ -1348,7 +1348,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 89, 2, 1988);
+    			add_location(p, file$2, 89, 2, 1979);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1378,9 +1378,20 @@ var app = (function () {
     	let div;
     	let h3;
     	let t1;
+    	let current_block_type_index;
+    	let if_block;
     	let div_transition;
     	let current;
-    	let if_block = !/*isInClient*/ ctx[0] && create_if_block(ctx);
+    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (!/*isInClient*/ ctx[0]) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
 
     	const block = {
     		c: function create() {
@@ -1388,7 +1399,7 @@ var app = (function () {
     			h3 = element("h3");
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
-    			if (if_block) if_block.c();
+    			if_block.c();
     			add_location(h3, file$2, 73, 4, 1535);
     			attr_dev(div, "class", "box-component svelte-1y8gq57");
     			add_location(div, file$2, 72, 2, 1487);
@@ -1397,31 +1408,32 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			append_dev(div, h3);
     			append_dev(div, t1);
-    			if (if_block) if_block.m(div, null);
+    			if_blocks[current_block_type_index].m(div, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			if (!/*isInClient*/ ctx[0]) {
-    				if (if_block) {
-    					if_block.p(ctx, dirty);
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
 
-    					if (dirty & /*isInClient*/ 1) {
-    						transition_in(if_block, 1);
-    					}
-    				} else {
-    					if_block = create_if_block(ctx);
-    					if_block.c();
-    					transition_in(if_block, 1);
-    					if_block.m(div, null);
-    				}
-    			} else if (if_block) {
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
     				group_outros();
 
-    				transition_out(if_block, 1, 1, () => {
-    					if_block = null;
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
     				});
 
     				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(div, null);
     			}
     		},
     		i: function intro(local) {
@@ -1443,7 +1455,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			if (if_block) if_block.d();
+    			if_blocks[current_block_type_index].d();
     			if (detaching && div_transition) div_transition.end();
     		}
     	};
@@ -1459,8 +1471,8 @@ var app = (function () {
     	return block;
     }
 
-    // (75:4) {#if !isInClient}
-    function create_if_block(ctx) {
+    // (77:4) {:else}
+    function create_else_block(ctx) {
     	let select;
     	let t0;
     	let div;
@@ -1504,10 +1516,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
-    			add_location(select, file$2, 77, 6, 1629);
+    			add_location(select, file$2, 77, 6, 1620);
     			attr_dev(div, "class", "item-component");
-    			add_location(div, file$2, 82, 6, 1789);
-    			add_location(button, file$2, 85, 6, 1909);
+    			add_location(div, file$2, 82, 6, 1780);
+    			add_location(button, file$2, 85, 6, 1900);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1621,6 +1633,38 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(77:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (75:4) {#if !isInClient}
+    function create_if_block(ctx) {
+    	let h1;
+
+    	const block = {
+    		c: function create() {
+    			h1 = element("h1");
+    			h1.textContent = "請移至line中開啟";
+    			add_location(h1, file$2, 75, 6, 1582);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, h1, anchor);
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(h1);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
     		id: create_if_block.name,
     		type: "if",
     		source: "(75:4) {#if !isInClient}",
@@ -1643,7 +1687,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[9];
     			option.value = option.__value;
-    			add_location(option, file$2, 79, 10, 1704);
+    			add_location(option, file$2, 79, 10, 1695);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
