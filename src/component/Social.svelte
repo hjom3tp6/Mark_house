@@ -103,7 +103,7 @@
                         contents: [
                           {
                             type: "span",
-                            text: "brown_05",
+                            text: $myName,
                             weight: "bold",
                             color: "#000000",
                           },

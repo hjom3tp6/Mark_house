@@ -1083,11 +1083,11 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
     			attr_dev(textarea, "class", "svelte-vyzhjn");
-    			add_location(textarea, file$1, 207, 4, 5542);
+    			add_location(textarea, file$1, 207, 4, 5539);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 206, 2, 5512);
+    			add_location(div0, file$1, 206, 2, 5509);
     			attr_dev(div1, "class", "box svelte-vyzhjn");
-    			add_location(div1, file$1, 205, 0, 5491);
+    			add_location(div1, file$1, 205, 0, 5488);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1130,8 +1130,11 @@ var app = (function () {
 
     function instance$1($$self, $$props, $$invalidate) {
     	let $myPic;
+    	let $myName;
     	validate_store(myPic, "myPic");
     	component_subscribe($$self, myPic, $$value => $$invalidate(6, $myPic = $$value));
+    	validate_store(myName, "myName");
+    	component_subscribe($$self, myName, $$value => $$invalidate(7, $myName = $$value));
     	let text = "";
     	let catPhotots = [];
 
@@ -1230,7 +1233,7 @@ var app = (function () {
     												contents: [
     													{
     														type: "span",
-    														text: "brown_05",
+    														text: $myName,
     														weight: "bold",
     														color: "#000000"
     													},
@@ -1299,7 +1302,8 @@ var app = (function () {
     		p1,
     		p2,
     		p3,
-    		$myPic
+    		$myPic,
+    		$myName
     	});
 
     	$$self.$inject_state = $$props => {
