@@ -1,9 +1,26 @@
 <script>
-  import { afterUpdate } from "svelte";
+  import { onMount, afterUpdate } from "svelte";
   import { myPic, myName, msg } from "../stores.js";
 
   //   let picUrl = "";
   let text = "";
+  let catPhotots = [];
+  let catHeaders = new Headers({
+    "Content-Type": "application/json",
+    "x-api-key": "1eab5a71-8d5d-41a4-b429-6da578c8e331",
+  });
+
+  onMount(async () => {
+    const res = await fetch(
+      "https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small",
+      {
+        headers: catHeaders,
+      }
+    );
+    catPhotots = await res.json();
+    console.log(catPhotots[0]);
+  });
+
   afterUpdate(() => {
     msg.set([
       {
@@ -20,12 +37,50 @@
                 layout: "horizontal",
                 contents: [
                   {
+                    type: "image",
+                    url:catPhotots[0],
+                    size: "5xl",
+                    aspectMode: "cover",
+                    aspectRatio: "150:196",
+                    gravity: "center",
+                    flex: 1,
+                  },
+                  {
                     type: "box",
                     layout: "vertical",
                     contents: [
                       {
                         type: "image",
-                        url: $myPic,
+                        url:catPhotots[1],
+                        size: "full",
+                        aspectMode: "cover",
+                        aspectRatio: "150:98",
+                        gravity: "center",
+                      },
+                      {
+                        type: "image",
+                        url:catPhotots[2],
+                        size: "full",
+                        aspectMode: "cover",
+                        aspectRatio: "150:98",
+                        gravity: "center",
+                      },
+                    ],
+                    flex: 1,
+                  },
+                ],
+              },
+              {
+                type: "box",
+                layout: "horizontal",
+                contents: [
+                  {
+                    type: "box",
+                    layout: "vertical",
+                    contents: [
+                      {
+                        type: "image",
+                        url:$myPic,
                         aspectMode: "cover",
                         size: "full",
                       },
@@ -43,7 +98,7 @@
                         contents: [
                           {
                             type: "span",
-                            text: $myName,
+                            text: "brown_05",
                             weight: "bold",
                             color: "#000000",
                           },
@@ -53,7 +108,7 @@
                           },
                           {
                             type: "span",
-                            text: text,
+                            text:text,
                           },
                         ],
                         size: "sm",

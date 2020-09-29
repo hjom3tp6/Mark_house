@@ -72,7 +72,7 @@
 {:then}
   <div class="box-component" transition:fade>
     <h3>Line訊息分享器</h3>
-    {#if !isInClient}
+    {#if isInClient}
       <h1>請移至line中開啟</h1>
     {:else}
       <select bind:value={selected}>
