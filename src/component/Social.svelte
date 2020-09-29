@@ -21,9 +21,9 @@
     );
     catPhotots = await res.json();
     console.log(catPhotots[0]);
-    p1 = await catPhotots[0].url
-    p2 = await catPhotots[1].url
-    p3 = await catPhotots[2].url
+    p1 = await catPhotots[0].url;
+    p2 = await catPhotots[1].url;
+    p3 = await catPhotots[2].url;
   });
 
   afterUpdate(() => {
@@ -43,7 +43,7 @@
                 contents: [
                   {
                     type: "image",
-                    url:p3,
+                    url: p3,
                     size: "5xl",
                     aspectMode: "cover",
                     aspectRatio: "150:196",
@@ -56,7 +56,7 @@
                     contents: [
                       {
                         type: "image",
-                        url:p1,
+                        url: p1,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -64,7 +64,7 @@
                       },
                       {
                         type: "image",
-                        url:p2,
+                        url: p2,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -85,7 +85,7 @@
                     contents: [
                       {
                         type: "image",
-                        url:$myPic,
+                        url: $myPic,
                         aspectMode: "cover",
                         size: "full",
                       },
@@ -113,7 +113,7 @@
                           },
                           {
                             type: "span",
-                            text:text,
+                            text: text,
                           },
                         ],
                         size: "sm",
@@ -141,6 +141,11 @@
               },
             ],
             paddingAll: "0px",
+            action: {
+              type: "uri",
+              label: "action",
+              uri: "https://liff.line.me/1654061887-ZoYpPWL2",
+            },
           },
         },
       },
