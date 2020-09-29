@@ -1373,7 +1373,7 @@ var app = (function () {
     	const if_blocks = [];
 
     	function select_block_type(ctx, dirty) {
-    		if (/*isInClient*/ ctx[0]) return 0;
+    		if (!/*isInClient*/ ctx[0]) return 0;
     		return 1;
     	}
 
@@ -1387,9 +1387,9 @@ var app = (function () {
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
     			if_block.c();
-    			add_location(h3, file$2, 73, 4, 1536);
+    			add_location(h3, file$2, 73, 4, 1535);
     			attr_dev(div, "class", "box-component svelte-1y8gq57");
-    			add_location(div, file$2, 72, 2, 1488);
+    			add_location(div, file$2, 72, 2, 1487);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1629,7 +1629,7 @@ var app = (function () {
     	return block;
     }
 
-    // (75:4) {#if isInClient}
+    // (75:4) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -1654,7 +1654,7 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(75:4) {#if isInClient}",
+    		source: "(75:4) {#if !isInClient}",
     		ctx
     	});
 
@@ -1704,7 +1704,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$2, 70, 2, 1470);
+    			add_location(div, file$2, 70, 2, 1469);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1807,7 +1807,7 @@ var app = (function () {
     	component_subscribe($$self, msg, $$value => $$invalidate(6, $msg = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
-    	const options = [{ title: "照片", component: Pic }, { title: "社交", component: Social }];
+    	const options = [{ title: "照片", component: Pic }, { title: "貓", component: Social }];
     	let selected = options[0];
 
     	async function initLiff() {
