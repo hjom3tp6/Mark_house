@@ -1269,7 +1269,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (89:0) {:catch error}
+    // (92:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
     	let t_value = /*error*/ ctx[12].message + "";
@@ -1279,7 +1279,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 89, 2, 1956);
+    			add_location(p, file$2, 92, 2, 2031);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1297,14 +1297,14 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(89:0) {:catch error}",
+    		source: "(92:0) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:0) {:then}
+    // (75:0) {:then}
     function create_then_block(ctx) {
     	let div;
     	let h3;
@@ -1331,9 +1331,9 @@ var app = (function () {
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
     			if_block.c();
-    			add_location(h3, file$2, 73, 4, 1536);
-    			attr_dev(div, "class", "box-component svelte-1y8gq57");
-    			add_location(div, file$2, 72, 2, 1488);
+    			add_location(h3, file$2, 76, 4, 1587);
+    			attr_dev(div, "class", "box-component svelte-eftmht");
+    			add_location(div, file$2, 75, 2, 1539);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1395,14 +1395,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(72:0) {:then}",
+    		source: "(75:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:4) {:else}
+    // (80:4) {:else}
     function create_else_block(ctx) {
     	let select;
     	let t0;
@@ -1447,9 +1447,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
-    			add_location(select, file$2, 77, 6, 1621);
-    			add_location(div, file$2, 82, 6, 1781);
-    			add_location(button, file$2, 85, 6, 1877);
+    			add_location(select, file$2, 80, 6, 1672);
+    			attr_dev(div, "class", "item-component svelte-eftmht");
+    			add_location(div, file$2, 85, 6, 1832);
+    			add_location(button, file$2, 88, 6, 1952);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1565,14 +1566,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(77:4) {:else}",
+    		source: "(80:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (75:4) {#if !isInClient}
+    // (78:4) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -1580,7 +1581,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$2, 75, 6, 1583);
+    			add_location(h1, file$2, 78, 6, 1634);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1597,14 +1598,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(75:4) {#if !isInClient}",
+    		source: "(78:4) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:8) {#each options as option}
+    // (82:8) {#each options as option}
     function create_each_block(ctx) {
     	let option;
     	let t_value = /*option*/ ctx[9].title + "";
@@ -1617,7 +1618,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[9];
     			option.value = option.__value;
-    			add_location(option, file$2, 79, 10, 1696);
+    			add_location(option, file$2, 82, 10, 1747);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1633,21 +1634,21 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(79:8) {#each options as option}",
+    		source: "(82:8) {#each options as option}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:17)    <div /> {:then}
+    // (73:17)    <div /> {:then}
     function create_pending_block(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$2, 70, 2, 1470);
+    			add_location(div, file$2, 73, 2, 1521);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1664,7 +1665,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(70:17)    <div /> {:then}",
+    		source: "(73:17)    <div /> {:then}",
     		ctx
     	});
 

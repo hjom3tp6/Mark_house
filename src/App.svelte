@@ -65,6 +65,9 @@
     justify-content: center;
     align-items: center;
   }
+  .item-component{
+	background-color: #96FF96;
+  }
 </style>
 
 {#await liffInit}
@@ -80,7 +83,7 @@
           <option value={option}>{option.title}</option>
         {/each}
       </select>
-      <div transition:fade>
+      <div class ="item-component" transition:fade>
         <svelte:component this={selected.component} />
       </div>
       <button on:click={shareMsg}>share</button>
