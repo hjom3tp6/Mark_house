@@ -1083,11 +1083,11 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
     			attr_dev(textarea, "class", "svelte-vyzhjn");
-    			add_location(textarea, file$1, 202, 4, 5375);
+    			add_location(textarea, file$1, 202, 4, 5371);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 201, 2, 5345);
+    			add_location(div0, file$1, 201, 2, 5341);
     			attr_dev(div1, "class", "box svelte-vyzhjn");
-    			add_location(div1, file$1, 200, 0, 5324);
+    			add_location(div1, file$1, 200, 0, 5320);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1170,7 +1170,7 @@ var app = (function () {
     								contents: [
     									{
     										type: "image",
-    										url: p3.url,
+    										url: p3,
     										size: "5xl",
     										aspectMode: "cover",
     										aspectRatio: "150:196",
@@ -1348,7 +1348,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 89, 2, 1979);
+    			add_location(p, file$2, 89, 2, 1963);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1380,7 +1380,6 @@ var app = (function () {
     	let t1;
     	let current_block_type_index;
     	let if_block;
-    	let div_transition;
     	let current;
     	const if_block_creators = [create_if_block, create_else_block];
     	const if_blocks = [];
@@ -1400,7 +1399,7 @@ var app = (function () {
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
     			if_block.c();
-    			add_location(h3, file$2, 73, 4, 1535);
+    			add_location(h3, file$2, 73, 4, 1519);
     			attr_dev(div, "class", "box-component svelte-1y8gq57");
     			add_location(div, file$2, 72, 2, 1487);
     		},
@@ -1439,24 +1438,15 @@ var app = (function () {
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block);
-
-    			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
-    				div_transition.run(1);
-    			});
-
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(if_block);
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
-    			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
     			if_blocks[current_block_type_index].d();
-    			if (detaching && div_transition) div_transition.end();
     		}
     	};
 
@@ -1516,10 +1506,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
-    			add_location(select, file$2, 77, 6, 1620);
+    			add_location(select, file$2, 77, 6, 1604);
     			attr_dev(div, "class", "item-component");
-    			add_location(div, file$2, 82, 6, 1780);
-    			add_location(button, file$2, 85, 6, 1900);
+    			add_location(div, file$2, 82, 6, 1764);
+    			add_location(button, file$2, 85, 6, 1884);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1650,7 +1640,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$2, 75, 6, 1582);
+    			add_location(h1, file$2, 75, 6, 1566);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1687,7 +1677,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[9];
     			option.value = option.__value;
-    			add_location(option, file$2, 79, 10, 1695);
+    			add_location(option, file$2, 79, 10, 1679);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);

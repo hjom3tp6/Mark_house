@@ -43,7 +43,7 @@
                 contents: [
                   {
                     type: "image",
-                    url:p3.url,
+                    url:p3,
                     size: "5xl",
                     aspectMode: "cover",
                     aspectRatio: "150:196",

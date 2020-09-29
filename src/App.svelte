@@ -70,7 +70,7 @@
 {#await liffInit}
   <div />
 {:then}
-  <div class="box-component" transition:fade>
+  <div class="box-component">
     <h3>Line訊息分享器</h3>
     {#if !isInClient}
       <h1>請移至line中開啟</h1>
