@@ -38,7 +38,7 @@
                 contents: [
                   {
                     type: "image",
-                    url:catPhotots[0],
+                    url:catPhotots[0].url,
                     size: "5xl",
                     aspectMode: "cover",
                     aspectRatio: "150:196",
@@ -51,7 +51,7 @@
                     contents: [
                       {
                         type: "image",
-                        url:catPhotots[1],
+                        url:catPhotots[1].url,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -59,7 +59,7 @@
                       },
                       {
                         type: "image",
-                        url:catPhotots[2],
+                        url:catPhotots[2].url,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",

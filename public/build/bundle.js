@@ -1083,11 +1083,11 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
     			attr_dev(textarea, "class", "svelte-vyzhjn");
-    			add_location(textarea, file$1, 197, 4, 5256);
+    			add_location(textarea, file$1, 197, 4, 5268);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 196, 2, 5226);
+    			add_location(div0, file$1, 196, 2, 5238);
     			attr_dev(div1, "class", "box svelte-vyzhjn");
-    			add_location(div1, file$1, 195, 0, 5205);
+    			add_location(div1, file$1, 195, 0, 5217);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1163,7 +1163,7 @@ var app = (function () {
     								contents: [
     									{
     										type: "image",
-    										url: catPhotots[0],
+    										url: catPhotots[0].url,
     										size: "5xl",
     										aspectMode: "cover",
     										aspectRatio: "150:196",
@@ -1176,7 +1176,7 @@ var app = (function () {
     										contents: [
     											{
     												type: "image",
-    												url: catPhotots[1],
+    												url: catPhotots[1].url,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
@@ -1184,7 +1184,7 @@ var app = (function () {
     											},
     											{
     												type: "image",
-    												url: catPhotots[2],
+    												url: catPhotots[2].url,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
