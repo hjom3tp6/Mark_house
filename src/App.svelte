@@ -64,8 +64,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  .item-component{
 	background-color: #96FF96;
   }
 </style>
