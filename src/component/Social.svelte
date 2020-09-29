@@ -9,7 +9,9 @@
     "Content-Type": "application/json",
     "x-api-key": "1eab5a71-8d5d-41a4-b429-6da578c8e331",
   });
-
+  let p1 = "";
+  let p2 = "";
+  let p3 = "";
   onMount(async () => {
     const res = await fetch(
       "https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small",
@@ -19,6 +21,9 @@
     );
     catPhotots = await res.json();
     console.log(catPhotots[0]);
+    p1 = await catPhotots[0].url
+    p2 = await catPhotots[1].url
+    p3 = await catPhotots[2].url
   });
 
   afterUpdate(() => {
@@ -38,7 +43,7 @@
                 contents: [
                   {
                     type: "image",
-                    url:catPhotots[0].url,
+                    url:p3.url,
                     size: "5xl",
                     aspectMode: "cover",
                     aspectRatio: "150:196",
@@ -51,7 +56,7 @@
                     contents: [
                       {
                         type: "image",
-                        url:catPhotots[1].url,
+                        url:p1,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -59,7 +64,7 @@
                       },
                       {
                         type: "image",
-                        url:catPhotots[2].url,
+                        url:p2,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",

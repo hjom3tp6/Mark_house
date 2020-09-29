@@ -1083,11 +1083,11 @@ var app = (function () {
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
     			attr_dev(textarea, "class", "svelte-vyzhjn");
-    			add_location(textarea, file$1, 197, 4, 5268);
+    			add_location(textarea, file$1, 202, 4, 5375);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 196, 2, 5238);
+    			add_location(div0, file$1, 201, 2, 5345);
     			attr_dev(div1, "class", "box svelte-vyzhjn");
-    			add_location(div1, file$1, 195, 0, 5217);
+    			add_location(div1, file$1, 200, 0, 5324);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1131,7 +1131,7 @@ var app = (function () {
     function instance$1($$self, $$props, $$invalidate) {
     	let $myPic;
     	validate_store(myPic, "myPic");
-    	component_subscribe($$self, myPic, $$value => $$invalidate(3, $myPic = $$value));
+    	component_subscribe($$self, myPic, $$value => $$invalidate(6, $myPic = $$value));
     	let text = "";
     	let catPhotots = [];
 
@@ -1140,10 +1140,17 @@ var app = (function () {
     			"x-api-key": "1eab5a71-8d5d-41a4-b429-6da578c8e331"
     		});
 
+    	let p1 = "";
+    	let p2 = "";
+    	let p3 = "";
+
     	onMount(async () => {
     		const res = await fetch("https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small", { headers: catHeaders });
     		catPhotots = await res.json();
     		console.log(catPhotots[0]);
+    		p1 = await catPhotots[0].url;
+    		p2 = await catPhotots[1].url;
+    		p3 = await catPhotots[2].url;
     	});
 
     	afterUpdate(() => {
@@ -1163,7 +1170,7 @@ var app = (function () {
     								contents: [
     									{
     										type: "image",
-    										url: catPhotots[0].url,
+    										url: p3.url,
     										size: "5xl",
     										aspectMode: "cover",
     										aspectRatio: "150:196",
@@ -1176,7 +1183,7 @@ var app = (function () {
     										contents: [
     											{
     												type: "image",
-    												url: catPhotots[1].url,
+    												url: p1,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
@@ -1184,7 +1191,7 @@ var app = (function () {
     											},
     											{
     												type: "image",
-    												url: catPhotots[2].url,
+    												url: p2,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
@@ -1284,6 +1291,9 @@ var app = (function () {
     		text,
     		catPhotots,
     		catHeaders,
+    		p1,
+    		p2,
+    		p3,
     		$myPic
     	});
 
@@ -1291,6 +1301,9 @@ var app = (function () {
     		if ("text" in $$props) $$invalidate(0, text = $$props.text);
     		if ("catPhotots" in $$props) catPhotots = $$props.catPhotots;
     		if ("catHeaders" in $$props) catHeaders = $$props.catHeaders;
+    		if ("p1" in $$props) p1 = $$props.p1;
+    		if ("p2" in $$props) p2 = $$props.p2;
+    		if ("p3" in $$props) p3 = $$props.p3;
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -1335,7 +1348,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 89, 2, 1979);
+    			add_location(p, file$2, 89, 2, 1988);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1365,20 +1378,9 @@ var app = (function () {
     	let div;
     	let h3;
     	let t1;
-    	let current_block_type_index;
-    	let if_block;
     	let div_transition;
     	let current;
-    	const if_block_creators = [create_if_block, create_else_block];
-    	const if_blocks = [];
-
-    	function select_block_type(ctx, dirty) {
-    		if (!/*isInClient*/ ctx[0]) return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type(ctx);
-    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    	let if_block = !/*isInClient*/ ctx[0] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
@@ -1386,7 +1388,7 @@ var app = (function () {
     			h3 = element("h3");
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
-    			if_block.c();
+    			if (if_block) if_block.c();
     			add_location(h3, file$2, 73, 4, 1535);
     			attr_dev(div, "class", "box-component svelte-1y8gq57");
     			add_location(div, file$2, 72, 2, 1487);
@@ -1395,32 +1397,31 @@ var app = (function () {
     			insert_dev(target, div, anchor);
     			append_dev(div, h3);
     			append_dev(div, t1);
-    			if_blocks[current_block_type_index].m(div, null);
+    			if (if_block) if_block.m(div, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
-    			let previous_block_index = current_block_type_index;
-    			current_block_type_index = select_block_type(ctx);
+    			if (!/*isInClient*/ ctx[0]) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
 
-    			if (current_block_type_index === previous_block_index) {
-    				if_blocks[current_block_type_index].p(ctx, dirty);
-    			} else {
+    					if (dirty & /*isInClient*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(div, null);
+    				}
+    			} else if (if_block) {
     				group_outros();
 
-    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
-    					if_blocks[previous_block_index] = null;
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
     				});
 
     				check_outros();
-    				if_block = if_blocks[current_block_type_index];
-
-    				if (!if_block) {
-    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    					if_block.c();
-    				}
-
-    				transition_in(if_block, 1);
-    				if_block.m(div, null);
     			}
     		},
     		i: function intro(local) {
@@ -1442,7 +1443,7 @@ var app = (function () {
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(div);
-    			if_blocks[current_block_type_index].d();
+    			if (if_block) if_block.d();
     			if (detaching && div_transition) div_transition.end();
     		}
     	};
@@ -1458,8 +1459,8 @@ var app = (function () {
     	return block;
     }
 
-    // (77:4) {:else}
-    function create_else_block(ctx) {
+    // (75:4) {#if !isInClient}
+    function create_if_block(ctx) {
     	let select;
     	let t0;
     	let div;
@@ -1503,10 +1504,10 @@ var app = (function () {
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
-    			add_location(select, file$2, 77, 6, 1620);
+    			add_location(select, file$2, 77, 6, 1629);
     			attr_dev(div, "class", "item-component");
-    			add_location(div, file$2, 82, 6, 1780);
-    			add_location(button, file$2, 85, 6, 1900);
+    			add_location(div, file$2, 82, 6, 1789);
+    			add_location(button, file$2, 85, 6, 1909);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1620,38 +1621,6 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block.name,
-    		type: "else",
-    		source: "(77:4) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (75:4) {#if !isInClient}
-    function create_if_block(ctx) {
-    	let h1;
-
-    	const block = {
-    		c: function create() {
-    			h1 = element("h1");
-    			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$2, 75, 6, 1582);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, h1, anchor);
-    		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(h1);
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
     		id: create_if_block.name,
     		type: "if",
     		source: "(75:4) {#if !isInClient}",
@@ -1674,7 +1643,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[9];
     			option.value = option.__value;
-    			add_location(option, file$2, 79, 10, 1695);
+    			add_location(option, file$2, 79, 10, 1704);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);

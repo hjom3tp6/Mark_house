@@ -73,8 +73,8 @@
   <div class="box-component" transition:fade>
     <h3>Line訊息分享器</h3>
     {#if !isInClient}
-      <h1>請移至line中開啟</h1>
-    {:else}
+      <!-- <h1>請移至line中開啟</h1>
+    {:else} -->
       <select bind:value={selected}>
         {#each options as option}
           <option value={option}>{option.title}</option>
