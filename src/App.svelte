@@ -8,9 +8,9 @@
   let isInClient = false;
   let liffInit = initLiff();
 
-  const options =[
-	  { title : '照片', component: Pic},
-	  { title : '社交', component: Social },
+  const options = [
+    { title: "照片", component: Pic },
+    { title: "社交", component: Social },
   ];
 
   let selected = options[0];
@@ -59,7 +59,7 @@
 <style>
   .box-component {
     width: 100%;
-	flex-direction: column;
+    flex-direction: column;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -70,20 +70,20 @@
 {#await liffInit}
   <div />
 {:then}
-  {#if !isInClient}
-    <h1>請移至line中開啟</h1>
-  {:else}
-  <select bind:value={selected}>
-	  {#each options as option}
-		  <option value={option}>{option.title}</option>
-	  {/each}
-  </select>
-    <div class="box-component" transition:fade>
-	  <Pic />
-	  <svelte:component this={selected.component}></svelte:component>
-	  <button on:click={shareMsg}>share</button>
-    </div>
-  {/if}
+  <div class="box-component" transition:fade>
+    <h3>Line訊息分享器</h3>
+    {#if !isInClient}
+      <h1>請移至line中開啟</h1>
+    {:else}
+      <select bind:value={selected}>
+        {#each options as option}
+          <option value={option}>{option.title}</option>
+        {/each}
+      </select>
+      <svelte:component this={selected.component} />
+      <button on:click={shareMsg}>share</button>
+    {/if}
+  </div>
 {:catch error}
   <p>{error.message}</p>
 {/await}

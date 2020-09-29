@@ -1279,7 +1279,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 87, 2, 1879);
+    			add_location(p, file$2, 87, 2, 1913);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1306,9 +1306,12 @@ var app = (function () {
 
     // (72:0) {:then}
     function create_then_block(ctx) {
+    	let div;
+    	let h3;
+    	let t1;
     	let current_block_type_index;
     	let if_block;
-    	let if_block_anchor;
+    	let div_transition;
     	let current;
     	const if_block_creators = [create_if_block, create_else_block];
     	const if_blocks = [];
@@ -1323,12 +1326,20 @@ var app = (function () {
 
     	const block = {
     		c: function create() {
+    			div = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Line訊息分享器";
+    			t1 = space();
     			if_block.c();
-    			if_block_anchor = empty();
+    			add_location(h3, file$2, 73, 4, 1536);
+    			attr_dev(div, "class", "box-component svelte-1y8gq57");
+    			add_location(div, file$2, 72, 2, 1488);
     		},
     		m: function mount(target, anchor) {
-    			if_blocks[current_block_type_index].m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h3);
+    			append_dev(div, t1);
+    			if_blocks[current_block_type_index].m(div, null);
     			current = true;
     		},
     		p: function update(ctx, dirty) {
@@ -1353,21 +1364,30 @@ var app = (function () {
     				}
 
     				transition_in(if_block, 1);
-    				if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				if_block.m(div, null);
     			}
     		},
     		i: function intro(local) {
     			if (current) return;
     			transition_in(if_block);
+
+    			add_render_callback(() => {
+    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
+    				div_transition.run(1);
+    			});
+
     			current = true;
     		},
     		o: function outro(local) {
     			transition_out(if_block);
+    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
+    			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if_blocks[current_block_type_index].d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
+    			if (detaching) detach_dev(div);
+    			if_blocks[current_block_type_index].d();
+    			if (detaching && div_transition) div_transition.end();
     		}
     	};
 
@@ -1382,17 +1402,13 @@ var app = (function () {
     	return block;
     }
 
-    // (75:2) {:else}
+    // (77:4) {:else}
     function create_else_block(ctx) {
     	let select;
     	let t0;
-    	let div;
-    	let pic;
-    	let t1;
     	let switch_instance;
-    	let t2;
+    	let t1;
     	let button;
-    	let div_transition;
     	let current;
     	let mounted;
     	let dispose;
@@ -1404,7 +1420,6 @@ var app = (function () {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
-    	pic = new Pic({ $$inline: true });
     	var switch_value = /*selected*/ ctx[1].component;
 
     	function switch_props(ctx) {
@@ -1424,18 +1439,13 @@ var app = (function () {
     			}
 
     			t0 = space();
-    			div = element("div");
-    			create_component(pic.$$.fragment);
-    			t1 = space();
     			if (switch_instance) create_component(switch_instance.$$.fragment);
-    			t2 = space();
+    			t1 = space();
     			button = element("button");
     			button.textContent = "share";
     			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
-    			add_location(select, file$2, 75, 2, 1537);
-    			add_location(button, file$2, 83, 3, 1800);
-    			attr_dev(div, "class", "box-component svelte-ljquuk");
-    			add_location(div, file$2, 80, 4, 1675);
+    			add_location(select, file$2, 77, 6, 1621);
+    			add_location(button, file$2, 83, 6, 1834);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, select, anchor);
@@ -1446,16 +1456,13 @@ var app = (function () {
 
     			select_option(select, /*selected*/ ctx[1]);
     			insert_dev(target, t0, anchor);
-    			insert_dev(target, div, anchor);
-    			mount_component(pic, div, null);
-    			append_dev(div, t1);
 
     			if (switch_instance) {
-    				mount_component(switch_instance, div, null);
+    				mount_component(switch_instance, target, anchor);
     			}
 
-    			append_dev(div, t2);
-    			append_dev(div, button);
+    			insert_dev(target, t1, anchor);
+    			insert_dev(target, button, anchor);
     			current = true;
 
     			if (!mounted) {
@@ -1512,7 +1519,7 @@ var app = (function () {
     					switch_instance = new switch_value(switch_props());
     					create_component(switch_instance.$$.fragment);
     					transition_in(switch_instance.$$.fragment, 1);
-    					mount_component(switch_instance, div, t2);
+    					mount_component(switch_instance, t1.parentNode, t1);
     				} else {
     					switch_instance = null;
     				}
@@ -1520,31 +1527,20 @@ var app = (function () {
     		},
     		i: function intro(local) {
     			if (current) return;
-    			transition_in(pic.$$.fragment, local);
     			if (switch_instance) transition_in(switch_instance.$$.fragment, local);
-
-    			add_render_callback(() => {
-    				if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, true);
-    				div_transition.run(1);
-    			});
-
     			current = true;
     		},
     		o: function outro(local) {
-    			transition_out(pic.$$.fragment, local);
     			if (switch_instance) transition_out(switch_instance.$$.fragment, local);
-    			if (!div_transition) div_transition = create_bidirectional_transition(div, fade, {}, false);
-    			div_transition.run(0);
     			current = false;
     		},
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(select);
     			destroy_each(each_blocks, detaching);
     			if (detaching) detach_dev(t0);
-    			if (detaching) detach_dev(div);
-    			destroy_component(pic);
-    			if (switch_instance) destroy_component(switch_instance);
-    			if (detaching && div_transition) div_transition.end();
+    			if (switch_instance) destroy_component(switch_instance, detaching);
+    			if (detaching) detach_dev(t1);
+    			if (detaching) detach_dev(button);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -1554,14 +1550,14 @@ var app = (function () {
     		block,
     		id: create_else_block.name,
     		type: "else",
-    		source: "(75:2) {:else}",
+    		source: "(77:4) {:else}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (73:2) {#if !isInClient}
+    // (75:4) {#if !isInClient}
     function create_if_block(ctx) {
     	let h1;
 
@@ -1569,7 +1565,7 @@ var app = (function () {
     		c: function create() {
     			h1 = element("h1");
     			h1.textContent = "請移至line中開啟";
-    			add_location(h1, file$2, 73, 4, 1505);
+    			add_location(h1, file$2, 75, 6, 1583);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, h1, anchor);
@@ -1586,14 +1582,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(73:2) {#if !isInClient}",
+    		source: "(75:4) {#if !isInClient}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (77:3) {#each options as option}
+    // (79:8) {#each options as option}
     function create_each_block(ctx) {
     	let option;
     	let t_value = /*option*/ ctx[9].title + "";
@@ -1606,7 +1602,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[9];
     			option.value = option.__value;
-    			add_location(option, file$2, 77, 4, 1601);
+    			add_location(option, file$2, 79, 10, 1696);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1622,7 +1618,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(77:3) {#each options as option}",
+    		source: "(79:8) {#each options as option}",
     		ctx
     	});
 
@@ -1636,7 +1632,7 @@ var app = (function () {
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$2, 70, 2, 1465);
+    			add_location(div, file$2, 70, 2, 1470);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
