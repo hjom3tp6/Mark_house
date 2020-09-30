@@ -61,6 +61,10 @@
     liff.login();
   }
 
+  function logout() {
+    liff.logout();
+  }
+
   $: if (isInClient || isLogin) {
     needlogin = true;
   }
@@ -94,6 +98,7 @@
         <svelte:component this={selected.component} />
       </div>
       <button on:click={shareMsg}>share</button>
+      {#if !isInClient}<button on:click={logout}>Logout</button>{/if}
     {/if}
   </div>
 {:catch error}
