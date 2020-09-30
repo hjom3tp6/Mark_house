@@ -63,6 +63,7 @@
 
   function logout() {
     liff.logout();
+    window.location.reload();
   }
 
   $: if (isInClient || isLogin) {
@@ -89,16 +90,18 @@
     {#if !needlogin}
       <button on:click={login}>Login</button>
     {:else}
+    <div>
       <select bind:value={selected}>
         {#each options as option}
           <option value={option}>{option.title}</option>
         {/each}
       </select>
-      <div class="item-component" transition:fade>
-        <svelte:component this={selected.component} />
-      </div>
       <button on:click={shareMsg}>share</button>
-      {#if !isInClient}<button on:click={logout}>Logout</button>{/if}
+    </div>
+    <div class="item-component" transition:fade>
+      <svelte:component this={selected.component} />
+    </div>
+    {#if !isInClient}<button on:click={logout}>Logout</button>{/if}
     {/if}
   </div>
 {:catch error}
