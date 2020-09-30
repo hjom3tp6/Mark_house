@@ -54,6 +54,10 @@
   function displayLiffData() {
     isInClient = liff.isInClient();
   }
+
+  function login(){
+    liff.login()
+  }
 </script>
 
 <style>
@@ -75,6 +79,7 @@
     <!-- {#if !isInClient}
       <h1>請移至line中開啟</h1>
     {:else} -->
+    <button on:click={login}></button>
       <select bind:value={selected}>
         {#each options as option}
           <option value={option}>{option.title}</option>

@@ -1343,21 +1343,21 @@ var app = (function () {
 
     function get_each_context(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[9] = list[i];
+    	child_ctx[10] = list[i];
     	return child_ctx;
     }
 
-    // (89:0) {:catch error}
+    // (94:0) {:catch error}
     function create_catch_block(ctx) {
     	let p;
-    	let t_value = /*error*/ ctx[12].message + "";
+    	let t_value = /*error*/ ctx[13].message + "";
     	let t;
 
     	const block = {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$2, 89, 2, 1981);
+    			add_location(p, file$2, 94, 2, 2062);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1375,25 +1375,27 @@ var app = (function () {
     		block,
     		id: create_catch_block.name,
     		type: "catch",
-    		source: "(89:0) {:catch error}",
+    		source: "(94:0) {:catch error}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (72:0) {:then}
+    // (76:0) {:then}
     function create_then_block(ctx) {
     	let div1;
     	let h3;
     	let t1;
-    	let select;
+    	let button0;
     	let t2;
+    	let select;
+    	let t3;
     	let div0;
     	let switch_instance;
     	let div0_transition;
-    	let t3;
-    	let button;
+    	let t4;
+    	let button1;
     	let current;
     	let mounted;
     	let dispose;
@@ -1421,31 +1423,36 @@ var app = (function () {
     			h3 = element("h3");
     			h3.textContent = "Line訊息分享器";
     			t1 = space();
+    			button0 = element("button");
+    			t2 = space();
     			select = element("select");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].c();
     			}
 
-    			t2 = space();
+    			t3 = space();
     			div0 = element("div");
     			if (switch_instance) create_component(switch_instance.$$.fragment);
-    			t3 = space();
-    			button = element("button");
-    			button.textContent = "share";
-    			add_location(h3, file$2, 73, 4, 1519);
-    			if (/*selected*/ ctx[0] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[4].call(select));
-    			add_location(select, file$2, 77, 6, 1613);
+    			t4 = space();
+    			button1 = element("button");
+    			button1.textContent = "share";
+    			add_location(h3, file$2, 77, 4, 1561);
+    			add_location(button0, file$2, 81, 4, 1653);
+    			if (/*selected*/ ctx[0] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[5].call(select));
+    			add_location(select, file$2, 82, 6, 1694);
     			attr_dev(div0, "class", "item-component");
-    			add_location(div0, file$2, 82, 6, 1773);
-    			add_location(button, file$2, 85, 6, 1893);
+    			add_location(div0, file$2, 87, 6, 1854);
+    			add_location(button1, file$2, 90, 6, 1974);
     			attr_dev(div1, "class", "box-component svelte-1y8gq57");
-    			add_location(div1, file$2, 72, 2, 1487);
+    			add_location(div1, file$2, 76, 2, 1529);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
     			append_dev(div1, h3);
     			append_dev(div1, t1);
+    			append_dev(div1, button0);
+    			append_dev(div1, t2);
     			append_dev(div1, select);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1453,21 +1460,22 @@ var app = (function () {
     			}
 
     			select_option(select, /*selected*/ ctx[0]);
-    			append_dev(div1, t2);
+    			append_dev(div1, t3);
     			append_dev(div1, div0);
 
     			if (switch_instance) {
     				mount_component(switch_instance, div0, null);
     			}
 
-    			append_dev(div1, t3);
-    			append_dev(div1, button);
+    			append_dev(div1, t4);
+    			append_dev(div1, button1);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(select, "change", /*select_change_handler*/ ctx[4]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[3], false, false, false)
+    					listen_dev(button0, "click", /*login*/ ctx[4], false, false, false),
+    					listen_dev(select, "change", /*select_change_handler*/ ctx[5]),
+    					listen_dev(button1, "click", /*shareMsg*/ ctx[3], false, false, false)
     				];
 
     				mounted = true;
@@ -1555,17 +1563,17 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(72:0) {:then}",
+    		source: "(76:0) {:then}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (79:8) {#each options as option}
+    // (84:8) {#each options as option}
     function create_each_block(ctx) {
     	let option;
-    	let t_value = /*option*/ ctx[9].title + "";
+    	let t_value = /*option*/ ctx[10].title + "";
     	let t;
     	let option_value_value;
 
@@ -1573,9 +1581,9 @@ var app = (function () {
     		c: function create() {
     			option = element("option");
     			t = text(t_value);
-    			option.__value = option_value_value = /*option*/ ctx[9];
+    			option.__value = option_value_value = /*option*/ ctx[10];
     			option.value = option.__value;
-    			add_location(option, file$2, 79, 10, 1688);
+    			add_location(option, file$2, 84, 10, 1769);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1591,21 +1599,21 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(79:8) {#each options as option}",
+    		source: "(84:8) {#each options as option}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:17)    <div /> {:then}
+    // (74:17)    <div /> {:then}
     function create_pending_block(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file$2, 70, 2, 1469);
+    			add_location(div, file$2, 74, 2, 1511);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -1622,7 +1630,7 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(70:17)    <div /> {:then}",
+    		source: "(74:17)    <div /> {:then}",
     		ctx
     	});
 
@@ -1641,7 +1649,7 @@ var app = (function () {
     		pending: create_pending_block,
     		then: create_then_block,
     		catch: create_catch_block,
-    		error: 12,
+    		error: 13,
     		blocks: [,,,]
     	};
 
@@ -1705,7 +1713,7 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let $msg;
     	validate_store(msg, "msg");
-    	component_subscribe($$self, msg, $$value => $$invalidate(6, $msg = $$value));
+    	component_subscribe($$self, msg, $$value => $$invalidate(7, $msg = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
     	const options = [{ title: "照片", component: Pic }, { title: "貓", component: Social }];
@@ -1741,6 +1749,10 @@ var app = (function () {
     		isInClient = liff.isInClient();
     	}
 
+    	function login() {
+    		liff.login();
+    	}
+
     	const writable_props = [];
 
     	Object.keys($$props).forEach(key => {
@@ -1771,6 +1783,7 @@ var app = (function () {
     		initLiff,
     		shareMsg,
     		displayLiffData,
+    		login,
     		$msg
     	});
 
@@ -1784,7 +1797,7 @@ var app = (function () {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [selected, liffInit, options, shareMsg, select_change_handler];
+    	return [selected, liffInit, options, shareMsg, login, select_change_handler];
     }
 
     class App extends SvelteComponentDev {
