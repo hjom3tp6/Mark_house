@@ -7,7 +7,8 @@
 
   let isInClient = false;
   let liffInit = initLiff();
-
+  let isLogin = false;
+  let needlogin = false;
   const options = [
     { title: "照片", component: Pic },
     { title: "貓", component: Social },
@@ -53,10 +54,15 @@
   }
   function displayLiffData() {
     isInClient = liff.isInClient();
+    isLogin = liff.isLoggedIn();
   }
 
-  function login(){
-    liff.login()
+  function login() {
+    liff.login();
+  }
+
+  $: if (isInClient || isLogin) {
+    needlogin = true;
   }
 </script>
 
@@ -76,20 +82,19 @@
 {:then}
   <div class="box-component">
     <h3>Line訊息分享器</h3>
-    <!-- {#if !isInClient}
-      <h1>請移至line中開啟</h1>
-    {:else} -->
-    <button on:click={login}></button>
+    {#if !needlogin}
+      <button on:click={login}>Login</button>
+    {:else}
       <select bind:value={selected}>
         {#each options as option}
           <option value={option}>{option.title}</option>
         {/each}
       </select>
-      <div class ="item-component" transition:fade>
+      <div class="item-component" transition:fade>
         <svelte:component this={selected.component} />
       </div>
       <button on:click={shareMsg}>share</button>
-    <!-- {/if} -->
+    {/if}
   </div>
 {:catch error}
   <p>{error.message}</p>
