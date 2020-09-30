@@ -1506,7 +1506,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$3, 109, 2, 2444);
+    			add_location(p, file$3, 109, 2, 2426);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1533,22 +1533,108 @@ var app = (function () {
 
     // (89:0) {:then}
     function create_then_block(ctx) {
-    	let div2;
+    	let div;
     	let h3;
     	let t1;
+    	let current_block_type_index;
+    	let if_block;
+    	let current;
+    	const if_block_creators = [create_if_block, create_else_block];
+    	const if_blocks = [];
+
+    	function select_block_type(ctx, dirty) {
+    		if (!/*needlogin*/ ctx[1]) return 0;
+    		return 1;
+    	}
+
+    	current_block_type_index = select_block_type(ctx);
+    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Line訊息分享器";
+    			t1 = space();
+    			if_block.c();
+    			add_location(h3, file$3, 90, 4, 1881);
+    			attr_dev(div, "class", "box-component svelte-1y8gq57");
+    			add_location(div, file$3, 89, 2, 1849);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, h3);
+    			append_dev(div, t1);
+    			if_blocks[current_block_type_index].m(div, null);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			let previous_block_index = current_block_type_index;
+    			current_block_type_index = select_block_type(ctx);
+
+    			if (current_block_type_index === previous_block_index) {
+    				if_blocks[current_block_type_index].p(ctx, dirty);
+    			} else {
+    				group_outros();
+
+    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
+    					if_blocks[previous_block_index] = null;
+    				});
+
+    				check_outros();
+    				if_block = if_blocks[current_block_type_index];
+
+    				if (!if_block) {
+    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
+    					if_block.c();
+    				}
+
+    				transition_in(if_block, 1);
+    				if_block.m(div, null);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			if_blocks[current_block_type_index].d();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_then_block.name,
+    		type: "then",
+    		source: "(89:0) {:then}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (94:4) {:else}
+    function create_else_block(ctx) {
     	let div0;
     	let select;
-    	let t2;
+    	let t0;
     	let button;
-    	let t4;
+    	let t2;
     	let div1;
     	let switch_instance;
     	let div1_transition;
-    	let t5;
+    	let t3;
+    	let if_block_anchor;
     	let current;
     	let mounted;
     	let dispose;
-    	let each_value = /*options*/ ctx[3];
+    	let each_value = /*options*/ ctx[4];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1556,7 +1642,7 @@ var app = (function () {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
-    	var switch_value = /*selected*/ ctx[1].component;
+    	var switch_value = /*selected*/ ctx[2].component;
 
     	function switch_props(ctx) {
     		return { $$inline: true };
@@ -1566,14 +1652,10 @@ var app = (function () {
     		switch_instance = new switch_value(switch_props());
     	}
 
-    	let if_block = !/*isInClient*/ ctx[0] && create_if_block(ctx);
+    	let if_block = !/*isInClient*/ ctx[0] && create_if_block_1(ctx);
 
     	const block = {
     		c: function create() {
-    			div2 = element("div");
-    			h3 = element("h3");
-    			h3.textContent = "Line訊息分享器";
-    			t1 = space();
     			div0 = element("div");
     			select = element("select");
 
@@ -1581,61 +1663,57 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t2 = space();
+    			t0 = space();
     			button = element("button");
     			button.textContent = "share";
-    			t4 = space();
+    			t2 = space();
     			div1 = element("div");
     			if (switch_instance) create_component(switch_instance.$$.fragment);
-    			t5 = space();
+    			t3 = space();
     			if (if_block) if_block.c();
-    			add_location(h3, file$3, 90, 4, 1881);
-    			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[6].call(select));
-    			add_location(select, file$3, 95, 6, 2004);
-    			add_location(button, file$3, 100, 6, 2164);
-    			add_location(div0, file$3, 94, 4, 1992);
+    			if_block_anchor = empty();
+    			if (/*selected*/ ctx[2] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[8].call(select));
+    			add_location(select, file$3, 95, 6, 1995);
+    			add_location(button, file$3, 100, 6, 2155);
+    			add_location(div0, file$3, 94, 4, 1983);
     			attr_dev(div1, "class", "item-component");
-    			add_location(div1, file$3, 102, 4, 2222);
-    			attr_dev(div2, "class", "box-component svelte-1y8gq57");
-    			add_location(div2, file$3, 89, 2, 1849);
+    			add_location(div1, file$3, 102, 4, 2213);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div2, anchor);
-    			append_dev(div2, h3);
-    			append_dev(div2, t1);
-    			append_dev(div2, div0);
+    			insert_dev(target, div0, anchor);
     			append_dev(div0, select);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(select, null);
     			}
 
-    			select_option(select, /*selected*/ ctx[1]);
-    			append_dev(div0, t2);
+    			select_option(select, /*selected*/ ctx[2]);
+    			append_dev(div0, t0);
     			append_dev(div0, button);
-    			append_dev(div2, t4);
-    			append_dev(div2, div1);
+    			insert_dev(target, t2, anchor);
+    			insert_dev(target, div1, anchor);
 
     			if (switch_instance) {
     				mount_component(switch_instance, div1, null);
     			}
 
-    			append_dev(div2, t5);
-    			if (if_block) if_block.m(div2, null);
+    			insert_dev(target, t3, anchor);
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(select, "change", /*select_change_handler*/ ctx[6]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[4], false, false, false)
+    					listen_dev(select, "change", /*select_change_handler*/ ctx[8]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[5], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*options*/ 8) {
-    				each_value = /*options*/ ctx[3];
+    			if (dirty & /*options*/ 16) {
+    				each_value = /*options*/ ctx[4];
     				validate_each_argument(each_value);
     				let i;
 
@@ -1658,11 +1736,11 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*selected, options*/ 10) {
-    				select_option(select, /*selected*/ ctx[1]);
+    			if (dirty & /*selected, options*/ 20) {
+    				select_option(select, /*selected*/ ctx[2]);
     			}
 
-    			if (switch_value !== (switch_value = /*selected*/ ctx[1].component)) {
+    			if (switch_value !== (switch_value = /*selected*/ ctx[2].component)) {
     				if (switch_instance) {
     					group_outros();
     					const old_component = switch_instance;
@@ -1688,9 +1766,9 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block(ctx);
+    					if_block = create_if_block_1(ctx);
     					if_block.c();
-    					if_block.m(div2, null);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -1715,11 +1793,15 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div2);
+    			if (detaching) detach_dev(div0);
     			destroy_each(each_blocks, detaching);
+    			if (detaching) detach_dev(t2);
+    			if (detaching) detach_dev(div1);
     			if (switch_instance) destroy_component(switch_instance);
     			if (detaching && div1_transition) div1_transition.end();
-    			if (if_block) if_block.d();
+    			if (detaching) detach_dev(t3);
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
     			mounted = false;
     			run_all(dispose);
     		}
@@ -1727,9 +1809,50 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_then_block.name,
-    		type: "then",
-    		source: "(89:0) {:then}",
+    		id: create_else_block.name,
+    		type: "else",
+    		source: "(94:4) {:else}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (92:4) {#if !needlogin}
+    function create_if_block(ctx) {
+    	let button;
+    	let mounted;
+    	let dispose;
+
+    	const block = {
+    		c: function create() {
+    			button = element("button");
+    			button.textContent = "Login";
+    			add_location(button, file$3, 92, 6, 1927);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, button, anchor);
+
+    			if (!mounted) {
+    				dispose = listen_dev(button, "click", /*login*/ ctx[6], false, false, false);
+    				mounted = true;
+    			}
+    		},
+    		p: noop,
+    		i: noop,
+    		o: noop,
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(button);
+    			mounted = false;
+    			dispose();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(92:4) {#if !needlogin}",
     		ctx
     	});
 
@@ -1749,7 +1872,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[13];
     			option.value = option.__value;
-    			add_location(option, file$3, 97, 10, 2079);
+    			add_location(option, file$3, 97, 10, 2070);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1773,7 +1896,7 @@ var app = (function () {
     }
 
     // (106:4) {#if !isInClient}
-    function create_if_block(ctx) {
+    function create_if_block_1(ctx) {
     	let button;
     	let mounted;
     	let dispose;
@@ -1782,13 +1905,13 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "Logout";
-    			add_location(button, file$3, 105, 21, 2352);
+    			add_location(button, file$3, 105, 21, 2343);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*logout*/ ctx[5], false, false, false);
+    				dispose = listen_dev(button, "click", /*logout*/ ctx[7], false, false, false);
     				mounted = true;
     			}
     		},
@@ -1802,7 +1925,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block.name,
+    		id: create_if_block_1.name,
     		type: "if",
     		source: "(106:4) {#if !isInClient}",
     		ctx
@@ -1858,7 +1981,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*liffInit*/ ctx[2], info);
+    	handle_promise(promise = /*liffInit*/ ctx[3], info);
 
     	const block = {
     		c: function create() {
@@ -1918,7 +2041,7 @@ var app = (function () {
     function instance$3($$self, $$props, $$invalidate) {
     	let $msg;
     	validate_store(msg, "msg");
-    	component_subscribe($$self, msg, $$value => $$invalidate(9, $msg = $$value));
+    	component_subscribe($$self, msg, $$value => $$invalidate(10, $msg = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
     	let isLogin = false;
@@ -1960,7 +2083,7 @@ var app = (function () {
 
     	function displayLiffData() {
     		$$invalidate(0, isInClient = liff.isInClient());
-    		$$invalidate(7, isLogin = liff.isLoggedIn());
+    		$$invalidate(9, isLogin = liff.isLoggedIn());
     	}
 
     	function login() {
@@ -1983,8 +2106,8 @@ var app = (function () {
 
     	function select_change_handler() {
     		selected = select_value(this);
-    		$$invalidate(1, selected);
-    		$$invalidate(3, options);
+    		$$invalidate(2, selected);
+    		$$invalidate(4, options);
     	}
 
     	$$self.$capture_state = () => ({
@@ -2012,10 +2135,10 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
-    		if ("liffInit" in $$props) $$invalidate(2, liffInit = $$props.liffInit);
-    		if ("isLogin" in $$props) $$invalidate(7, isLogin = $$props.isLogin);
-    		if ("needlogin" in $$props) needlogin = $$props.needlogin;
-    		if ("selected" in $$props) $$invalidate(1, selected = $$props.selected);
+    		if ("liffInit" in $$props) $$invalidate(3, liffInit = $$props.liffInit);
+    		if ("isLogin" in $$props) $$invalidate(9, isLogin = $$props.isLogin);
+    		if ("needlogin" in $$props) $$invalidate(1, needlogin = $$props.needlogin);
+    		if ("selected" in $$props) $$invalidate(2, selected = $$props.selected);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2023,19 +2146,21 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*isInClient, isLogin*/ 129) {
+    		if ($$self.$$.dirty & /*isInClient, isLogin*/ 513) {
     			 if (isInClient || isLogin) {
-    				needlogin = true;
+    				$$invalidate(1, needlogin = true);
     			}
     		}
     	};
 
     	return [
     		isInClient,
+    		needlogin,
     		selected,
     		liffInit,
     		options,
     		shareMsg,
+    		login,
     		logout,
     		select_change_handler
     	];
