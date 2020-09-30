@@ -28,6 +28,7 @@
   .box {
     display: flex;
     flex-direction: column;
+    width: 80%;
   }
 
   textarea {
