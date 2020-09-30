@@ -3,6 +3,7 @@
   import { fade } from "svelte/transition";
   import Pic from "./component/Pic.svelte";
   import Social from "./component/Social.svelte";
+  import Flex from "./component/Flex-msg-json.svelte";
   import { myPic, myName, msg } from "./stores.js";
 
   let isInClient = false;
@@ -12,6 +13,7 @@
   const options = [
     { title: "照片", component: Pic },
     { title: "貓", component: Social },
+    { title: "flex message", component: Flex}
   ];
 
   let selected = options[0];

@@ -158,45 +158,6 @@
     display: flex;
     flex-direction: column;
   }
-  .flex-pic-container {
-    display: flex;
-    height: 300px;
-    width: 300px;
-    flex-direction: column;
-    justify-content: flex-end;
-    background: var(--flex-container--bg);
-    background-size: contain;
-    background-repeat: no-repeat;
-  }
-  .flex-item {
-    display: flex;
-    width: auto;
-    height: auto;
-    flex-wrap: wrap;
-  }
-
-  .item2 {
-    align-self: flex-end;
-  }
-
-  .name {
-    font-style: italic;
-    font-size: medium;
-  }
-  .text {
-    margin-bottom: 0px;
-    font-size: x-large;
-  }
-
-  p,
-  pre {
-    color: aliceblue;
-    padding: 0px 20px;
-  }
-
-  pre {
-    white-space: pre-wrap;
-  }
 
   textarea {
     width: 100%;
