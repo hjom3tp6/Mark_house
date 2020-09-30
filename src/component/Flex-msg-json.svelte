@@ -6,10 +6,10 @@
   let flexMsgJson;
 
   $: if (flexMsgJsonString) {
-    console.log(flexMsgJsonString)
+    console.log(flexMsgJsonString);
   }
-  afterUpdate(() => {
-    flexMsgJson = JSON.parse(flexMsgJsonString);
+  afterUpdate(async function addMsg() {
+    flexMsgJson = await JSON.parse(flexMsgJsonString);
     msg.set([
       {
         type: "flex",
