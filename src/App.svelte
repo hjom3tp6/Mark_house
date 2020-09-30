@@ -72,9 +72,9 @@
 {:then}
   <div class="box-component">
     <h3>Line訊息分享器</h3>
-    {#if !isInClient}
+    <!-- {#if !isInClient}
       <h1>請移至line中開啟</h1>
-    {:else}
+    {:else} -->
       <select bind:value={selected}>
         {#each options as option}
           <option value={option}>{option.title}</option>
@@ -84,7 +84,7 @@
         <svelte:component this={selected.component} />
       </div>
       <button on:click={shareMsg}>share</button>
-    {/if}
+    <!-- {/if} -->
   </div>
 {:catch error}
   <p>{error.message}</p>
