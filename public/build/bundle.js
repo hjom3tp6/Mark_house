@@ -1069,11 +1069,11 @@ var app = (function () {
     const file$1 = "src\\component\\Social.svelte";
 
     function create_fragment$1(ctx) {
-    	let div13;
+    	let div12;
     	let div0;
     	let textarea;
     	let t0;
-    	let div12;
+    	let div11;
     	let div6;
     	let div2;
     	let div1;
@@ -1083,26 +1083,27 @@ var app = (function () {
     	let t2;
     	let div4;
     	let t3;
-    	let div11;
+    	let div10;
     	let div7;
     	let t4;
-    	let div10;
-    	let div8;
+    	let div9;
+    	let pre;
+    	let h5;
     	let t5_value = /*$myName*/ ctx[5] + "   " + "";
     	let t5;
     	let t6;
     	let t7;
-    	let div9;
+    	let div8;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			div13 = element("div");
+    			div12 = element("div");
     			div0 = element("div");
     			textarea = element("textarea");
     			t0 = space();
-    			div12 = element("div");
+    			div11 = element("div");
     			div6 = element("div");
     			div2 = element("div");
     			div1 = element("div");
@@ -1112,64 +1113,66 @@ var app = (function () {
     			t2 = space();
     			div4 = element("div");
     			t3 = space();
-    			div11 = element("div");
+    			div10 = element("div");
     			div7 = element("div");
     			t4 = space();
-    			div10 = element("div");
-    			div8 = element("div");
+    			div9 = element("div");
+    			pre = element("pre");
+    			h5 = element("h5");
     			t5 = text(t5_value);
     			t6 = text(/*text*/ ctx[0]);
     			t7 = space();
-    			div9 = element("div");
-    			div9.textContent = "1,140,753 Like";
+    			div8 = element("div");
+    			div8.textContent = "1,140,753 Like";
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
-    			attr_dev(textarea, "class", "svelte-ppd8b6");
-    			add_location(textarea, file$1, 223, 4, 6014);
+    			attr_dev(textarea, "class", "svelte-oi89vw");
+    			add_location(textarea, file$1, 226, 4, 6056);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 222, 2, 5984);
-    			attr_dev(div1, "class", "p1 svelte-ppd8b6");
+    			add_location(div0, file$1, 225, 2, 6026);
+    			attr_dev(div1, "class", "p1 svelte-oi89vw");
     			set_style(div1, "--item--p1--bg", "url(" + /*p1*/ ctx[1] + ")");
-    			add_location(div1, file$1, 228, 8, 6215);
-    			attr_dev(div2, "class", "flex-item-pic vertical svelte-ppd8b6");
-    			add_location(div2, file$1, 227, 6, 6169);
-    			attr_dev(div3, "class", "p2 svelte-ppd8b6");
+    			add_location(div1, file$1, 231, 8, 6257);
+    			attr_dev(div2, "class", "flex-item-pic vertical svelte-oi89vw");
+    			add_location(div2, file$1, 230, 6, 6211);
+    			attr_dev(div3, "class", "p2 svelte-oi89vw");
     			set_style(div3, "--item--p2--bg", "url(" + /*p2*/ ctx[2] + ")");
-    			add_location(div3, file$1, 231, 8, 6337);
-    			attr_dev(div4, "class", "p3 svelte-ppd8b6");
+    			add_location(div3, file$1, 234, 8, 6379);
+    			attr_dev(div4, "class", "p3 svelte-oi89vw");
     			set_style(div4, "--item--p3--bg", "url(" + /*p3*/ ctx[3] + ")");
-    			add_location(div4, file$1, 232, 8, 6399);
-    			attr_dev(div5, "class", "flex-item-pic horizontal svelte-ppd8b6");
-    			add_location(div5, file$1, 230, 6, 6289);
-    			attr_dev(div6, "class", "vertical svelte-ppd8b6");
-    			add_location(div6, file$1, 226, 4, 6139);
-    			attr_dev(div7, "class", "pic svelte-ppd8b6");
+    			add_location(div4, file$1, 235, 8, 6441);
+    			attr_dev(div5, "class", "flex-item-pic horizontal svelte-oi89vw");
+    			add_location(div5, file$1, 233, 6, 6331);
+    			attr_dev(div6, "class", "vertical svelte-oi89vw");
+    			add_location(div6, file$1, 229, 4, 6181);
+    			attr_dev(div7, "class", "pic svelte-oi89vw");
     			set_style(div7, "--item--pic--bg", "url(" + /*$myPic*/ ctx[4] + ")");
-    			add_location(div7, file$1, 236, 6, 6513);
-    			attr_dev(div8, "class", "text1 svelte-ppd8b6");
-    			add_location(div8, file$1, 238, 8, 6627);
-    			attr_dev(div9, "class", "text2 svelte-ppd8b6");
-    			add_location(div9, file$1, 239, 8, 6685);
-    			attr_dev(div10, "class", "flex-box-text horizontal svelte-ppd8b6");
-    			add_location(div10, file$1, 237, 6, 6579);
-    			attr_dev(div11, "class", "vertical svelte-ppd8b6");
-    			add_location(div11, file$1, 235, 4, 6483);
-    			attr_dev(div12, "class", "flex-pic-container horizontal svelte-ppd8b6");
-    			add_location(div12, file$1, 225, 2, 6090);
-    			attr_dev(div13, "class", "horizontal svelte-ppd8b6");
-    			add_location(div13, file$1, 221, 0, 5956);
+    			add_location(div7, file$1, 239, 6, 6555);
+    			add_location(h5, file$1, 241, 27, 6688);
+    			attr_dev(pre, "class", "text1 svelte-oi89vw");
+    			add_location(pre, file$1, 241, 8, 6669);
+    			attr_dev(div8, "class", "text2 svelte-oi89vw");
+    			add_location(div8, file$1, 242, 8, 6736);
+    			attr_dev(div9, "class", "flex-box-text horizontal svelte-oi89vw");
+    			add_location(div9, file$1, 240, 6, 6621);
+    			attr_dev(div10, "class", "vertical svelte-oi89vw");
+    			add_location(div10, file$1, 238, 4, 6525);
+    			attr_dev(div11, "class", "flex-pic-container horizontal svelte-oi89vw");
+    			add_location(div11, file$1, 228, 2, 6132);
+    			attr_dev(div12, "class", "horizontal svelte-oi89vw");
+    			add_location(div12, file$1, 224, 0, 5998);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div13, anchor);
-    			append_dev(div13, div0);
+    			insert_dev(target, div12, anchor);
+    			append_dev(div12, div0);
     			append_dev(div0, textarea);
     			set_input_value(textarea, /*text*/ ctx[0]);
-    			append_dev(div13, t0);
-    			append_dev(div13, div12);
-    			append_dev(div12, div6);
+    			append_dev(div12, t0);
+    			append_dev(div12, div11);
+    			append_dev(div11, div6);
     			append_dev(div6, div2);
     			append_dev(div2, div1);
     			append_dev(div6, t1);
@@ -1177,16 +1180,17 @@ var app = (function () {
     			append_dev(div5, div3);
     			append_dev(div5, t2);
     			append_dev(div5, div4);
-    			append_dev(div12, t3);
-    			append_dev(div12, div11);
-    			append_dev(div11, div7);
-    			append_dev(div11, t4);
+    			append_dev(div11, t3);
     			append_dev(div11, div10);
-    			append_dev(div10, div8);
-    			append_dev(div8, t5);
-    			append_dev(div8, t6);
-    			append_dev(div10, t7);
+    			append_dev(div10, div7);
+    			append_dev(div10, t4);
     			append_dev(div10, div9);
+    			append_dev(div9, pre);
+    			append_dev(pre, h5);
+    			append_dev(h5, t5);
+    			append_dev(pre, t6);
+    			append_dev(div9, t7);
+    			append_dev(div9, div8);
 
     			if (!mounted) {
     				dispose = listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[6]);
@@ -1220,7 +1224,7 @@ var app = (function () {
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div13);
+    			if (detaching) detach_dev(div12);
     			mounted = false;
     			dispose();
     		}

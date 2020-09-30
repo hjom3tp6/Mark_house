@@ -217,6 +217,9 @@
     align-self: flex-end;
     color: lightgray;
   }
+  pre {
+    white-space: pre-wrap;
+  }
 </style>
 
 <div class="horizontal">
@@ -236,7 +239,7 @@
     <div class="vertical">
       <div class="pic" style="--item--pic--bg: url({$myPic})" />
       <div class="flex-box-text horizontal">
-        <div class="text1">{$myName + '   '}{text}</div>
+        <pre class="text1"><h5>{$myName + '   '}</h5>{text}</pre>
         <div class="text2">1,140,753 Like</div>
       </div>
     </div>
