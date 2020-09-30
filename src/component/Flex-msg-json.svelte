@@ -9,7 +9,11 @@
     console.log(flexMsgJsonString);
   }
   afterUpdate(async function addMsg() {
-    flexMsgJson = await JSON.parse(flexMsgJsonString);
+    try {
+      flexMsgJson = await JSON.parse(flexMsgJsonString);
+    } catch (error) {
+      console.log("flexMsgJsonString is not a json string")
+    }
     msg.set([
       {
         type: "flex",

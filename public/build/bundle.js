@@ -1358,15 +1358,15 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			textarea = element("textarea");
-    			add_location(h3, file$2, 34, 2, 637);
+    			add_location(h3, file$2, 38, 2, 741);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "5");
     			attr_dev(textarea, "class", "svelte-6hnbsj");
-    			add_location(textarea, file$2, 36, 4, 712);
+    			add_location(textarea, file$2, 40, 4, 816);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$2, 35, 2, 682);
+    			add_location(div0, file$2, 39, 2, 786);
     			attr_dev(div1, "class", "box svelte-6hnbsj");
-    			add_location(div1, file$2, 33, 0, 616);
+    			add_location(div1, file$2, 37, 0, 720);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1417,7 +1417,11 @@ var app = (function () {
     	let flexMsgJson;
 
     	afterUpdate(async function addMsg() {
-    		flexMsgJson = await JSON.parse(flexMsgJsonString);
+    		try {
+    			flexMsgJson = await JSON.parse(flexMsgJsonString);
+    		} catch(error) {
+    			console.log("flexMsgJsonString is not a json string");
+    		}
 
     		msg.set([
     			{
