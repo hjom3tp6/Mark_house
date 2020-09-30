@@ -250,9 +250,9 @@
       </div>
     </div>
     <div class="vertical">
-      <div class="pic" style="--item--pic--bg: url({p1})" />
+      <div class="pic" style="--item--pic--bg: url({$myPic})" />
       <div class="flex-box-text horizontal">
-        <pre class="text1"><strong>$myName</strong>{'  ' + text}</pre>
+        <pre class="text1"><strong>{$myName}</strong>{' ' + text}</pre>
         <div class="text2">1,140,753 Like</div>
       </div>
     </div>
