@@ -28,7 +28,7 @@
   .box {
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 100%;
     align-self: center;
   }
 

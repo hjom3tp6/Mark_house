@@ -1471,15 +1471,15 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			textarea = element("textarea");
-    			add_location(h3, file$2, 40, 2, 785);
+    			add_location(h3, file$2, 40, 2, 786);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "5");
-    			attr_dev(textarea, "class", "svelte-56txlf");
-    			add_location(textarea, file$2, 42, 4, 860);
+    			attr_dev(textarea, "class", "svelte-1koanjg");
+    			add_location(textarea, file$2, 42, 4, 861);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$2, 41, 2, 830);
-    			attr_dev(div1, "class", "box svelte-56txlf");
-    			add_location(div1, file$2, 39, 0, 764);
+    			add_location(div0, file$2, 41, 2, 831);
+    			attr_dev(div1, "class", "box svelte-1koanjg");
+    			add_location(div1, file$2, 39, 0, 765);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
