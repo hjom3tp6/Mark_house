@@ -29,6 +29,7 @@
     display: flex;
     flex-direction: column;
     width: 80%;
+    align-self: center;
   }
 
   textarea {
