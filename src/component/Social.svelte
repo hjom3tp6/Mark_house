@@ -14,7 +14,7 @@
   let p3 = "";
   onMount(async () => {
     const res = await fetch(
-      "https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small",
+      "https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small&mime_types=jpg",
       {
         headers: catHeaders,
       }
@@ -43,7 +43,7 @@
                 contents: [
                   {
                     type: "image",
-                    url: p3,
+                    url: p1,
                     size: "5xl",
                     aspectMode: "cover",
                     aspectRatio: "150:196",
@@ -56,7 +56,7 @@
                     contents: [
                       {
                         type: "image",
-                        url: p1,
+                        url: p2,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -64,7 +64,7 @@
                       },
                       {
                         type: "image",
-                        url: p2,
+                        url: p3,
                         size: "full",
                         aspectMode: "cover",
                         aspectRatio: "150:98",
@@ -154,26 +154,91 @@
 </script>
 
 <style>
-  .box {
-    display: flex;
-    flex-direction: column;
-  }
-
   textarea {
     width: 100%;
   }
+
+  .flex-pic-container {
+    width: 300px;
+    height: 320px;
+    border-radius: 10px;
+    background-color: bisque;
+  }
+  .p1 {
+    background: var(--item--p1--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 200px;
+  }
+  .p2 {
+    background: var(--item--p2--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 100px;
+  }
+  .p3 {
+    background: var(--item--p3--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 150px;
+    height: 100px;
+  }
+  .pic {
+    background: var(--item--pic--bg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    margin: 20px;
+  }
+  .vertical {
+    display: flex;
+    flex-direction: row;
+  }
+  .horizontal {
+    display: flex;
+    flex-direction: column;
+  }
+  .flex-item-pic {
+    height: 200px;
+  }
+  .flex-box-text {
+    margin: 20px;
+    max-width: 180px;
+  }
+  .text1 {
+    flex-wrap: wrap;
+    max-width: 160px;
+  }
+  .text2 {
+    align-self: flex-end;
+    color: lightgray;
+  }
 </style>
 
-<div class="box">
+<div class="horizontal">
   <div class="item-input">
     <textarea bind:value={text} placeholder="input..." rows="2" />
   </div>
-  <!-- <div class="flex-pic-container" style="--flex-container--bg: url({$myPic})">
-    <div class="flex-item item1">
-      <pre class="text">{text}</pre>
+  <div class="flex-pic-container horizontal">
+    <div class="vertical">
+      <div class="flex-item-pic vertical">
+        <div class="p1" style="--item--p1--bg: url({p1})" />
+      </div>
+      <div class="flex-item-pic horizontal">
+        <div class="p2" style="--item--p2--bg: url({p2})" />
+        <div class="p3" style="--item--p3--bg: url({p3})" />
+      </div>
     </div>
-    <div class="flex-item item2">
-      <p class="name">by {$myName}</p>
+    <div class="vertical">
+      <div class="pic" style="--item--pic--bg: url({$myPic})" />
+      <div class="flex-box-text horizontal">
+        <div class="text1">{$myName + '   '}{text}</div>
+        <div class="text2">1,140,753 Like</div>
+      </div>
     </div>
-  </div> -->
+  </div>
 </div>

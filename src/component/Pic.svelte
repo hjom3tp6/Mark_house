@@ -118,6 +118,7 @@
     background: var(--flex-container--bg);
     background-size: contain;
     background-repeat: no-repeat;
+    border-radius: 10px;
   }
   .flex-item {
     display: flex;

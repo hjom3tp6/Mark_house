@@ -833,23 +833,23 @@ var app = (function () {
     			t4 = text(/*$myName*/ ctx[2]);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
-    			attr_dev(textarea, "class", "svelte-vyzhjn");
-    			add_location(textarea, file, 158, 4, 4148);
+    			attr_dev(textarea, "class", "svelte-3x1uym");
+    			add_location(textarea, file, 159, 4, 4174);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file, 157, 2, 4118);
-    			attr_dev(pre, "class", "text svelte-vyzhjn");
-    			add_location(pre, file, 162, 6, 4343);
-    			attr_dev(div1, "class", "flex-item item1 svelte-vyzhjn");
-    			add_location(div1, file, 161, 4, 4306);
-    			attr_dev(p, "class", "name svelte-vyzhjn");
-    			add_location(p, file, 165, 6, 4428);
-    			attr_dev(div2, "class", "flex-item item2 svelte-vyzhjn");
-    			add_location(div2, file, 164, 4, 4391);
-    			attr_dev(div3, "class", "flex-pic-container svelte-vyzhjn");
+    			add_location(div0, file, 158, 2, 4144);
+    			attr_dev(pre, "class", "text svelte-3x1uym");
+    			add_location(pre, file, 163, 6, 4369);
+    			attr_dev(div1, "class", "flex-item item1 svelte-3x1uym");
+    			add_location(div1, file, 162, 4, 4332);
+    			attr_dev(p, "class", "name svelte-3x1uym");
+    			add_location(p, file, 166, 6, 4454);
+    			attr_dev(div2, "class", "flex-item item2 svelte-3x1uym");
+    			add_location(div2, file, 165, 4, 4417);
+    			attr_dev(div3, "class", "flex-pic-container svelte-3x1uym");
     			set_style(div3, "--flex-container--bg", "url(" + /*$myPic*/ ctx[1] + ")");
-    			add_location(div3, file, 160, 2, 4224);
-    			attr_dev(div4, "class", "box svelte-vyzhjn");
-    			add_location(div4, file, 156, 0, 4097);
+    			add_location(div3, file, 161, 2, 4250);
+    			attr_dev(div4, "class", "box svelte-3x1uym");
+    			add_location(div4, file, 157, 0, 4123);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1069,37 +1069,127 @@ var app = (function () {
     const file$1 = "src\\component\\Social.svelte";
 
     function create_fragment$1(ctx) {
-    	let div1;
+    	let div13;
     	let div0;
     	let textarea;
+    	let t0;
+    	let div12;
+    	let div6;
+    	let div2;
+    	let div1;
+    	let t1;
+    	let div5;
+    	let div3;
+    	let t2;
+    	let div4;
+    	let t3;
+    	let div11;
+    	let div7;
+    	let t4;
+    	let div10;
+    	let div8;
+    	let t5_value = /*$myName*/ ctx[5] + "   " + "";
+    	let t5;
+    	let t6;
+    	let t7;
+    	let div9;
     	let mounted;
     	let dispose;
 
     	const block = {
     		c: function create() {
-    			div1 = element("div");
+    			div13 = element("div");
     			div0 = element("div");
     			textarea = element("textarea");
+    			t0 = space();
+    			div12 = element("div");
+    			div6 = element("div");
+    			div2 = element("div");
+    			div1 = element("div");
+    			t1 = space();
+    			div5 = element("div");
+    			div3 = element("div");
+    			t2 = space();
+    			div4 = element("div");
+    			t3 = space();
+    			div11 = element("div");
+    			div7 = element("div");
+    			t4 = space();
+    			div10 = element("div");
+    			div8 = element("div");
+    			t5 = text(t5_value);
+    			t6 = text(/*text*/ ctx[0]);
+    			t7 = space();
+    			div9 = element("div");
+    			div9.textContent = "1,140,753 Like";
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "2");
-    			attr_dev(textarea, "class", "svelte-6hnbsj");
-    			add_location(textarea, file$1, 168, 4, 4887);
+    			attr_dev(textarea, "class", "svelte-ppd8b6");
+    			add_location(textarea, file$1, 223, 4, 6014);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$1, 167, 2, 4857);
-    			attr_dev(div1, "class", "box svelte-6hnbsj");
-    			add_location(div1, file$1, 166, 0, 4836);
+    			add_location(div0, file$1, 222, 2, 5984);
+    			attr_dev(div1, "class", "p1 svelte-ppd8b6");
+    			set_style(div1, "--item--p1--bg", "url(" + /*p1*/ ctx[1] + ")");
+    			add_location(div1, file$1, 228, 8, 6215);
+    			attr_dev(div2, "class", "flex-item-pic vertical svelte-ppd8b6");
+    			add_location(div2, file$1, 227, 6, 6169);
+    			attr_dev(div3, "class", "p2 svelte-ppd8b6");
+    			set_style(div3, "--item--p2--bg", "url(" + /*p2*/ ctx[2] + ")");
+    			add_location(div3, file$1, 231, 8, 6337);
+    			attr_dev(div4, "class", "p3 svelte-ppd8b6");
+    			set_style(div4, "--item--p3--bg", "url(" + /*p3*/ ctx[3] + ")");
+    			add_location(div4, file$1, 232, 8, 6399);
+    			attr_dev(div5, "class", "flex-item-pic horizontal svelte-ppd8b6");
+    			add_location(div5, file$1, 230, 6, 6289);
+    			attr_dev(div6, "class", "vertical svelte-ppd8b6");
+    			add_location(div6, file$1, 226, 4, 6139);
+    			attr_dev(div7, "class", "pic svelte-ppd8b6");
+    			set_style(div7, "--item--pic--bg", "url(" + /*$myPic*/ ctx[4] + ")");
+    			add_location(div7, file$1, 236, 6, 6513);
+    			attr_dev(div8, "class", "text1 svelte-ppd8b6");
+    			add_location(div8, file$1, 238, 8, 6627);
+    			attr_dev(div9, "class", "text2 svelte-ppd8b6");
+    			add_location(div9, file$1, 239, 8, 6685);
+    			attr_dev(div10, "class", "flex-box-text horizontal svelte-ppd8b6");
+    			add_location(div10, file$1, 237, 6, 6579);
+    			attr_dev(div11, "class", "vertical svelte-ppd8b6");
+    			add_location(div11, file$1, 235, 4, 6483);
+    			attr_dev(div12, "class", "flex-pic-container horizontal svelte-ppd8b6");
+    			add_location(div12, file$1, 225, 2, 6090);
+    			attr_dev(div13, "class", "horizontal svelte-ppd8b6");
+    			add_location(div13, file$1, 221, 0, 5956);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div1, anchor);
-    			append_dev(div1, div0);
+    			insert_dev(target, div13, anchor);
+    			append_dev(div13, div0);
     			append_dev(div0, textarea);
     			set_input_value(textarea, /*text*/ ctx[0]);
+    			append_dev(div13, t0);
+    			append_dev(div13, div12);
+    			append_dev(div12, div6);
+    			append_dev(div6, div2);
+    			append_dev(div2, div1);
+    			append_dev(div6, t1);
+    			append_dev(div6, div5);
+    			append_dev(div5, div3);
+    			append_dev(div5, t2);
+    			append_dev(div5, div4);
+    			append_dev(div12, t3);
+    			append_dev(div12, div11);
+    			append_dev(div11, div7);
+    			append_dev(div11, t4);
+    			append_dev(div11, div10);
+    			append_dev(div10, div8);
+    			append_dev(div8, t5);
+    			append_dev(div8, t6);
+    			append_dev(div10, t7);
+    			append_dev(div10, div9);
 
     			if (!mounted) {
-    				dispose = listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[1]);
+    				dispose = listen_dev(textarea, "input", /*textarea_input_handler*/ ctx[6]);
     				mounted = true;
     			}
     		},
@@ -1107,11 +1197,30 @@ var app = (function () {
     			if (dirty & /*text*/ 1) {
     				set_input_value(textarea, /*text*/ ctx[0]);
     			}
+
+    			if (dirty & /*p1*/ 2) {
+    				set_style(div1, "--item--p1--bg", "url(" + /*p1*/ ctx[1] + ")");
+    			}
+
+    			if (dirty & /*p2*/ 4) {
+    				set_style(div3, "--item--p2--bg", "url(" + /*p2*/ ctx[2] + ")");
+    			}
+
+    			if (dirty & /*p3*/ 8) {
+    				set_style(div4, "--item--p3--bg", "url(" + /*p3*/ ctx[3] + ")");
+    			}
+
+    			if (dirty & /*$myPic*/ 16) {
+    				set_style(div7, "--item--pic--bg", "url(" + /*$myPic*/ ctx[4] + ")");
+    			}
+
+    			if (dirty & /*$myName*/ 32 && t5_value !== (t5_value = /*$myName*/ ctx[5] + "   " + "")) set_data_dev(t5, t5_value);
+    			if (dirty & /*text*/ 1) set_data_dev(t6, /*text*/ ctx[0]);
     		},
     		i: noop,
     		o: noop,
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div1);
+    			if (detaching) detach_dev(div13);
     			mounted = false;
     			dispose();
     		}
@@ -1132,9 +1241,9 @@ var app = (function () {
     	let $myPic;
     	let $myName;
     	validate_store(myPic, "myPic");
-    	component_subscribe($$self, myPic, $$value => $$invalidate(6, $myPic = $$value));
+    	component_subscribe($$self, myPic, $$value => $$invalidate(4, $myPic = $$value));
     	validate_store(myName, "myName");
-    	component_subscribe($$self, myName, $$value => $$invalidate(7, $myName = $$value));
+    	component_subscribe($$self, myName, $$value => $$invalidate(5, $myName = $$value));
     	let text = "";
     	let catPhotots = [];
 
@@ -1148,12 +1257,12 @@ var app = (function () {
     	let p3 = "";
 
     	onMount(async () => {
-    		const res = await fetch("https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small", { headers: catHeaders });
+    		const res = await fetch("https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small&mime_types=jpg", { headers: catHeaders });
     		catPhotots = await res.json();
     		console.log(catPhotots[0]);
-    		p1 = await catPhotots[0].url;
-    		p2 = await catPhotots[1].url;
-    		p3 = await catPhotots[2].url;
+    		$$invalidate(1, p1 = await catPhotots[0].url);
+    		$$invalidate(2, p2 = await catPhotots[1].url);
+    		$$invalidate(3, p3 = await catPhotots[2].url);
     	});
 
     	afterUpdate(() => {
@@ -1173,7 +1282,7 @@ var app = (function () {
     								contents: [
     									{
     										type: "image",
-    										url: p3,
+    										url: p1,
     										size: "5xl",
     										aspectMode: "cover",
     										aspectRatio: "150:196",
@@ -1186,7 +1295,7 @@ var app = (function () {
     										contents: [
     											{
     												type: "image",
-    												url: p1,
+    												url: p2,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
@@ -1194,7 +1303,7 @@ var app = (function () {
     											},
     											{
     												type: "image",
-    												url: p2,
+    												url: p3,
     												size: "full",
     												aspectMode: "cover",
     												aspectRatio: "150:98",
@@ -1310,16 +1419,16 @@ var app = (function () {
     		if ("text" in $$props) $$invalidate(0, text = $$props.text);
     		if ("catPhotots" in $$props) catPhotots = $$props.catPhotots;
     		if ("catHeaders" in $$props) catHeaders = $$props.catHeaders;
-    		if ("p1" in $$props) p1 = $$props.p1;
-    		if ("p2" in $$props) p2 = $$props.p2;
-    		if ("p3" in $$props) p3 = $$props.p3;
+    		if ("p1" in $$props) $$invalidate(1, p1 = $$props.p1);
+    		if ("p2" in $$props) $$invalidate(2, p2 = $$props.p2);
+    		if ("p3" in $$props) $$invalidate(3, p3 = $$props.p3);
     	};
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
     	}
 
-    	return [text, textarea_input_handler];
+    	return [text, p1, p2, p3, $myPic, $myName, textarea_input_handler];
     }
 
     class Social extends SvelteComponentDev {
@@ -1358,15 +1467,15 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			textarea = element("textarea");
-    			add_location(h3, file$2, 39, 2, 758);
+    			add_location(h3, file$2, 39, 2, 760);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "5");
     			attr_dev(textarea, "class", "svelte-17oz5tr");
-    			add_location(textarea, file$2, 41, 4, 833);
+    			add_location(textarea, file$2, 41, 4, 835);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$2, 40, 2, 803);
+    			add_location(div0, file$2, 40, 2, 805);
     			attr_dev(div1, "class", "box svelte-17oz5tr");
-    			add_location(div1, file$2, 38, 0, 737);
+    			add_location(div1, file$2, 38, 0, 739);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1426,7 +1535,7 @@ var app = (function () {
     		msg.set([
     			{
     				type: "flex",
-    				altText: $myName + "send a cool message",
+    				altText: $myName + " send a cool message",
     				contents: flexMsgJson
     			}
     		]);
@@ -1510,7 +1619,7 @@ var app = (function () {
     		c: function create() {
     			p = element("p");
     			t = text(t_value);
-    			add_location(p, file$3, 109, 2, 2426);
+    			add_location(p, file$3, 109, 2, 2444);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -1537,108 +1646,22 @@ var app = (function () {
 
     // (89:0) {:then}
     function create_then_block(ctx) {
-    	let div;
+    	let div2;
     	let h3;
     	let t1;
-    	let current_block_type_index;
-    	let if_block;
-    	let current;
-    	const if_block_creators = [create_if_block, create_else_block];
-    	const if_blocks = [];
-
-    	function select_block_type(ctx, dirty) {
-    		if (!/*needlogin*/ ctx[1]) return 0;
-    		return 1;
-    	}
-
-    	current_block_type_index = select_block_type(ctx);
-    	if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-
-    	const block = {
-    		c: function create() {
-    			div = element("div");
-    			h3 = element("h3");
-    			h3.textContent = "Line訊息分享器";
-    			t1 = space();
-    			if_block.c();
-    			add_location(h3, file$3, 90, 4, 1881);
-    			attr_dev(div, "class", "box-component svelte-1y8gq57");
-    			add_location(div, file$3, 89, 2, 1849);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, div, anchor);
-    			append_dev(div, h3);
-    			append_dev(div, t1);
-    			if_blocks[current_block_type_index].m(div, null);
-    			current = true;
-    		},
-    		p: function update(ctx, dirty) {
-    			let previous_block_index = current_block_type_index;
-    			current_block_type_index = select_block_type(ctx);
-
-    			if (current_block_type_index === previous_block_index) {
-    				if_blocks[current_block_type_index].p(ctx, dirty);
-    			} else {
-    				group_outros();
-
-    				transition_out(if_blocks[previous_block_index], 1, 1, () => {
-    					if_blocks[previous_block_index] = null;
-    				});
-
-    				check_outros();
-    				if_block = if_blocks[current_block_type_index];
-
-    				if (!if_block) {
-    					if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-    					if_block.c();
-    				}
-
-    				transition_in(if_block, 1);
-    				if_block.m(div, null);
-    			}
-    		},
-    		i: function intro(local) {
-    			if (current) return;
-    			transition_in(if_block);
-    			current = true;
-    		},
-    		o: function outro(local) {
-    			transition_out(if_block);
-    			current = false;
-    		},
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div);
-    			if_blocks[current_block_type_index].d();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_then_block.name,
-    		type: "then",
-    		source: "(89:0) {:then}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (94:4) {:else}
-    function create_else_block(ctx) {
     	let div0;
     	let select;
-    	let t0;
-    	let button;
     	let t2;
+    	let button;
+    	let t4;
     	let div1;
     	let switch_instance;
     	let div1_transition;
-    	let t3;
-    	let if_block_anchor;
+    	let t5;
     	let current;
     	let mounted;
     	let dispose;
-    	let each_value = /*options*/ ctx[4];
+    	let each_value = /*options*/ ctx[3];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -1646,7 +1669,7 @@ var app = (function () {
     		each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
     	}
 
-    	var switch_value = /*selected*/ ctx[2].component;
+    	var switch_value = /*selected*/ ctx[1].component;
 
     	function switch_props(ctx) {
     		return { $$inline: true };
@@ -1656,10 +1679,14 @@ var app = (function () {
     		switch_instance = new switch_value(switch_props());
     	}
 
-    	let if_block = !/*isInClient*/ ctx[0] && create_if_block_1(ctx);
+    	let if_block = !/*isInClient*/ ctx[0] && create_if_block(ctx);
 
     	const block = {
     		c: function create() {
+    			div2 = element("div");
+    			h3 = element("h3");
+    			h3.textContent = "Line訊息分享器";
+    			t1 = space();
     			div0 = element("div");
     			select = element("select");
 
@@ -1667,57 +1694,61 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t0 = space();
+    			t2 = space();
     			button = element("button");
     			button.textContent = "share";
-    			t2 = space();
+    			t4 = space();
     			div1 = element("div");
     			if (switch_instance) create_component(switch_instance.$$.fragment);
-    			t3 = space();
+    			t5 = space();
     			if (if_block) if_block.c();
-    			if_block_anchor = empty();
-    			if (/*selected*/ ctx[2] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[8].call(select));
-    			add_location(select, file$3, 95, 6, 1995);
-    			add_location(button, file$3, 100, 6, 2155);
-    			add_location(div0, file$3, 94, 4, 1983);
+    			add_location(h3, file$3, 90, 4, 1881);
+    			if (/*selected*/ ctx[1] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[6].call(select));
+    			add_location(select, file$3, 95, 6, 2004);
+    			add_location(button, file$3, 100, 6, 2164);
+    			add_location(div0, file$3, 94, 4, 1992);
     			attr_dev(div1, "class", "item-component");
-    			add_location(div1, file$3, 102, 4, 2213);
+    			add_location(div1, file$3, 102, 4, 2222);
+    			attr_dev(div2, "class", "box-component svelte-1y8gq57");
+    			add_location(div2, file$3, 89, 2, 1849);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, div0, anchor);
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, h3);
+    			append_dev(div2, t1);
+    			append_dev(div2, div0);
     			append_dev(div0, select);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				each_blocks[i].m(select, null);
     			}
 
-    			select_option(select, /*selected*/ ctx[2]);
-    			append_dev(div0, t0);
+    			select_option(select, /*selected*/ ctx[1]);
+    			append_dev(div0, t2);
     			append_dev(div0, button);
-    			insert_dev(target, t2, anchor);
-    			insert_dev(target, div1, anchor);
+    			append_dev(div2, t4);
+    			append_dev(div2, div1);
 
     			if (switch_instance) {
     				mount_component(switch_instance, div1, null);
     			}
 
-    			insert_dev(target, t3, anchor);
-    			if (if_block) if_block.m(target, anchor);
-    			insert_dev(target, if_block_anchor, anchor);
+    			append_dev(div2, t5);
+    			if (if_block) if_block.m(div2, null);
     			current = true;
 
     			if (!mounted) {
     				dispose = [
-    					listen_dev(select, "change", /*select_change_handler*/ ctx[8]),
-    					listen_dev(button, "click", /*shareMsg*/ ctx[5], false, false, false)
+    					listen_dev(select, "change", /*select_change_handler*/ ctx[6]),
+    					listen_dev(button, "click", /*shareMsg*/ ctx[4], false, false, false)
     				];
 
     				mounted = true;
     			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty & /*options*/ 16) {
-    				each_value = /*options*/ ctx[4];
+    			if (dirty & /*options*/ 8) {
+    				each_value = /*options*/ ctx[3];
     				validate_each_argument(each_value);
     				let i;
 
@@ -1740,11 +1771,11 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty & /*selected, options*/ 20) {
-    				select_option(select, /*selected*/ ctx[2]);
+    			if (dirty & /*selected, options*/ 10) {
+    				select_option(select, /*selected*/ ctx[1]);
     			}
 
-    			if (switch_value !== (switch_value = /*selected*/ ctx[2].component)) {
+    			if (switch_value !== (switch_value = /*selected*/ ctx[1].component)) {
     				if (switch_instance) {
     					group_outros();
     					const old_component = switch_instance;
@@ -1770,9 +1801,9 @@ var app = (function () {
     				if (if_block) {
     					if_block.p(ctx, dirty);
     				} else {
-    					if_block = create_if_block_1(ctx);
+    					if_block = create_if_block(ctx);
     					if_block.c();
-    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    					if_block.m(div2, null);
     				}
     			} else if (if_block) {
     				if_block.d(1);
@@ -1797,15 +1828,11 @@ var app = (function () {
     			current = false;
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(div0);
+    			if (detaching) detach_dev(div2);
     			destroy_each(each_blocks, detaching);
-    			if (detaching) detach_dev(t2);
-    			if (detaching) detach_dev(div1);
     			if (switch_instance) destroy_component(switch_instance);
     			if (detaching && div1_transition) div1_transition.end();
-    			if (detaching) detach_dev(t3);
-    			if (if_block) if_block.d(detaching);
-    			if (detaching) detach_dev(if_block_anchor);
+    			if (if_block) if_block.d();
     			mounted = false;
     			run_all(dispose);
     		}
@@ -1813,50 +1840,9 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_else_block.name,
-    		type: "else",
-    		source: "(94:4) {:else}",
-    		ctx
-    	});
-
-    	return block;
-    }
-
-    // (92:4) {#if !needlogin}
-    function create_if_block(ctx) {
-    	let button;
-    	let mounted;
-    	let dispose;
-
-    	const block = {
-    		c: function create() {
-    			button = element("button");
-    			button.textContent = "Login";
-    			add_location(button, file$3, 92, 6, 1927);
-    		},
-    		m: function mount(target, anchor) {
-    			insert_dev(target, button, anchor);
-
-    			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*login*/ ctx[6], false, false, false);
-    				mounted = true;
-    			}
-    		},
-    		p: noop,
-    		i: noop,
-    		o: noop,
-    		d: function destroy(detaching) {
-    			if (detaching) detach_dev(button);
-    			mounted = false;
-    			dispose();
-    		}
-    	};
-
-    	dispatch_dev("SvelteRegisterBlock", {
-    		block,
-    		id: create_if_block.name,
-    		type: "if",
-    		source: "(92:4) {#if !needlogin}",
+    		id: create_then_block.name,
+    		type: "then",
+    		source: "(89:0) {:then}",
     		ctx
     	});
 
@@ -1876,7 +1862,7 @@ var app = (function () {
     			t = text(t_value);
     			option.__value = option_value_value = /*option*/ ctx[13];
     			option.value = option.__value;
-    			add_location(option, file$3, 97, 10, 2070);
+    			add_location(option, file$3, 97, 10, 2079);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, option, anchor);
@@ -1900,7 +1886,7 @@ var app = (function () {
     }
 
     // (106:4) {#if !isInClient}
-    function create_if_block_1(ctx) {
+    function create_if_block(ctx) {
     	let button;
     	let mounted;
     	let dispose;
@@ -1909,13 +1895,13 @@ var app = (function () {
     		c: function create() {
     			button = element("button");
     			button.textContent = "Logout";
-    			add_location(button, file$3, 105, 21, 2343);
+    			add_location(button, file$3, 105, 21, 2352);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, button, anchor);
 
     			if (!mounted) {
-    				dispose = listen_dev(button, "click", /*logout*/ ctx[7], false, false, false);
+    				dispose = listen_dev(button, "click", /*logout*/ ctx[5], false, false, false);
     				mounted = true;
     			}
     		},
@@ -1929,7 +1915,7 @@ var app = (function () {
 
     	dispatch_dev("SvelteRegisterBlock", {
     		block,
-    		id: create_if_block_1.name,
+    		id: create_if_block.name,
     		type: "if",
     		source: "(106:4) {#if !isInClient}",
     		ctx
@@ -1985,7 +1971,7 @@ var app = (function () {
     		blocks: [,,,]
     	};
 
-    	handle_promise(promise = /*liffInit*/ ctx[3], info);
+    	handle_promise(promise = /*liffInit*/ ctx[2], info);
 
     	const block = {
     		c: function create() {
@@ -2045,7 +2031,7 @@ var app = (function () {
     function instance$3($$self, $$props, $$invalidate) {
     	let $msg;
     	validate_store(msg, "msg");
-    	component_subscribe($$self, msg, $$value => $$invalidate(10, $msg = $$value));
+    	component_subscribe($$self, msg, $$value => $$invalidate(9, $msg = $$value));
     	let isInClient = false;
     	let liffInit = initLiff();
     	let isLogin = false;
@@ -2087,7 +2073,7 @@ var app = (function () {
 
     	function displayLiffData() {
     		$$invalidate(0, isInClient = liff.isInClient());
-    		$$invalidate(9, isLogin = liff.isLoggedIn());
+    		$$invalidate(7, isLogin = liff.isLoggedIn());
     	}
 
     	function login() {
@@ -2110,8 +2096,8 @@ var app = (function () {
 
     	function select_change_handler() {
     		selected = select_value(this);
-    		$$invalidate(2, selected);
-    		$$invalidate(4, options);
+    		$$invalidate(1, selected);
+    		$$invalidate(3, options);
     	}
 
     	$$self.$capture_state = () => ({
@@ -2139,10 +2125,10 @@ var app = (function () {
 
     	$$self.$inject_state = $$props => {
     		if ("isInClient" in $$props) $$invalidate(0, isInClient = $$props.isInClient);
-    		if ("liffInit" in $$props) $$invalidate(3, liffInit = $$props.liffInit);
-    		if ("isLogin" in $$props) $$invalidate(9, isLogin = $$props.isLogin);
-    		if ("needlogin" in $$props) $$invalidate(1, needlogin = $$props.needlogin);
-    		if ("selected" in $$props) $$invalidate(2, selected = $$props.selected);
+    		if ("liffInit" in $$props) $$invalidate(2, liffInit = $$props.liffInit);
+    		if ("isLogin" in $$props) $$invalidate(7, isLogin = $$props.isLogin);
+    		if ("needlogin" in $$props) needlogin = $$props.needlogin;
+    		if ("selected" in $$props) $$invalidate(1, selected = $$props.selected);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -2150,21 +2136,19 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty & /*isInClient, isLogin*/ 513) {
+    		if ($$self.$$.dirty & /*isInClient, isLogin*/ 129) {
     			 if (isInClient || isLogin) {
-    				$$invalidate(1, needlogin = true);
+    				needlogin = true;
     			}
     		}
     	};
 
     	return [
     		isInClient,
-    		needlogin,
     		selected,
     		liffInit,
     		options,
     		shareMsg,
-    		login,
     		logout,
     		select_change_handler
     	];

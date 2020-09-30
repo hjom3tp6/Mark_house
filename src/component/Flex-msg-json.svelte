@@ -12,12 +12,12 @@
     try {
       flexMsgJson = await JSON.parse(flexMsgJsonString);
     } catch (error) {
-      console.log("flexMsgJsonString is not a json string")
+      console.log("flexMsgJsonString is not a json string");
     }
     msg.set([
       {
         type: "flex",
-        altText: $myName + "send a cool message",
+        altText: $myName + " send a cool message",
         contents: flexMsgJson,
       },
     ]);

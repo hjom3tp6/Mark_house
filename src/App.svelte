@@ -89,9 +89,9 @@
 {:then}
   <div class="box-component">
     <h3>Line訊息分享器</h3>
-    {#if !needlogin}
+    <!-- {#if !needlogin}
       <button on:click={login}>Login</button>
-    {:else}
+    {:else} -->
     <div>
       <select bind:value={selected}>
         {#each options as option}
@@ -104,7 +104,7 @@
       <svelte:component this={selected.component} />
     </div>
     {#if !isInClient}<button on:click={logout}>Logout</button>{/if}
-    {/if}
+    <!-- {/if} -->
   </div>
 {:catch error}
   <p>{error.message}</p>
