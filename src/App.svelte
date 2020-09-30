@@ -79,8 +79,8 @@
     flex-direction: column;
     margin: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content:center;
   }
 </style>
 

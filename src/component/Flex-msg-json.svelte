@@ -26,20 +26,27 @@
 
 <style>
   .box {
+    max-width: 85%;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-self: center;
+    margin: auto;
   }
 
   textarea {
     width: 100%;
   }
+  .vertical {
+    display: flex;
+    flex-direction: row;
+  }
+  .horizontal {
+    display: flex;
+    flex-direction: column;
+  }
 </style>
 
-<div class="box">
-  <h3>請使用FLEX MESSAGE SIMULATOR製作訊息後貼上</h3>
-  <div class="item-input">
+<div class="box vertical">
+  <div class="horizontal">
+    <h4>使用 Line flex message simulator製作訊息後貼上json</h4>
     <textarea bind:value={flexMsgJsonString} placeholder="input..." rows="5" />
   </div>
 </div>

@@ -156,15 +156,13 @@
 </style>
 
 <div class="box">
-  <div class="item-input">
-    <textarea bind:value={text} placeholder="input..." rows="2" />
+  <textarea bind:value={text} placeholder="input..." rows="2" />
+</div>
+<div class="flex-pic-container" style="--flex-container--bg: url({$myPic})">
+  <div class="flex-item item1">
+    <pre class="text">{text}</pre>
   </div>
-  <div class="flex-pic-container" style="--flex-container--bg: url({$myPic})">
-    <div class="flex-item item1">
-      <pre class="text">{text}</pre>
-    </div>
-    <div class="flex-item item2">
-      <p class="name">by {$myName}</p>
-    </div>
+  <div class="flex-item item2">
+    <p class="name">by {$myName}</p>
   </div>
 </div>

@@ -13,6 +13,10 @@
   let p2 = "";
   let p3 = "";
   onMount(async () => {
+    await changeCat();
+  });
+
+  async function changeCat() {
     const res = await fetch(
       "https://api.thecatapi.com/v1/images/search?format=json&limit=3&size=small&mime_types=jpg",
       {
@@ -24,7 +28,7 @@
     p1 = await catPhotots[0].url;
     p2 = await catPhotots[1].url;
     p3 = await catPhotots[2].url;
-  });
+  };
 
   afterUpdate(() => {
     msg.set([
@@ -160,7 +164,6 @@
 
   .flex-pic-container {
     width: 300px;
-    height: 320px;
     border-radius: 10px;
     background-color: bisque;
   }
@@ -170,6 +173,8 @@
     background-size: cover;
     width: 150px;
     height: 200px;
+    background-position: center;
+    border-top-left-radius: 10px;
   }
   .p2 {
     background: var(--item--p2--bg);
@@ -177,6 +182,8 @@
     background-size: cover;
     width: 150px;
     height: 100px;
+    background-position: center;
+    border-top-right-radius: 10px;
   }
   .p3 {
     background: var(--item--p3--bg);
@@ -184,15 +191,20 @@
     background-size: cover;
     width: 150px;
     height: 100px;
+    background-position: center;
+    flex-grow:0
   }
   .pic {
     background: var(--item--pic--bg);
     background-repeat: no-repeat;
+    background-position: center;
     background-size: cover;
     width: 80px;
     height: 80px;
     border-radius: 40px;
     margin: 20px;
+    flex-grow:0;
+    flex-shrink:0;
   }
   .vertical {
     display: flex;
@@ -208,13 +220,13 @@
   .flex-box-text {
     margin: 20px;
     max-width: 180px;
+    justify-content: space-around;
   }
   .text1 {
     flex-wrap: wrap;
     max-width: 160px;
   }
   .text2 {
-    align-self: flex-end;
     color: lightgray;
   }
   pre {
@@ -223,23 +235,24 @@
 </style>
 
 <div class="horizontal">
-  <div class="item-input">
+  <div class="item-input vertical">
     <textarea bind:value={text} placeholder="input..." rows="2" />
+    <button on:click={changeCat} >換一批貓</button>
   </div>
   <div class="flex-pic-container horizontal">
     <div class="vertical">
       <div class="flex-item-pic vertical">
-        <div class="p1" style="--item--p1--bg: url({p1})" />
+        <div class="p1" style="--item--p1--bg: url({p1})" on:click={changeCat}/>
       </div>
       <div class="flex-item-pic horizontal">
-        <div class="p2" style="--item--p2--bg: url({p2})" />
-        <div class="p3" style="--item--p3--bg: url({p3})" />
+        <div class="p2" style="--item--p2--bg: url({p2})" on:click={changeCat}/>
+        <div class="p3" style="--item--p3--bg: url({p3})" on:click={changeCat}/>
       </div>
     </div>
     <div class="vertical">
-      <div class="pic" style="--item--pic--bg: url({$myPic})" />
+      <div class="pic" style="--item--pic--bg: url({p1})" />
       <div class="flex-box-text horizontal">
-        <pre class="text1"><h5>{$myName + '   '}</h5>{text}</pre>
+        <pre class="text1"><strong>$myName</strong>{'  ' + text}</pre>
         <div class="text2">1,140,753 Like</div>
       </div>
     </div>
