@@ -12,7 +12,7 @@
     msg.set([
       {
         type: "flex",
-        altText: myName + "send a cool message",
+        altText: $myName + "send a cool message",
         contents: flexMsgJson,
       },
     ]);
@@ -33,6 +33,6 @@
 <div class="box">
   <h3>請使用FLEX MESSAGE SIMULATOR製作訊息後貼上</h3>
   <div class="item-input">
-    <textarea bind:value={flexMsgJsonString} placeholder="input..." rows="2" />
+    <textarea bind:value={flexMsgJsonString} placeholder="input..." rows="5" />
   </div>
 </div>

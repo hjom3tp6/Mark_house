@@ -1356,15 +1356,15 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			textarea = element("textarea");
-    			add_location(h3, file$2, 33, 2, 575);
+    			add_location(h3, file$2, 33, 2, 576);
     			attr_dev(textarea, "placeholder", "input...");
-    			attr_dev(textarea, "rows", "2");
+    			attr_dev(textarea, "rows", "5");
     			attr_dev(textarea, "class", "svelte-6hnbsj");
-    			add_location(textarea, file$2, 35, 4, 650);
+    			add_location(textarea, file$2, 35, 4, 651);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$2, 34, 2, 620);
+    			add_location(div0, file$2, 34, 2, 621);
     			attr_dev(div1, "class", "box svelte-6hnbsj");
-    			add_location(div1, file$2, 32, 0, 554);
+    			add_location(div1, file$2, 32, 0, 555);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1408,6 +1408,9 @@ var app = (function () {
     }
 
     function instance$2($$self, $$props, $$invalidate) {
+    	let $myName;
+    	validate_store(myName, "myName");
+    	component_subscribe($$self, myName, $$value => $$invalidate(3, $myName = $$value));
     	let flexMsgJsonString = "";
     	let flexMsgJson;
 
@@ -1415,7 +1418,7 @@ var app = (function () {
     		msg.set([
     			{
     				type: "flex",
-    				altText: myName + "send a cool message",
+    				altText: $myName + "send a cool message",
     				contents: flexMsgJson
     			}
     		]);
@@ -1440,7 +1443,8 @@ var app = (function () {
     		myName,
     		msg,
     		flexMsgJsonString,
-    		flexMsgJson
+    		flexMsgJson,
+    		$myName
     	});
 
     	$$self.$inject_state = $$props => {
