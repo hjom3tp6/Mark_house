@@ -1356,15 +1356,15 @@ var app = (function () {
     			t1 = space();
     			div0 = element("div");
     			textarea = element("textarea");
-    			add_location(h3, file$2, 30, 2, 521);
+    			add_location(h3, file$2, 36, 2, 624);
     			attr_dev(textarea, "placeholder", "input...");
     			attr_dev(textarea, "rows", "5");
     			attr_dev(textarea, "class", "svelte-6hnbsj");
-    			add_location(textarea, file$2, 32, 4, 596);
+    			add_location(textarea, file$2, 38, 4, 699);
     			attr_dev(div0, "class", "item-input");
-    			add_location(div0, file$2, 31, 2, 566);
+    			add_location(div0, file$2, 37, 2, 669);
     			attr_dev(div1, "class", "box svelte-6hnbsj");
-    			add_location(div1, file$2, 29, 0, 500);
+    			add_location(div1, file$2, 35, 0, 603);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1410,7 +1410,7 @@ var app = (function () {
     function instance$2($$self, $$props, $$invalidate) {
     	let $myName;
     	validate_store(myName, "myName");
-    	component_subscribe($$self, myName, $$value => $$invalidate(3, $myName = $$value));
+    	component_subscribe($$self, myName, $$value => $$invalidate(2, $myName = $$value));
     	let flexMsgJsonString = "";
 
     	afterUpdate(() => {
@@ -1442,16 +1442,12 @@ var app = (function () {
     		myName,
     		msg,
     		flexMsgJsonString,
-    		flexMsgJson,
     		$myName
     	});
 
     	$$self.$inject_state = $$props => {
     		if ("flexMsgJsonString" in $$props) $$invalidate(0, flexMsgJsonString = $$props.flexMsgJsonString);
-    		if ("flexMsgJson" in $$props) flexMsgJson = $$props.flexMsgJson;
     	};
-
-    	let flexMsgJson;
 
     	if ($$props && "$$inject" in $$props) {
     		$$self.$inject_state($$props.$$inject);
@@ -1459,7 +1455,13 @@ var app = (function () {
 
     	$$self.$$.update = () => {
     		if ($$self.$$.dirty & /*flexMsgJsonString*/ 1) {
-    			 flexMsgJson = JSON.parse(flexMsgJsonString);
+    			 if (flexMsgJsonString) {
+    				try {
+    					flexMsgJson = JSON.parse(flexMsgJsonString);
+    				} catch(error) {
+    					flexMsgJson = {};
+    				}
+    			}
     		}
     	};
 

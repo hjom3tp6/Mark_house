@@ -4,7 +4,13 @@
 
   let flexMsgJsonString = "";
 
-  $: flexMsgJson = JSON.parse(flexMsgJsonString);
+  $: if (flexMsgJsonString) {
+    try {
+      flexMsgJson = JSON.parse(flexMsgJsonString);
+    } catch (error) {
+      flexMsgJson = {};
+    }
+  }
   afterUpdate(() => {
     msg.set([
       {
