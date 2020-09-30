@@ -3,15 +3,13 @@
   import { myName, msg } from "../stores.js";
 
   let flexMsgJsonString = "";
+  let flexMsgJson;
 
   $: if (flexMsgJsonString) {
-    try {
-      flexMsgJson = JSON.parse(flexMsgJsonString);
-    } catch (error) {
-      flexMsgJson = {};
-    }
+    console.log(flexMsgJsonString);
   }
-  afterUpdate(() => {
+  afterUpdate(async function addMsg() {
+    flexMsgJson = await JSON.parse(flexMsgJsonString);
     msg.set([
       {
         type: "flex",
