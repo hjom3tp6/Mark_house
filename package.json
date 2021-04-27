@@ -16,7 +16,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@line/liff": "^2.3.1",
+    "@line/liff": "^2.9.1",
     "sirv-cli": "^0.4.4"
   }
 }
